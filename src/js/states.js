@@ -47,7 +47,7 @@ module.config(
       })
 
       .state('twerk-setup', {
-        url: '/twrk/setup'
+        url: '/twrk/setup',
         views: {
 
           'content': {
@@ -88,7 +88,7 @@ module.config(
 
 
       .state('twerk-howto', {
-        url: '/twrk/howto'
+        url: '/twrk/howto',
         views: {
           content: {
             templateUrl: '/views/twerk-howto.html'
