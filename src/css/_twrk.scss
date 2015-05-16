@@ -27,11 +27,12 @@ p { font-family:$base-font;
   }
 }
 
-.header { background:$secondary-color;
+.header {
   float:left;
   width: 100%;
   padding:0 20px;
   position: fixed;
+  &.scroll-header { background:$secondary-color; }
 }
 
 .logo { font-family:$base-font;
@@ -64,6 +65,7 @@ p { font-family:$base-font;
 .btn {
   font-size:22px;
   padding:5px 40px;
+  border-radius: 2px;
   &.btn-twerk { background:transparent; border-color:$light-b; color:$light-b;
     &:hover { color:$light-b; border-color:#fff; background:#fff; }
   }
@@ -84,7 +86,7 @@ p { font-family:$base-font;
   padding:15px 30px;
   font-family:$base-font;
   position:relative;
-  margin-top:50px;
+  margin-top:150px;
   width: 100%;
   bottom:0;
   p { color:#fff; }
