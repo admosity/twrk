@@ -159,9 +159,9 @@ p {
         border-color: $light-g;
         color: $light-g;
         &:hover {
-            color: $light-g;
-            border-color: #fff;
-            background: #fff;
+            color: $lightgreenA700;
+            border-color: transparent;
+            background: rgba(255, 255, 255, 0.90);
         }
     }
     &.btn-twerk {
@@ -169,9 +169,9 @@ p {
         border-color: $light-g;
         color: $light-g;
         &:hover {
-            color: $light-g;
-            border-color: #fff;
-            background: #fff;
+            color: $lightgreenA700;
+            border-color: transparent;
+            background: rgba(255, 255, 255, 0.90);
         }
     }
     &.btn-watch {
