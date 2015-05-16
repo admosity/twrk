@@ -23,7 +23,7 @@ p { font-family:$base-font;
 .top {
   padding-top:90px;
   @include bp-small {
-    padding-top:150px; 
+    padding-top:150px;
   }
 }
 
@@ -70,4 +70,18 @@ p { font-family:$base-font;
   &.btn-watch { background:transparent; border-color:$light-b; color:$light-b;
     &:hover { color:$light-b; border-color:#fff; background:#fff; }
   }
+}
+
+
+.footer {
+  background:$secondary-color;
+  text-align: right;
+  padding:15px 30px;
+  font-family:$base-font;
+  position:relative;
+  margin-top:50px; 
+  width: 100%;
+  bottom:0;
+  p { color:#fff; }
+  img { width:150px; }
 }
