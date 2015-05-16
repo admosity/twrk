@@ -1,5 +1,5 @@
 require! {
-  express
+  'express.io': express
   'express-session': session
   mongoose
   'connect-mongo': connectMongo
