@@ -49,8 +49,9 @@
         display: inline-block;
         text-transform: lowercase;
         margin: 0 10px;
+        font-size: 16px;
         font-weight: 200;
-        width:20%;
+        width:21%;
         text-align: center;
         &:last-child { font-weight: 400; }
       }
@@ -67,7 +68,7 @@
   width: 100%;
   padding: 10px;
   font-family: $base-font;
-  font-weight:300; 
+  font-weight:300;
 }
 
 .twerkUser {

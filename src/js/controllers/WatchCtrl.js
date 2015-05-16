@@ -41,13 +41,13 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     setTimeout(function(){
       // toggle back after 1 second
       $('.watch-twerk').toggleClass('change2');
-    },5000);
+    },3000);
     setTimeout(function(){
       // toggle back after 1 second
       $('.watch-twerk').toggleClass('change3');
-    },5000);
+    },3000);
 
-  },5000);
+  },3000);
 
 
   $scope.joinTwerk = function (size, msg) {
