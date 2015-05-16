@@ -3,15 +3,18 @@ body {
     font-family: $base-font;
 }
 
+.header { background:$secondary-color; }
+
+.logo { font-family:$base-font;
+  color:$tertiary-color;
+  font-size: 60px;
+  text-align:center;
+}
+
 .header {
     background: $secondary-color;
 }
 
-.logo {
-    font-family: $base-font;
-    color: $tertiary-color;
-    font-size: 60px;
-}
 
 .col {
     background: #999;
@@ -28,8 +31,17 @@ body {
 }
 
 .col a {
-    @include transition-all("2s");
-    &:hover {
-        opacity: 0.8;
-    }
+  @include transition-all('2s');
+  &:hover { opacity:0.8; }
+}
+
+.btn {
+  font-size:40px;
+  padding:5px 40px;
+  &.btn-twerk { background:transparent; border-color:$secondary-color; color:$secondary-color;
+    &:hover { color:#fff; border-color:#fff; }
+  }
+  &.btn-watch { background:transparent; border-color:$secondary-color; color:$secondary-color;
+    &:hover { color:#fff; border-color:#fff; }
+  }
 }
