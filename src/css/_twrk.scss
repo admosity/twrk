@@ -1,8 +1,10 @@
 body {
-    /* background: $primary-color; */
     background: url(/images/bg.png);
     background-size:cover;
     font-family: $base-font;
+    /* @include $bp-small {
+      background: $primary-color;
+    } */
 }
 
 .header { background:$secondary-color; }
