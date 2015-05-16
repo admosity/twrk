@@ -60,7 +60,10 @@ module.exports = {
       "jquery": path.join(__dirname, "node_modules/jquery/dist/jquery.js"),
 
       // "angular-ui-bootstrap$": "angular-ui-bootstrap"
-      "angular-ui-bootstrap": path.join(__dirname, "node_modules/angular-ui-bootstrap/ui-bootstrap-tpls.js")
+      "angular-ui-bootstrap": path.join(__dirname, "node_modules/angular-ui-bootstrap/ui-bootstrap-tpls.js"),
+
+
+
 
     }
   },
