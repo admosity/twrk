@@ -38,35 +38,37 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
   var lpY = 0;
   var lpZ = 0;
   var lpM = 0;
+  var playerList = {};
 
   console.log(window.SERVER_URL);
 
   var socket = io.connect(window.SERVER_URL);
   socket.on('joined', function (data) {
     console.log("CONNECT RESPONSE", data);
-
-    if(playerList[data.id]) removeBody(playerList[data.id]);
-    playerList[data.id] = makeBody();
+    if(data){
+      if(playerList[data.id]) removeBody(playerList[data.id]);
+      playerList[data.id] = makeBody();
+      console.log("PLAYER");
+    }
   });
 
   socket.on('user disconnect', function (data) {
-    console.log("CONNECT RESPONSE", data.id);
-
+    console.log("CONNECT RESPONSE", data);
     removeBody(playerList[data.id]);
   });
 //socket.emit('join', { username: "USERNAME", avatar: 5 });
 
   socket.on('reply', function (data) {
     console.log("UPDATE RESPONSE", data);
-
-    //console.log(data);
-    var vector = data.data.split(',');
-    lpX = (vector[0] * (1-lp)) + (lpX * lp);
-    lpY = (vector[1] * (1-lp)) + (lpY * lp);
-    lpZ = (vector[2] * (1-lp)) + (lpZ * lp);
-    lpM = vector[6];
-    impulse(playerList[data.id], [lpX * 50, lpZ * 50]);
-
+    if(playerList[data.id]){
+      //console.log(data);
+      var vector = data.data.split(',');
+      lpX = (vector[0] * (1-lp)) + (lpX * lp);
+      lpY = (vector[1] * (1-lp)) + (lpY * lp);
+      lpZ = (vector[2] * (1-lp)) + (lpZ * lp);
+      lpM = vector[6];
+      impulse(playerList[data.id], [lpX * 50, lpZ * 50]);
+    }
     // ctx.clearRect ( 0 , 0 , canvas.width, canvas.height );
     // ctx.strokeStyle = 'rgba(255, 0, 0, 0.6)';
     // drawLine(vector[0],vector[1],vector[2],vector[6]);
@@ -507,8 +509,9 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     ctx.translate(w/2, h/2);  // Translate to the center
     ctx.scale(50, -50);       // Zoom in and flip y axis
     for(var player in playerList){
-      if(players)
-        drawBody(players);
+      if(playerList[player]){
+        drawBody(playerList[player]);
+      }
     }
     // Draw all bodies
     // drawbox();
