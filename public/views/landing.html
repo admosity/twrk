@@ -5,13 +5,14 @@
   <div class="column-7 hidden-xs">&nbsp;</div>
   <div class="column-2">
     <a class="btn btn-twerk visible-xs" ui-sref="twerk-calibrate"  href="#">twerk</a>
-    <a class="btn btn-twerk" ui-sref="watch-twerk"  href="#">watch</a>
+    <a class="btn btn-twerk hidden-xs" ng-click="joinTwerk();" href="#">twerk</a>
   </div>
 </div>
 
 <div class="wrapper top center hidden-xs">
   <h1 class="intro top">Twerk like the badass that you are</h1>
-  <a class="btn btn-twerk btn-xl hidden-xs" ng-click="joinTwerk();" href="#">how to twerk</a>
+
+  <a class="btn btn-twerk btn-xl hidden-xs" ui-sref="watch-twerk"  href="#">watch</a>
   <a href=""></a>
 </div>
 
