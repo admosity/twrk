@@ -4,9 +4,17 @@ $grid-max-width: 75em;
 
 // fonts
 $base-font-size: 16px !default;
+$base-font: "font-family: 'Roboto', sans-serif";
+$bold: "font-weight:700";
 
 
 // breakpoints
 $bp-small: "only screen and (min-width: 20em)";
 $bp-medium: "only screen and (min-width: 30em)";
 $bp-large: "only screen and (min-width: 60em)";
+
+
+// colors
+$primary-color: #00bcd6;
+$secondary-color: #0097a8;
+$tertiary-color: #006877;
