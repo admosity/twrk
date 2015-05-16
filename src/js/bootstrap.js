@@ -34,4 +34,5 @@ module.exports = angular.module('NS', [
   // expose ui state to entire app
   $rootScope.$state = $state;
 
+
 }])
