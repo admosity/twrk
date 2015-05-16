@@ -438,7 +438,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     world.addBody(plane);
 
     console.log("INIT");
-
+    window.onResize();
     canvas.addEventListener('mousedown', function(event){
       //impulse(players[0]);
       // makeBody();
@@ -474,7 +474,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     ctx.rotate(body.angle + Math.PI);  // Rotate to the box body frame
     //ctx.rect(-shape.width/2, -shape.height/2, shape.width, shape.height);
     var img=$("#avatar-"+avatar)[0];
-    console.log(img.width, img.height);
+    
     var ratio = img.width/img.height;
     // console.log(img);
     ctx.drawImage(img,-(ratio/2),-0.6,ratio,1);
@@ -552,7 +552,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     // goes from top to bottom, while physics does the opposite.
     ctx.save();
     ctx.translate(w/2, h/2);  // Translate to the center
-    ctx.scale(50, -50);       // Zoom in and flip y axis
+    ctx.scale(80, -80);       // Zoom in and flip y axis
     for(var player in playerList){
       if(playerList[player]){
         drawBody(playerList[player]);
@@ -575,6 +575,11 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     world.step(1/60);
     // Render scene
     render();
+  }
+
+  window.onResize = function(){
+    ctx.canvas.width  = window.innerWidth;
+    ctx.canvas.height = window.innerHeight;
   }
 
   init();
