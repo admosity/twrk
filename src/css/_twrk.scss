@@ -107,7 +107,8 @@ p {
     position: fixed;
     top: 0;
     &.scroll-header {
-        background: $secondary-color;
+      background: rgba(6, 79, 89, 0.82);
+      z-index: 888;
     }
 }
 

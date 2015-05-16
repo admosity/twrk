@@ -1,5 +1,18 @@
 var module = require('./module');
 module.controller('TwrkCtrl', function($scope, $http, $modal) {
+  $(window).scroll(function() {
+    var scroll = $(window).scrollTop();
+
+    if (scroll >= 50) {
+      console.log("helllooo");
+      $(".header").addClass("scroll-header");
+    }
+    else {
+      $(".header").removeClass("scroll-header");
+    }
+  });
+
+
   $scope.topDigest = function() {
     if(!$scope.$$phase) {
       $scope.$digest();
