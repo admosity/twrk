@@ -31,6 +31,7 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
     socket.on('connect', function (data) {
       console.log("CONNECTED");
       connected = true;
+      socket.emit('join', { username: "USERNAME", avatar: 5 });
     });
 
     function sendServer(data){

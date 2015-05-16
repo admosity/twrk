@@ -43,8 +43,9 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
   var socket = io.connect(window.SERVER_URL);
   socket.on('connect', function (data) {
-    console.log("CONNECT RESPONSE");
+    console.log("CONNECT RESPONSE", data);
   });
+//socket.emit('join', { username: "USERNAME", avatar: 5 });
 
   socket.on('reply', function (data) {
     console.log("UPDATE RESPONSE", data);
@@ -324,21 +325,9 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     var shapes = obj.shape;
     for(var k in body) {
       if(body.hasOwnProperty(k)) {
-        for(var l in shapes) {
-          if(shapes.hasOwnProperty(l)) {
-            body[k].removeShape(shapes[l]);
-          }
-        }
         world.removeBody(body[k]);
       }
     }
-
-    
-    // for(var k in shapes) {
-    //   if(shapes.hasOwnProperty(k)) {
-    //     world.removeShape(shapes[k]);
-    //   }
-    // }
   }
 
   function impulse(player, force){
@@ -389,6 +378,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
   //   mouseConstraint = null;
   // });
   }
+  var addremovec = 0;
   function init(){
     // Init canvas
     canvas = document.getElementById("twrk");
@@ -425,8 +415,14 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     canvas.addEventListener('mousedown', function(event){
       //impulse(players[0]);
       // makeBody();
-      console.log("REMOVE BODY");
-      removeBody(players[0]);
+      if(addremovec%2 == 0){
+        console.log("REMOVE BODY");
+        removeBody(players[0]);
+        players[0] = null;
+      }else{
+        players[0] = makeBody();
+      }
+      addremovec++;
     });
   }
 
@@ -505,8 +501,10 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     ctx.save();
     ctx.translate(w/2, h/2);  // Translate to the center
     ctx.scale(50, -50);       // Zoom in and flip y axis
-    for(var i = 0; i < players.length; i++)
-      drawBody(players[i]);
+    for(var i = 0; i < players.length; i++){
+      if(players[i])
+        drawBody(players[i]);
+    }
     // Draw all bodies
     // drawbox();
     // drawPlane();
