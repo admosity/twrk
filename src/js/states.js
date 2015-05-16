@@ -1,8 +1,16 @@
 
 module = require('./bootstrap');
 
-module.config(['$stateProvider',
+// function pipeline (funcs) {
+//   return function() {
+//     funcs.forEach(function(f) {
+//       f();
+//     });
+//   };
+// }
+module.config(
   function($stateProvider) {
+
     $stateProvider
 
       .state('landing', {
@@ -14,7 +22,7 @@ module.config(['$stateProvider',
             templateUrl: "/views/landing.html"
           },
 
-        }
+        },
       })
 
       .state('watch-twerk', {
@@ -81,4 +89,4 @@ module.config(['$stateProvider',
 
 
   }
-]);
+);
