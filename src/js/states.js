@@ -78,6 +78,7 @@ module.config(
         url: '/twrking',
         views: {
           content: {
+            controller: "TwrkCtrl",
             templateUrl: '/views/twerk-do.html'
           }
         },
