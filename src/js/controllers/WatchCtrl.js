@@ -43,7 +43,6 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
   console.log(window.SERVER_URL);
 
   function addPlayer(data){
-    console.log("ADD PLAYER ", data);
     if(playerList[data.user_id]) removeBody(playerList[data.user_id]);
     playerList[data.user_id] = makeBody();
     playerList[data.user_id].avatar = data.avatar;
@@ -53,9 +52,22 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
   var socket = io.connect(window.SERVER_URL);
   socket.on('joined', function (data) {
-    console.log("CONNECT RESPONSE", data);
     if(data){
       addPlayer(data);
+    }
+  });
+
+  socket.on('scores', function (data){
+    var users = data.users;
+    users.sort(function(a, b){
+      return b.score - a.score;
+    });
+    for(var i = 0; i < users.length; i++){
+      var player = users[i];
+      
+      var id = player.user_id;
+      console.log(player.score, player.user_id, playerList[id].avatar, playerList[id].username);
+      
     }
   });
 
@@ -68,7 +80,6 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
   });
 
   socket.on('user disconnect', function (data) {
-    console.log("CONNECT DISCONNECT", data.user_id);
     console.log(playerList);
     if(data && playerList[data.user_id]){
       removeBody(playerList[data.user_id]);
@@ -87,7 +98,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
       lpY = (vector[1] * (1-lp)) + (lpY * lp);
       lpZ = (vector[2] * (1-lp)) + (lpZ * lp);
       lpM = vector[6];
-      impulse(playerList[data.user_id], [lpX * 50, lpZ * 50]);
+      impulse(playerList[data.user_id], [lpX * 40, lpZ * 40]);
     }
     // ctx.clearRect ( 0 , 0 , canvas.width, canvas.height );
     // ctx.strokeStyle = 'rgba(255, 0, 0, 0.6)';
@@ -577,7 +588,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     // goes from top to bottom, while physics does the opposite.
     ctx.save();
     ctx.translate(w/2, h/2);  // Translate to the center
-    ctx.scale(80, -80);       // Zoom in and flip y axis
+    ctx.scale(90, -90);       // Zoom in and flip y axis
     for(var player in playerList){
       if(playerList[player]){
         drawBody(playerList[player]);
