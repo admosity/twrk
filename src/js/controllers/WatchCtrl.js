@@ -69,13 +69,24 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     users.sort(function(a, b){
       return b.score - a.score;
     });
+    var currScores = [];
     for(var i = 0; i < users.length; i++){
       var player = users[i];
       
       var id = player.user_id;
       console.log(player.score, player.user_id, playerList[id].avatar, playerList[id].username);
-      
+      currScores.push({
+        score: player.score,
+        user_id: player.user_id,
+        avatar: playerList[id].avatar,
+        username: playerList[id].username
+      });
     }
+    $scope.$apply(function() {
+      $scope.scores = currScores;
+    });
+
+
   });
 
   socket.on('users', function (data){
