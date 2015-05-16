@@ -7,6 +7,13 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
   console.log("WATCH DAT TWERK");
 
 
+  $scope.joinTwerk = function (size, msg) {
+    var modalInstance = $modal.open({
+      templateUrl: '/views/partials/join-twerk-modal.html',
+      size: size,
+      windowClass: 'join-twerk-modal'
+    });
+  }
 
 
   var canvas = document.getElementById('myCanvas');
@@ -16,7 +23,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     var cX = x;// / 2 + y / 2;
     var cY = z;
     var mag = m * 10;
-    
+
     context.beginPath();
     context.moveTo(400, 300);
     context.lineTo(400 + cX * mag, 300 + cY * mag);
@@ -60,7 +67,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     var cX = -(x/Math.abs(x) * (Math.abs(x / 2) + Math.abs(y / 2)));
     var cY = z;
     var mag = m * 25;
-    
+
     context.beginPath();
     context.lineWidth = 15;
     context.moveTo(400, 300);
@@ -296,7 +303,6 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
       body: bodyPartBody, 
       shape: bodyPartShape
     };
-
   }
   var player;
   function init(){
