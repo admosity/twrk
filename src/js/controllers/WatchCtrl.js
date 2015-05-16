@@ -37,7 +37,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
   socket.on('reply', function (data) {
     console.log("UPDATE RESPONSE", data);
-    
+
     console.log(data);
     var vector = data.data.split(',');
     lpX = (vector[0] * (1-lp)) + (lpX * lp);
@@ -50,9 +50,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     drawLine(vector[3],vector[4],vector[5],vector[6]);
     context.strokeStyle = '#00ff00';
     drawLine(lpX, lpY, lpZ, vector[6]);
-
-
-
+    
   });
 
   var canvas = document.getElementById('myCanvas');

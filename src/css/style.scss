@@ -6,26 +6,7 @@
 
 // Chelsea so cool so awesome
 @import 'colors';
+@import 'spectator';
 
 // PROJECT
 @import "twrk";
-.nobgplz {
-  height: 100%;
-  width: 100%;
-  background-color: $grey900;
-}
-
-.watchTwerking {
-  position: relative;
-  width: 100%;
-  height: 300px;
-  background-color: $red500;
-  display: block;
-}
-
-.twerkTeam {
-  display: block;
-  height: 300px;
-  background-color: $blue600;
-  width: 100%;
-}

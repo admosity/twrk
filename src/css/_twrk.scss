@@ -72,6 +72,11 @@ p { font-family:$base-font;
   }
 }
 
+.join-twerk-modal {
+  &.modal {   background: rgba(33, 76, 95, 0.84); }
+  .modal-content { background:transparent; box-shadow:none; border:none; }
+}
+
 
 .footer {
   background:$secondary-color;
@@ -79,7 +84,7 @@ p { font-family:$base-font;
   padding:15px 30px;
   font-family:$base-font;
   position:relative;
-  margin-top:50px; 
+  margin-top:50px;
   width: 100%;
   bottom:0;
   p { color:#fff; }

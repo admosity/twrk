@@ -4,11 +4,72 @@
   </div>
   <div class="column-7 hidden-xs">&nbsp;</div>
   <div class="column-2">
-    <a class="btn btn-watch hidden-xs" ui-sref="watch-twerk" href="#">watch</a>
-    <a class="btn btn-twerk visible-xs" ui-sref="twerk-calibrate"  href="#">twerk</a>
+    <a class="btn btn-watch hidden-xs" href="#" ng-click="joinTwerk();">join</a>
+    <a class="btn btn-twerk visible-xs" ui-sref="twerk-do"  href="#">twerk</a>
   </div>
 </div>
 
+<div class="wrapper">
+  <div class="column-12 ">
+    <h1 class="logo">Watch the Twerk Party</h1>
+  </div>
+</div>
+<div class="wrapper center">
+  <div class="column-8">
+    <!-- This is where a live visual representation of the twerk party will go; this divider is temporary-->
+    <canvas id="myCanvas" class="watchTwerking"></canvas>
+  </div>
+  <div class="column-4">
+    <!-- display the participants-->
+    <div class="twerkTeam">
+      <h1 class="twerkTeamHeader">Twerk Team</h1>
+      <img src="images/tempavatar.svg" class="smallavatar"><p class="twerkUser">User 1</p>
+      <hr>
+      <img src="images/tempavatar.svg" class="smallavatar"><p class="twerkUser">User 2</p>
+      <hr>
+      <img src="images/tempavatar.svg" class="smallavatar"><p class="twerkUser">User 3</p>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div class="column-12">
+    <div class="leaderboard">
+      <span class="top3">
+        <img src="images/tempavatar.svg" class="mediumavatar"><br>
+        <p class="twerkUser leaderUser">User 1</p>
+        <p class="points">100 pts</p>
+      </span>
+<!--       <hr class="vertical">
+ -->
+      <span class="top3">
+        <img src="images/tempavatar.svg" class="mediumavatar"><br>
+        <p class="twerkUser leaderUser">User 2</p>
+        <p class="points">90 pts</p>
+      </span>
+<!--       <hr class="vertical">
+-->      
+      <span class="top3">
+        <img src="images/tempavatar.svg" class="mediumavatar"><br>
+        <p class="twerkUser leaderUser">User 3</p>
+        <p class="points">80 pts</p>
+      </span>
+<!--       <hr class="vertical">
+ -->
+      <span class="remainingUsers">
+        <ul>
+          <li>User 4</li>
+          <li>User 5</li>
+          <li>User 6</li>
+          <li>User 7</li>
+        </ul>
+      </span>    
+    </div>
+  </div>
+</div>
+
+<!--
+some like marketing formal bull shit that we're not using anymore
 <div class="wrapper center top">
   <div class="column-8 left">
     <h1 class="intro">the world's leading + first twerk dance party application</h1>
@@ -17,4 +78,4 @@
   <div class="column-4 hidden-xs">
     <img class="img-responsive" src="images/iphone.png" alt="">
   </div>
-</div>
+</div> -->
