@@ -82,6 +82,10 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     }
   });
 
+  socket.on('disconnect', function(){
+    alert("You have been disconnected");
+  });
+
   socket.on('scores', function (data){
     var users = data.users;
     users.sort(function(a, b){
