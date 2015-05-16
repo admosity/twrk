@@ -23,8 +23,6 @@ module.directive('twrkView', function() {
           lowerLegSize = 0.2,
           lowerLegLength = 0.5;
 
-
-
       var canvas, ctx, w, h, world, boxBody, planeBody;
 
       function makeBody(){
@@ -138,7 +136,6 @@ module.directive('twrkView', function() {
         lowerRightArm.addShape(lowerArmShape);
         world.addBody(lowerLeftArm);
         world.addBody(lowerRightArm);
-
 
         // Neck joint
         var neckJoint = bodyPartBody.neckJoint = new p2.RevoluteConstraint(head, upperBody, {

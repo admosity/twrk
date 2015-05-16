@@ -92,7 +92,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
       headRadius = 0.25,
       upperBodyLength = 0.6,
       pelvisLength = 0.4,
-      upperLegLength = 3,
+      upperLegLength = 0.5,
       upperLegSize = 0.2,
       lowerLegSize = 0.2,
       lowerLegLength = 0.5;
@@ -141,160 +141,161 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     }
 
 
-        // Lower legs
-        var lowerLeftLeg = bodyPartBody.lowerLeftLeg = new p2.Body({
-            mass: 1,
-            position: [-shouldersDistance/2,lowerLegLength / 2],
-        });
-        var lowerRightLeg = bodyPartBody.lowerRightLeg = new p2.Body({
-            mass: 1,
-            position: [shouldersDistance/2,lowerLegLength / 2],
-        });
-        lowerLeftLeg.addShape(lowerLegShape);
-        lowerRightLeg.addShape(lowerLegShape);
-        world.addBody(lowerLeftLeg);
-        world.addBody(lowerRightLeg);
+    // Lower legs
+    var lowerLeftLeg = bodyPartBody.lowerLeftLeg = new p2.Body({
+        mass: 1,
+        position: [-shouldersDistance/2,lowerLegLength / 2],
+    });
+    var lowerRightLeg = bodyPartBody.lowerRightLeg = new p2.Body({
+        mass: 1,
+        position: [shouldersDistance/2,lowerLegLength / 2],
+    });
+    lowerLeftLeg.addShape(lowerLegShape);
+    lowerRightLeg.addShape(lowerLegShape);
+    world.addBody(lowerLeftLeg);
+    world.addBody(lowerRightLeg);
 
-        // Upper legs
-        var upperLeftLeg = bodyPartBody.upperLeftLeg = new p2.Body({
-            mass: 1,
-            position: [-shouldersDistance/2,lowerLeftLeg.position[1]+lowerLegLength/2+upperLegLength / 2],
-        });
-        var upperRightLeg = bodyPartBody.upperRightLeg = new p2.Body({
-            mass: 1,
-            position: [shouldersDistance/2,lowerRightLeg.position[1]+lowerLegLength/2+upperLegLength / 2],
-        });
-        upperLeftLeg.addShape(upperLegShape);
-        upperRightLeg.addShape(upperLegShape);
-        world.addBody(upperLeftLeg);
-        world.addBody(upperRightLeg);
+    // Upper legs
+    var upperLeftLeg = bodyPartBody.upperLeftLeg = new p2.Body({
+        mass: 1,
+        position: [-shouldersDistance/2,lowerLeftLeg.position[1]+lowerLegLength/2+upperLegLength / 2],
+    });
+    var upperRightLeg = bodyPartBody.upperRightLeg = new p2.Body({
+        mass: 1,
+        position: [shouldersDistance/2,lowerRightLeg.position[1]+lowerLegLength/2+upperLegLength / 2],
+    });
+    upperLeftLeg.addShape(upperLegShape);
+    upperRightLeg.addShape(upperLegShape);
+    world.addBody(upperLeftLeg);
+    world.addBody(upperRightLeg);
 
-        // Pelvis
-        var pelvis = bodyPartBody.pelvis = new p2.Body({
-            mass: 1,
-            position: [0, upperLeftLeg.position[1]+upperLegLength/2+pelvisLength/2],
-        });
-        pelvis.addShape(pelvisShape);
-        world.addBody(pelvis);
+    // Pelvis
+    var pelvis = bodyPartBody.pelvis = new p2.Body({
+        mass: 1,
+        position: [0, upperLeftLeg.position[1]+upperLegLength/2+pelvisLength/2],
+    });
+    pelvis.addShape(pelvisShape);
+    world.addBody(pelvis);
 
-        // Upper body
-        var upperBody = bodyPartBody.upperBody = new p2.Body({
-            mass: 1,
-            position: [0,pelvis.position[1]+pelvisLength/2+upperBodyLength/2],
-        });
-        upperBody.addShape(upperBodyShape);
-        world.addBody(upperBody);
+    // Upper body
+    var upperBody = bodyPartBody.upperBody = new p2.Body({
+        mass: 1,
+        position: [0,pelvis.position[1]+pelvisLength/2+upperBodyLength/2],
+    });
+    upperBody.addShape(upperBodyShape);
+    world.addBody(upperBody);
 
-        // Head
-        var head = bodyPartBody.head = new p2.Body({
-            mass: 1,
-            position: [0,upperBody.position[1]+upperBodyLength/2+headRadius+neckLength],
-        });
-        head.addShape(headShape);
-        world.addBody(head);
+    // Head
+    var head = bodyPartBody.head = new p2.Body({
+        mass: 1,
+        position: [0,upperBody.position[1]+upperBodyLength/2+headRadius+neckLength],
+    });
+    head.addShape(headShape);
+    world.addBody(head);
 
-        // Upper arms
-        var upperLeftArm = bodyPartBody.upperLeftArm = new p2.Body({
-            mass: 1,
-            position: [-shouldersDistance/2-upperArmLength/2, upperBody.position[1]+upperBodyLength/2],
-        });
-        var upperRightArm = bodyPartBody.upperRightArm = new p2.Body({
-            mass: 1,
-            position: [shouldersDistance/2+upperArmLength/2, upperBody.position[1]+upperBodyLength/2],
-        });
-        upperLeftArm.addShape(upperArmShape);
-        upperRightArm.addShape(upperArmShape);
-        world.addBody(upperLeftArm);
-        world.addBody(upperRightArm);
+    // Upper arms
+    var upperLeftArm = bodyPartBody.upperLeftArm = new p2.Body({
+        mass: 1,
+        position: [-shouldersDistance/2-upperArmLength/2, upperBody.position[1]+upperBodyLength/2],
+    });
+    var upperRightArm = bodyPartBody.upperRightArm = new p2.Body({
+        mass: 1,
+        position: [shouldersDistance/2+upperArmLength/2, upperBody.position[1]+upperBodyLength/2],
+    });
+    upperLeftArm.addShape(upperArmShape);
+    upperRightArm.addShape(upperArmShape);
+    world.addBody(upperLeftArm);
+    world.addBody(upperRightArm);
 
-        // lower arms
-        var lowerLeftArm = bodyPartBody.lowerLeftArm = new p2.Body({
-            mass: 1,
-            position: [ upperLeftArm.position[0] - lowerArmLength/2 - upperArmLength/2,
-                        upperLeftArm.position[1]],
-        });
-        var lowerRightArm = bodyPartBody.lowerRightArm = new p2.Body({
-            mass: 1,
-            position: [ upperRightArm.position[0] + lowerArmLength/2 + upperArmLength/2,
-                        upperRightArm.position[1]],
-        });
-        lowerLeftArm.addShape(lowerArmShape);
-        lowerRightArm.addShape(lowerArmShape);
-        world.addBody(lowerLeftArm);
-        world.addBody(lowerRightArm);
+    // lower arms
+    var lowerLeftArm = bodyPartBody.lowerLeftArm = new p2.Body({
+        mass: 1,
+        position: [ upperLeftArm.position[0] - lowerArmLength/2 - upperArmLength/2,
+                    upperLeftArm.position[1]],
+    });
+    var lowerRightArm = bodyPartBody.lowerRightArm = new p2.Body({
+        mass: 1,
+        position: [ upperRightArm.position[0] + lowerArmLength/2 + upperArmLength/2,
+                    upperRightArm.position[1]],
+    });
+    lowerLeftArm.addShape(lowerArmShape);
+    lowerRightArm.addShape(lowerArmShape);
+    world.addBody(lowerLeftArm);
+    world.addBody(lowerRightArm);
 
 
-        // Neck joint
-        var neckJoint = bodyPartBody.neckJoint = new p2.RevoluteConstraint(head, upperBody, {
-            localPivotA: [0,-headRadius-neckLength/2],
-            localPivotB: [0,upperBodyLength/2],
-        });
-        neckJoint.setLimits(-Math.PI / 8, Math.PI / 8);
-        world.addConstraint(neckJoint);
+    // Neck joint
+    var neckJoint = bodyPartBody.neckJoint = new p2.RevoluteConstraint(head, upperBody, {
+        localPivotA: [0,-headRadius-neckLength/2],
+        localPivotB: [0,upperBodyLength/2],
+    });
+    neckJoint.setLimits(-Math.PI / 8, Math.PI / 8);
+    world.addConstraint(neckJoint);
 
-        // Knee joints
-        var leftKneeJoint = bodyPartBody.leftKneeJoint = new p2.RevoluteConstraint(lowerLeftLeg, upperLeftLeg, {
-            localPivotA: [0, lowerLegLength/2],
-            localPivotB: [0,-upperLegLength/2],
-        });
-        var rightKneeJoint= bodyPartBody.rightKneeJoint = new p2.RevoluteConstraint(lowerRightLeg, upperRightLeg, {
-            localPivotA: [0, lowerLegLength/2],
-            localPivotB:[0,-upperLegLength/2],
-        });
-        leftKneeJoint.setLimits(-Math.PI / 8, Math.PI / 8);
-        rightKneeJoint.setLimits(-Math.PI / 8, Math.PI / 8);
-        world.addConstraint(leftKneeJoint);
-        world.addConstraint(rightKneeJoint);
+    // Knee joints
+    var leftKneeJoint = bodyPartBody.leftKneeJoint = new p2.RevoluteConstraint(lowerLeftLeg, upperLeftLeg, {
+        localPivotA: [0, lowerLegLength/2],
+        localPivotB: [0,-upperLegLength/2],
+    });
+    var rightKneeJoint= bodyPartBody.rightKneeJoint = new p2.RevoluteConstraint(lowerRightLeg, upperRightLeg, {
+        localPivotA: [0, lowerLegLength/2],
+        localPivotB:[0,-upperLegLength/2],
+    });
+    leftKneeJoint.setLimits(-Math.PI / 8, Math.PI / 8);
+    rightKneeJoint.setLimits(-Math.PI / 8, Math.PI / 8);
+    world.addConstraint(leftKneeJoint);
+    world.addConstraint(rightKneeJoint);
 
-        // Hip joints
-        var leftHipJoint = bodyPartBody.leftHipJoint = new p2.RevoluteConstraint(upperLeftLeg, pelvis, {
-            localPivotA: [0, upperLegLength/2],
-            localPivotB: [-shouldersDistance/2,-pelvisLength/2],
-        });
-        var rightHipJoint = bodyPartBody.rightHipJoint = new p2.RevoluteConstraint(upperRightLeg, pelvis, {
-            localPivotA: [0, upperLegLength/2],
-            localPivotB: [shouldersDistance/2,-pelvisLength/2],
-        });
-        leftHipJoint.setLimits(-Math.PI / 8, Math.PI / 8);
-        rightHipJoint.setLimits(-Math.PI / 8, Math.PI / 8);
-        world.addConstraint(leftHipJoint);
-        world.addConstraint(rightHipJoint);
+    // Hip joints
+    var leftHipJoint = bodyPartBody.leftHipJoint = new p2.RevoluteConstraint(upperLeftLeg, pelvis, {
+        localPivotA: [0, upperLegLength/2],
+        localPivotB: [-shouldersDistance/2,-pelvisLength/2],
+    });
+    var rightHipJoint = bodyPartBody.rightHipJoint = new p2.RevoluteConstraint(upperRightLeg, pelvis, {
+        localPivotA: [0, upperLegLength/2],
+        localPivotB: [shouldersDistance/2,-pelvisLength/2],
+    });
+    leftHipJoint.setLimits(-Math.PI / 8, Math.PI / 8);
+    rightHipJoint.setLimits(-Math.PI / 8, Math.PI / 8);
+    world.addConstraint(leftHipJoint);
+    world.addConstraint(rightHipJoint);
 
-        // Spine
-        var spineJoint = bodyPartBody.spineJoint = new p2.RevoluteConstraint(pelvis, upperBody, {
-            localPivotA: [0,pelvisLength/2],
-            localPivotB: [0,-upperBodyLength/2],
-        });
-        spineJoint.setLimits(-Math.PI / 8, Math.PI / 8);
-        world.addConstraint(spineJoint);
+    // Spine
+    var spineJoint = bodyPartBody.spineJoint = new p2.RevoluteConstraint(pelvis, upperBody, {
+        localPivotA: [0,pelvisLength/2],
+        localPivotB: [0,-upperBodyLength/2],
+    });
+    spineJoint.setLimits(-Math.PI / 8, Math.PI / 8);
+    world.addConstraint(spineJoint);
 
-        // Shoulders
-        var leftShoulder = bodyPartBody.leftShoulder = new p2.RevoluteConstraint(upperBody, upperLeftArm, {
-            localPivotA:[-shouldersDistance/2, upperBodyLength/2],
-            localPivotB:[upperArmLength/2,0],
-        });
-        var rightShoulder= bodyPartBody.rightShoulder = new p2.RevoluteConstraint(upperBody, upperRightArm, {
-            localPivotA:[shouldersDistance/2,  upperBodyLength/2],
-            localPivotB:[-upperArmLength/2,0],
-        });
-        leftShoulder.setLimits(-Math.PI / 3, Math.PI / 3);
-        rightShoulder.setLimits(-Math.PI / 3, Math.PI / 3);
-        world.addConstraint(leftShoulder);
-        world.addConstraint(rightShoulder);
+    // Shoulders
+    var leftShoulder = bodyPartBody.leftShoulder = new p2.RevoluteConstraint(upperBody, upperLeftArm, {
+        localPivotA:[-shouldersDistance/2, upperBodyLength/2],
+        localPivotB:[upperArmLength/2,0],
+    });
+    var rightShoulder= bodyPartBody.rightShoulder = new p2.RevoluteConstraint(upperBody, upperRightArm, {
+        localPivotA:[shouldersDistance/2,  upperBodyLength/2],
+        localPivotB:[-upperArmLength/2,0],
+    });
+    leftShoulder.setLimits(-Math.PI / 3, Math.PI / 3);
+    rightShoulder.setLimits(-Math.PI / 3, Math.PI / 3);
+    world.addConstraint(leftShoulder);
+    world.addConstraint(rightShoulder);
 
-        // Elbow joint
-        var leftElbowJoint = bodyPartBody.leftElbowJoint = new p2.RevoluteConstraint(lowerLeftArm, upperLeftArm, {
-            localPivotA: [lowerArmLength/2, 0],
-            localPivotB: [-upperArmLength/2,0],
-        });
-        var rightElbowJoint= bodyPartBody.rightElbowJoint = new p2.RevoluteConstraint(lowerRightArm, upperRightArm, {
-            localPivotA:[-lowerArmLength/2,0],
-            localPivotB:[upperArmLength/2,0],
-        });
-        leftElbowJoint.setLimits(-Math.PI / 8, Math.PI / 8);
-        rightElbowJoint.setLimits(-Math.PI / 8, Math.PI / 8);
-        world.addConstraint(leftElbowJoint);
-        world.addConstraint(rightElbowJoint);
+    // Elbow joint
+    var leftElbowJoint = bodyPartBody.leftElbowJoint = new p2.RevoluteConstraint(lowerLeftArm, upperLeftArm, {
+        localPivotA: [lowerArmLength/2, 0],
+        localPivotB: [-upperArmLength/2,0],
+    });
+    var rightElbowJoint= bodyPartBody.rightElbowJoint = new p2.RevoluteConstraint(lowerRightArm, upperRightArm, {
+        localPivotA:[-lowerArmLength/2,0],
+        localPivotB:[upperArmLength/2,0],
+    });
+    leftElbowJoint.setLimits(-Math.PI / 8, Math.PI / 8);
+    rightElbowJoint.setLimits(-Math.PI / 8, Math.PI / 8);
+    world.addConstraint(leftElbowJoint);
+    world.addConstraint(rightElbowJoint);
+    
     return {
       body: bodyPartBody, 
       shape: bodyPartShape
