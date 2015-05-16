@@ -133,7 +133,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
       lpY = (vector[1] * (1-lp)) + (lpY * lp);
       lpZ = (vector[2] * (1-lp)) + (lpZ * lp);
       lpM = vector[6];
-      impulse(playerList[data.user_id], [lpX * 50, lpZ * 90]);
+      impulse(playerList[data.user_id], [lpX * 70, lpZ * 110]);
     }
     // ctx.clearRect ( 0 , 0 , canvas.width, canvas.height );
     // ctx.strokeStyle = 'rgba(255, 0, 0, 0.6)';
@@ -215,7 +215,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     for(var i=0; i<bodyPartShapes.length; i++){
         var s = bodyPartShapes[i];
         s.collisionGroup = BODYPARTS;
-        s.collisionMask =  GROUND|OTHER;
+        s.collisionMask =  GROUND;
     }
 
 
@@ -476,7 +476,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     // Create ground
     var planeShape = new p2.Plane();
     var plane = new p2.Body({
-        position:[0,-4],
+        position:[0,-3.7],
     });
     plane.addShape(planeShape);
     planeShape.collisionGroup = GROUND;
@@ -619,6 +619,8 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     ctx.fillText(player.username, bodies.pelvis.position[0] * 90 + w/2 - ctx.measureText(player.username).width/2, -bodies.pelvis.position[1] * 90 + h/2 + 130);
     ctx.restore();
     ctx.save();
+    ctx.translate(w/2, h/2);  // Translate to the center
+    ctx.scale(90, -90);       // Zoom in and flip y axis
     // var headShape =      new p2.Circle(headRadius),
     //     upperArmShape =  new p2.Rectangle(upperArmLength,upperArmSize),
     //     lowerArmShape =  new p2.Rectangle(lowerArmLength,lowerArmSize),
