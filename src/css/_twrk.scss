@@ -5,9 +5,9 @@ body {
     background-size:cover;
     background-attachment:fixed;
   }
-  &.watch-twerk, &.twerk-do, &.twerk-calibrate { background:$dark-b;  }
-  &.watch-twerk { background:url(/images/room2.jpg);   background-size: cover;
-    background-color: $primary-color;
+  &.twerk-do, &.twerk-calibrate { background:$dark-b;  }
+  &.watch-twerk { background:url(/images/room2.jpg);
+    background-size: cover;
     background-blend-mode: multiply;
     -moz-transition: all .5s ease-in;
     -o-transition: all .5s ease-in;
@@ -34,9 +34,6 @@ body {
         background: url(/images/bg.jpg);
         background-size: cover;
         background-attachment: fixed;
-    }
-    &.watch-twerk, &.twerk-do, &.twerk-calibrate {
-        background: $dark-b;
     }
     &.twerk-calibrate {
         .footer {
