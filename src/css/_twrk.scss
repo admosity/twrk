@@ -11,6 +11,7 @@ body {
     &.watch-twerk {
         background: url(/images/room2.jpg);
         background-size: cover;
+        background-position: center;
         background-attachment: fixed;
         background-blend-mode: multiply;
         -moz-transition: all .5s ease-in;
@@ -232,7 +233,7 @@ p {
       -moz-transition: all .2s ease-in;
       -o-transition: all .2s ease-in;
       -webkit-transition: all .2s ease-in;
-      transition: all .2s ease-in;  
+      transition: all .2s ease-in;
     }
   }
 
@@ -241,7 +242,7 @@ p {
     -moz-transition: all .2s ease-in;
     -o-transition: all .2s ease-in;
     -webkit-transition: all .2s ease-in;
-    transition: all .2s ease-in;  
+    transition: all .2s ease-in;
   }
 }
 
@@ -280,6 +281,23 @@ p {
             transform: rotate(9deg);
         }
     }
+}
+.scrolls {
+  position: relative;
+  margin: 0 auto;
+  bottom:100px;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  font-size: 30px;
+  display: block;
+}
+
+.musics {
+  z-index: 999;
+  position: relative;
+  bottom: 0;
+  &:before { content:'scrolls'}
 }
 
 .footer {

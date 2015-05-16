@@ -117,13 +117,12 @@ io.on 'connection', (socket) ->
     console.log("BROADCAST CONNECT RESPONSE TO EVERYONE");
     socket.broadcast.emit 'joined', {avatar, username, user_id:idx}
     idx++
-    
 
   socket.on 'update', (data)-> 
     # console.log socket.request.session
     # socket.request.session.data = data
     # socket.request.session.save!
-    console.log 'update here'
+    console.log 'update here' data
     data.user_id = socket.request.session.user_id
     console.log data
     io.emit 'reply', data
