@@ -91,5 +91,5 @@ io.on 'connection', (socket) ->
   console.log 'connection'
   socket.emit 'connect'
   socket.on 'update', (data)-> 
-    console.log 'update here'
+    console.log 'update here', data
     socket.emit 'reply', 'test'

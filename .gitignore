@@ -25,6 +25,7 @@ core
 db
 
 public/bower_components
+public/images
 
 .DS_Store
 dumps
