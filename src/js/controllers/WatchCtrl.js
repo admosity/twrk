@@ -81,7 +81,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
 
 
-
+  var players = [];
 
   var shouldersDistance = 0.5,
       upperArmLength = 0.4,
@@ -92,7 +92,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
       headRadius = 0.25,
       upperBodyLength = 0.6,
       pelvisLength = 0.4,
-      upperLegLength = 0.5,
+      upperLegLength = 3,
       upperLegSize = 0.2,
       lowerLegSize = 0.2,
       lowerLegLength = 0.5;
@@ -104,9 +104,6 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
         OTHER =     Math.pow(2,4);
 
   var canvas, ctx, w, h, world, boxBody, planeBody;
-
-  init();
-  animate();
 
   function makeBody(){
     var bodyPartShapes = [],
@@ -298,13 +295,13 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
         rightElbowJoint.setLimits(-Math.PI / 8, Math.PI / 8);
         world.addConstraint(leftElbowJoint);
         world.addConstraint(rightElbowJoint);
-        console.log(bodyPartBody);
     return {
       body: bodyPartBody, 
       shape: bodyPartShape
     };
   }
-  var player;
+  
+
   function init(){
     // Init canvas
     canvas = document.getElementById("twrk");
@@ -322,7 +319,9 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     // boxBody = new p2.Body({ mass:1, position:[0,3],angularVelocity:1 });
     // boxBody.addShape(boxShape);
     // world.addBody(boxBody);
-    player = makeBody();
+    console.log(players);
+    for(var i = 0; i < 1; i++)
+      players.push(makeBody());
     // Add a plane
     // Create ground
     var planeShape = new p2.Plane();
@@ -337,9 +336,19 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     console.log("INIT");
   }
 
+  function drawCircle(shape, body){
+    ctx.beginPath();
+    var x = body.position[0],
+        y = body.position[1];
+    ctx.save();
+    ctx.translate(x, y);        // Translate to the center of the box
+    ctx.rotate(body.angle);  // Rotate to the box body frame
+    ctx.arc(0, 0, shape.radius, 0, 2 * Math.PI, false);
+    ctx.stroke();
+    ctx.restore();
+  }
 
   function drawRect(shape, body){
-    console.log(shape, body);
     ctx.beginPath();
     var x = body.position[0],
         y = body.position[1];
@@ -362,6 +371,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     var bodies = player.body;
     var shapes = player.shape;
     // drawRect(shape, body);
+    drawCircle(shapes.head, bodies.head);
     drawRect(shapes.upperArm, bodies.upperLeftArm);
     drawRect(shapes.lowerArm, bodies.lowerLeftArm);
     drawRect(shapes.upperLeg, bodies.upperLeftLeg);
@@ -401,8 +411,8 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     ctx.save();
     ctx.translate(w/2, h/2);  // Translate to the center
     ctx.scale(50, -50);       // Zoom in and flip y axis
-
-    drawBody(player);
+    for(var i = 0; i < 1; i++)
+      drawBody(players[i]);
     // Draw all bodies
     // drawbox();
     // drawPlane();

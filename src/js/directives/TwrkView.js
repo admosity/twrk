@@ -27,9 +27,6 @@ module.directive('twrkView', function() {
 
       var canvas, ctx, w, h, world, boxBody, planeBody;
 
-      init();
-      animate();
-
       function makeBody(){
         var OTHER =     Math.pow(2,1),
             BODYPARTS = Math.pow(2,2),
