@@ -7,12 +7,12 @@
 
 <div class="wrapper top center">
   <h1>Calibrate to get started</h1>
-  <div class="column-6 calibrate-left">
+  <div class="column-6 calibrate-left" ng-show="calibrate1Show" >
     <h3><i class="fa fa-arrow-left"></i> Move your phone <span class="bold">left</span> then click:</h3>
-    <a href="#" ui-sref="twerk-do" class="btn btn-calibrate">calibrate</a>
+    <a ng-click="calibrate1()" class="btn btn-calibrate">calibrate</a>
   </div>
-  <div class="column-6 calibrate-right">
+  <div class="column-6 calibrate-right" ng-show="calibrate2Show" >
     <h3><i class="fa fa-arrow-left"></i> Move your phone <span class="bold">right</span> then click:</h3>
-    <a href="#" ui-sref="twerk-do" class="btn btn-calibrate">calibrate</a>
+    <a ng-click="calibrate2()" class="btn btn-calibrate">calibrate</a>
   </div>
 </div>

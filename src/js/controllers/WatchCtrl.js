@@ -37,6 +37,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
   var lpX = 0;
   var lpY = 0;
   var lpZ = 0;
+  var lpM = 0;
 
   console.log(window.SERVER_URL);
 
@@ -48,12 +49,14 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
   socket.on('reply', function (data) {
     console.log("UPDATE RESPONSE", data);
 
-    console.log(data);
+    //console.log(data);
     var vector = data.data.split(',');
     lpX = (vector[0] * (1-lp)) + (lpX * lp);
     lpY = (vector[1] * (1-lp)) + (lpY * lp);
     lpZ = (vector[2] * (1-lp)) + (lpZ * lp);
-    impulse(players[0], [lpX * 50, lpY * 50]);
+    lpM = vector[6];
+    impulse(players[0], [lpX * 50, lpZ * 50]);
+
     // ctx.clearRect ( 0 , 0 , canvas.width, canvas.height );
     // ctx.strokeStyle = 'rgba(255, 0, 0, 0.6)';
     // drawLine(vector[0],vector[1],vector[2],vector[6]);
@@ -64,23 +67,19 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
   });
 
-  // function drawLine(x, y, z, m){
-  //   var cX = -(x/Math.abs(x) * (Math.abs(x / 2) + Math.abs(y / 2)));
-  //   var cY = z;
-  //   var mag = m * 25;
+  function drawLine(x, y, z, m){
+    //console.log(x, y, z, m);
+    var cX = -(x/Math.abs(x) * (Math.abs(x / 2) + Math.abs(y / 2)));
+    var cY = z;
+    var mag = m * 25;
 
-  //   ctx.beginPath();
-  //   ctx.lineWidth = 15;
-  //   ctx.moveTo(400,400);
-  //   ctx.lineTo(400 + cX * mag, 400 + cY * mag);
-  //   ctx.stroke();
-  //   ctx.lineWidth = 0.1;
-  // }
-
-  var lp = 0.2;
-  var lpX = 0;
-  var lpY = 0;
-  var lpZ = 0;
+    ctx.beginPath();
+    ctx.lineWidth = 15;
+    ctx.moveTo(400,400);
+    ctx.lineTo(400 + cX * mag, 400 + cY * mag);
+    ctx.stroke();
+    ctx.lineWidth = 0.1;
+  }
 
 
 
@@ -146,11 +145,11 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
     // Lower legs
     var lowerLeftLeg = bodyPartBody.lowerLeftLeg = new p2.Body({
-        mass: 1,
+        mass: 10,
         position: [-shouldersDistance/2,lowerLegLength / 2],
     });
     var lowerRightLeg = bodyPartBody.lowerRightLeg = new p2.Body({
-        mass: 1,
+        mass: 10,
         position: [shouldersDistance/2,lowerLegLength / 2],
     });
     lowerLeftLeg.addShape(lowerLegShape);
@@ -212,12 +211,12 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
     // lower arms
     var lowerLeftArm = bodyPartBody.lowerLeftArm = new p2.Body({
-        mass: 1,
+        mass: 3,
         position: [ upperLeftArm.position[0] - lowerArmLength/2 - upperArmLength/2,
                     upperLeftArm.position[1]],
     });
     var lowerRightArm = bodyPartBody.lowerRightArm = new p2.Body({
-        mass: 1,
+        mass: 3,
         position: [ upperRightArm.position[0] + lowerArmLength/2 + upperArmLength/2,
                     upperRightArm.position[1]],
     });
@@ -343,8 +342,8 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
   }
 
   function impulse(player, force){
-    player.body.pelvis.velocity[0] =  force[0];
-    player.body.pelvis.velocity[1] =  force[1];
+    player.body.pelvis.velocity[0] = force[0];
+    player.body.pelvis.velocity[1] = force[1];
 //     var constraintBody = new p2.Body();
 //     constraintBody.position[0] = 0;
 //     constraintBody.position[1] = 0;
@@ -425,8 +424,9 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
     canvas.addEventListener('mousedown', function(event){
       //impulse(players[0]);
-      makeBody();
-      console.log("MAKE BODY");
+      // makeBody();
+      console.log("REMOVE BODY");
+      removeBody(players[0]);
     });
   }
 
@@ -510,6 +510,8 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     // Draw all bodies
     // drawbox();
     // drawPlane();
+
+    // drawLine(lpX, lpY, lpZ, lpM);
 
     // Restore transform
     ctx.restore();
