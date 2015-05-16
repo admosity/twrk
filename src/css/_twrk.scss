@@ -216,8 +216,14 @@ p {
         border: 1px solid red;
     }
     img {
+        opacity:0.8;
         height: 150px;
         width: 150px;
+        &:focus, &:active { 
+          -ms-transform: rotate(7deg); /* IE 9 */
+          -webkit-transform: rotate(7deg); /* Chrome, Safari, Opera */
+          transform: rotate(7deg);
+        }
     }
 }
 
