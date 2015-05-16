@@ -31,7 +31,6 @@ body {
 }
 
 .col a {
-<<<<<<< HEAD
   @include transition-all('2s');
   &:hover { opacity:0.8; }
 }
@@ -46,10 +45,3 @@ body {
     &:hover { color:#fff; border-color:#fff; }
   }
 }
-=======
-    @include transition-all("2s");
-    &:hover {
-        opacity: 0.8;
-    }
-}
->>>>>>> 9573ef3de2a744853293b7ba56bff8b0b2b97669
