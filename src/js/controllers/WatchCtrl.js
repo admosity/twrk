@@ -19,21 +19,6 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     });
   }
 
-
-  // var canvas = document.getElementById('myCanvas');
-  // var context = canvas.getContext('2d');
-
-  function drawLine(x, y, z, m){
-    var cX = x;// / 2 + y / 2;
-    var cY = z;
-    var mag = m * 10;
-
-    ctx.beginPath();
-    ctx.moveTo(400, 300);
-    ctx.lineTo(400 + cX * mag, 300 + cY * mag);
-    ctx.stroke();
-  }
-
   var lp = 0.2;
   var lpX = 0;
   var lpY = 0;
@@ -54,27 +39,30 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     lpX = (vector[0] * (1-lp)) + (lpX * lp);
     lpY = (vector[1] * (1-lp)) + (lpY * lp);
     lpZ = (vector[2] * (1-lp)) + (lpZ * lp);
-    ctx.clearRect ( 0 , 0 , canvas.width, canvas.height );
-    ctx.strokeStyle = 'rgba(255, 0, 0, 0.6)';
-    drawLine(vector[0],vector[1],vector[2],vector[6]);
-    ctx.strokeStyle = '#0000ff';
-    drawLine(vector[3],vector[4],vector[5],vector[6]);
-    ctx.strokeStyle = '#00ff00';
-    drawLine(lpX, lpY, lpZ, vector[6]);
+    impulse(players[0], [lpX * 50, lpY * 50]);
+    // ctx.clearRect ( 0 , 0 , canvas.width, canvas.height );
+    // ctx.strokeStyle = 'rgba(255, 0, 0, 0.6)';
+    // drawLine(vector[0],vector[1],vector[2],vector[6]);
+    // ctx.strokeStyle = '#0000ff';
+    // drawLine(vector[3],vector[4],vector[5],vector[6]);
+    // ctx.strokeStyle = '#00ff00';
+    // drawLine(lpX, lpY, lpZ, vector[6]);
 
   });
 
-  function drawLine(x, y, z, m){
-    var cX = -(x/Math.abs(x) * (Math.abs(x / 2) + Math.abs(y / 2)));
-    var cY = z;
-    var mag = m * 25;
+  // function drawLine(x, y, z, m){
+  //   var cX = -(x/Math.abs(x) * (Math.abs(x / 2) + Math.abs(y / 2)));
+  //   var cY = z;
+  //   var mag = m * 25;
 
-    ctx.beginPath();
-    ctx.lineWidth = 15;
-    ctx.moveTo(400, 300);
-    ctx.lineTo(400 + cX * mag, 300 + cY * mag);
-    ctx.stroke();
-  }
+  //   ctx.beginPath();
+  //   ctx.lineWidth = 15;
+  //   ctx.moveTo(400,400);
+  //   ctx.lineTo(400 + cX * mag, 400 + cY * mag);
+  //   ctx.stroke();
+  //   ctx.lineWidth = 0.1;
+  // }
+
   var lp = 0.2;
   var lpX = 0;
   var lpY = 0;
@@ -298,15 +286,19 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     world.addConstraint(rightElbowJoint);
     
 
-    // // Create a body for the cursor
-    // world.addBody(constraintBody);
-    // var springConstraint = new p2.RotationalSpring(constraintBody, pelvis, {
-    //   worldPivot: [0.5,0.5],
-    //   collideConnected:false
-    // });
-    // world.addConstraint(springConstraint);
+    var constraintBody = new p2.Body();
+    constraintBody.position[0] = 0;
+    constraintBody.position[1] = 0;
+    // Create a body for the cursor
+    world.addBody(constraintBody);
+    var springConstraint = new p2.RotationalSpring(constraintBody, pelvis, {
+      worldPivot: [0.5,0.5],
+      collideConnected:false
+    });
+    world.addSpring(springConstraint);
 
     //world.addConstraint(springConstraint);
+
 
     return {
       body: bodyPartBody, 
@@ -331,11 +323,25 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
   }
   
   function impulse(player, force){
+    player.body.pelvis.velocity[0] =  force[0];
+    player.body.pelvis.velocity[1] =  force[1];
+//     var constraintBody = new p2.Body();
+//     constraintBody.position[0] = 0;
+//     constraintBody.position[1] = 0;
+// player.body.pelvis.velocity[0] =  5;
+//     // Create a body for the cursor
+//     world.addBody(constraintBody);
+//     var springConstraint = new p2.Spring(constraintBody, player.body.pelvis, {});
+//     world.addSpring(springConstraint);
 
-    var constraintBody = new p2.Body();
-    constraintBody.position[0] = 0.5;
-    constraintBody.position[1] = 0.5;
-    player.body.pelvis.applyForce([.01, .1], player.body.pelvis);
+//     console.log("FUCK");
+
+//     var revConstraint = new p2.RevoluteConstraint(constraintBody, player.body.pelvis, {
+//               worldPivot: [1,1],
+//               collideConnected:false
+//             });
+//     world.addConstraint(revConstraint);
+
 
     // var springConstraint = new p2.RotationalSpring(player.body.pelvis, constraintBody, {});
     // springConstraint.applyForce();
@@ -398,7 +404,9 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     console.log("INIT");
 
     canvas.addEventListener('mousedown', function(event){
-      impulse(players[0]);
+      //impulse(players[0]);
+      makeBody();
+      console.log("MAKE BODY");
     });
   }
 
@@ -477,7 +485,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     ctx.save();
     ctx.translate(w/2, h/2);  // Translate to the center
     ctx.scale(50, -50);       // Zoom in and flip y axis
-    for(var i = 0; i < 1; i++)
+    for(var i = 0; i < players.length; i++)
       drawBody(players[i]);
     // Draw all bodies
     // drawbox();
