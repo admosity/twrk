@@ -6,6 +6,8 @@ var gulp = require('gulp')
   , _webpack = require('webpack')
   , browserSync = require('browser-sync')
   , nodemon = require('gulp-nodemon')
+  , sourcemaps = require('gulp-sourcemaps')
+  , plumber = require('gulp-plumber')
   , reload = browserSync.reload;
 
 var handleError = function(err) {
@@ -20,12 +22,30 @@ var child_processes = [];
 
 
 var paths = {
-  static: ['public/**/!(*.css)', 'dist/**/*.*', 'views/**/*.*'],
+  static: ['public/**/!(*.css)', 'dist/**/!(*.css)', 'views/**/*.*'],
 };
 
 gulp.task('webpack:dev', function() {
   return gulp.src('src/js/app.js')
     .pipe(webpack(require('./webpack.config.js')))
+    .pipe(gulp.dest('dist/'));
+});
+
+
+gulp.task('sass-dev', function() {
+  gulp.src('src/**/*.scss')
+    .pipe(plumber())
+    .pipe(sourcemaps.init())
+    .pipe(sass())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('dist/'))
+    .pipe(reload({stream:true}));
+});
+
+gulp.task('sass', function() {
+  gulp.src('src/**/*.scss')
+    .pipe(plumber())
+    .pipe(sass())
     .pipe(gulp.dest('dist/'));
 });
 
@@ -55,7 +75,9 @@ gulp.task('browser-sync', ['server'], function() {
     browser: "google chrome",
     port: 5000,
   });
-  gulp.watch('public/**/*.css', ['stream-css']);
+  gulp.watch('src/**/*.scss', ['sass-dev']);
+  // gulp.watch('dist/**/*.css', ['stream-css']);
+  // gulp.watch('public/**/*.css', ['stream-css']);
 });
 
 gulp.task('database', function(cb) {
@@ -114,8 +136,8 @@ gulp.task('server', ['database'], function(cb) {
 })
 
 
-gulp.task('serve', ['webpack:dev', 'browser-sync',  'server']);
+gulp.task('serve', ['webpack:dev', 'browser-sync',  'server', 'sass-dev']);
 
-gulp.task('dist', ['webpack:build']);
+gulp.task('dist', ['webpack:build', 'sass']);
 
-gulp.task('heroku:production', ['webpack:build']);
+gulp.task('heroku:production', ['webpack:build', 'sass']);
