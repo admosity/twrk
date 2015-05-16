@@ -19,6 +19,7 @@ img {
 
 .wrapper, .row {
   @extend %clearfix;
+  &.center { text-align:center; }
 }
 
 [class*='column-'] {
