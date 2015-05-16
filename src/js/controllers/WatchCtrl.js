@@ -53,8 +53,13 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
   });
 
   socket.on('user disconnect', function (data) {
-    console.log("CONNECT RESPONSE", data);
-    if(playerList[data.id]) removeBody(playerList[data.id]);
+    console.log("CONNECT DISCONNECT", data.id);
+    console.log(playerList);
+    if(data && playerList[data.id]){
+      removeBody(playerList[data.id]);
+      delete playerList[data.id];
+    }
+
   });
 //socket.emit('join', { username: "USERNAME", avatar: 5 });
 
