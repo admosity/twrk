@@ -1,5 +1,5 @@
 require! {
-  'express.io': express
+  express
   'express-session': session
   mongoose
   'connect-mongo': connectMongo
@@ -48,6 +48,8 @@ else
 mongoose.connect nconf.get('MONGO_URI')
 console.log nconf.get!
 app = express!
+server = require('http').Server(app)
+io = require('socket.io')(server)
 MongoStore = connectMongo session
 
 port = null
@@ -76,10 +78,16 @@ app
     secret: 'SOME SECRET'
     store: new MongoStore mongooseConnection: mongoose.connection
 
-  server = ..listen port, !->
-    server.address()
-      host = ..address
-      port = ..port
-    console.log "Server listening at http://%s:%s", if host=='0.0.0.0' then 'localhost' else host, port
+  # server = ..listen port, !->
+  #   server.address()
+  #     host = ..address
+  #     port = ..port
+  #   console.log "Server listening at http://%s:%s", if host=='0.0.0.0' then 'localhost' else host, port
 
-    
+server.listen port
+
+
+io.on 'connection', (socket) ->
+  socket.emit 'news', hello: 'world'
+  socket.on 'my other event', (data)-> 
+    console.log data
