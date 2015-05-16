@@ -44,10 +44,10 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
   function addPlayer(data){
     console.log("ADD PLAYER ", data);
-    if(playerList[data.id]) removeBody(playerList[data.id]);
-    playerList[data.id] = makeBody();
-    playerList[data.id].avatar = data.avatar;
-    playerList[data.id].username = data.username;
+    if(playerList[data.user_id]) removeBody(playerList[data.user_id]);
+    playerList[data.user_id] = makeBody();
+    playerList[data.user_id].avatar = data.avatar;
+    playerList[data.user_id].username = data.username;
 
   }
 
@@ -68,11 +68,11 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
   });
 
   socket.on('user disconnect', function (data) {
-    console.log("CONNECT DISCONNECT", data.id);
+    console.log("CONNECT DISCONNECT", data.user_id);
     console.log(playerList);
-    if(data && playerList[data.id]){
-      removeBody(playerList[data.id]);
-      delete playerList[data.id];
+    if(data && playerList[data.user_id]){
+      removeBody(playerList[data.user_id]);
+      delete playerList[data.user_id];
     }
 
   });
@@ -80,14 +80,14 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
   socket.on('reply', function (data) {
     console.log("UPDATE RESPONSE", data);
-    if(playerList[data.id]){
+    if(playerList[data.user_id]){
       //console.log(data);
       var vector = data.data.split(',');
       lpX = (vector[0] * (1-lp)) + (lpX * lp);
       lpY = (vector[1] * (1-lp)) + (lpY * lp);
       lpZ = (vector[2] * (1-lp)) + (lpZ * lp);
       lpM = vector[6];
-      impulse(playerList[data.id], [lpX * 50, lpZ * 50]);
+      impulse(playerList[data.user_id], [lpX * 50, lpZ * 50]);
     }
     // ctx.clearRect ( 0 , 0 , canvas.width, canvas.height );
     // ctx.strokeStyle = 'rgba(255, 0, 0, 0.6)';
@@ -106,7 +106,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     var mag = m * 25;
 
     ctx.beginPath();
-    ctx.lineWidth = 15;
+    ctx.lineWidth = 1;
     ctx.moveTo(400,400);
     ctx.lineTo(400 + cX * mag, 400 + cY * mag);
     ctx.stroke();
@@ -438,7 +438,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     world.addBody(plane);
 
     console.log("INIT");
-    window.onResize();
+    $(window).resize();
     canvas.addEventListener('mousedown', function(event){
       //impulse(players[0]);
       // makeBody();
@@ -495,6 +495,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     ctx.rect(-shape.width/2, -shape.height/2, shape.width, shape.height);
     ctx.fillStyle = "#000000";
     ctx.fill();
+    ctx.lineWidth = 0.05;
     ctx.stroke();
     ctx.restore();
   }
@@ -577,10 +578,10 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     render();
   }
 
-  window.onResize = function(){
+  $(window).resize(function(){
     ctx.canvas.width  = window.innerWidth;
     ctx.canvas.height = window.innerHeight;
-  }
+  });
 
   init();
   animate();

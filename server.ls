@@ -103,15 +103,16 @@ idx = 0
 io.on 'connection', (socket) ->
   console.log 'connection'
   socket.emit 'users', {users: activePlayers.map (p) -> p.request.session}
-
+  console.log 'asdf', activePlayers
   socket.on 'join', (data) ->
     socket.request.session{avatar, username} = data
     {avatar, username} = data
     socket.request.session.user_id = idx
     socket.request.session.save!
     activePlayers.push socket
+    console.log 'active players on connect', activePlayers
     console.log("BROADCAST CONNECT RESPONSE TO EVERYONE");
-    socket.broadcast.emit 'joined', {avatar, username, id:idx}
+    socket.broadcast.emit 'joined', {avatar, username, user_id:idx}
     idx++
     
 
@@ -120,17 +121,18 @@ io.on 'connection', (socket) ->
     # socket.request.session.data = data
     # socket.request.session.save!
     console.log 'update here'
-    data.id = socket.request.session.user_id
+    data.user_id = socket.request.session.user_id
     console.log data
     io.emit 'reply', data
   socket.on 'disconnect', ->
     console.log 'user disconnected', socket.request.session.user_id
 
 
-
-    io.emit 'user disconnect', {id: socket.request.session.user_id}
-    if socket.request.session.user_id != null
+    if socket.request.session.user_id?
+      io.emit 'user disconnect', {user_id: socket.request.session.user_id}
       removeIdx = activePlayers.indexOf(socket)
-      activePlayers.splice removeIdx, 1
+      if removeIdx > -1
+        console.log 'active players on dc', activePlayers
+        activePlayers.splice removeIdx, 1
   
   
