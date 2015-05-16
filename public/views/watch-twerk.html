@@ -15,7 +15,7 @@
       <h1 class="twerkTeamHeader"><a href="#" class="open-leaders btn btn-resize"><i class="fa fa-users"></i></a> &nbsp;Twerk Leaders&nbsp; <a class="btn btn-resize hidden-xs" ng-click="joinTwerk();" href="#" >join</a></h1>
       <a class="btn btn-twerk visible-xs" ui-sref="twerk-do"  href="#">join</a>
       <ul class="list-unstyled twerk-leaders">
-        <li ng-repeat="s in scores"><img src="images/avatars/{{s.avatar}}.png" class="smallavatar"><p>{{$index}}</p><p class="twerkUser">{{s.username}}</p><p class="score">{{s.score}}</p></li>
+        <li ng-repeat="s in scores"><img src="images/avatars/{{s.avatar}}.png" class="smallavatar"><p>{{$index + 1}}</p><p class="twerkUser">{{s.username}}</p><p class="score">{{s.score}}</p></li>
 <!--         <li><img src="images/avatars/1.png" class="smallavatar"><p class="twerkUser">User 2</p><p class="score">123123</p></li>
         <li><img src="images/avatars/2.png" class="smallavatar"><p class="twerkUser">User 3</p><p class="score">123123</p></li> -->
       </ul>
