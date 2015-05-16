@@ -215,7 +215,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     for(var i=0; i<bodyPartShapes.length; i++){
         var s = bodyPartShapes[i];
         s.collisionGroup = BODYPARTS;
-        s.collisionMask =  GROUND|OTHER;
+        s.collisionMask =  GROUND;
     }
 
 
