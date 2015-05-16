@@ -14,7 +14,7 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
   // socket.on('reply', function (data) {
   //   console.log("UPDATE RESPONSE", data);
   // });
-  
+
   if(window.DeviceOrientationEvent && window.DeviceMotionEvent) {
     var connected = false;
     //Socket stuff
