@@ -32,6 +32,7 @@ p { font-family:$base-font;
   width: 100%;
   padding:0 20px;
   position: fixed;
+  top: 0;
   &.scroll-header { background:$secondary-color; }
 }
 
@@ -66,6 +67,9 @@ p { font-family:$base-font;
   font-size:22px;
   padding:5px 40px;
   border-radius: 2px;
+  @include bp-small {
+    display:block;
+  }
   &.btn-twerk { background:transparent; border-color:$light-b; color:$light-b;
     &:hover { color:$light-b; border-color:#fff; background:#fff; }
   }
@@ -86,7 +90,7 @@ p { font-family:$base-font;
   padding:15px 30px;
   font-family:$base-font;
   position:relative;
-  margin-top:150px;
+  margin-top:250px;
   width: 100%;
   bottom:0;
   p { color:#fff; }
