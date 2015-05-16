@@ -41,13 +41,13 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     setTimeout(function(){
       // toggle back after 1 second
       $('.watch-twerk').toggleClass('change2');
-    },5000);
+    },3000);
     setTimeout(function(){
       // toggle back after 1 second
       $('.watch-twerk').toggleClass('change3');
-    },5000);
+    },3000);
 
-  },5000);
+  },3000);
 
 
   $scope.joinTwerk = function (size, msg) {
@@ -80,6 +80,10 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     if(data){
       addPlayer(data);
     }
+  });
+
+  socket.on('disconnect', function(){
+    alert("You have been disconnected");
   });
 
   socket.on('scores', function (data){
@@ -133,7 +137,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
       lpY = (vector[1] * (1-lp)) + (lpY * lp);
       lpZ = (vector[2] * (1-lp)) + (lpZ * lp);
       lpM = vector[6];
-      impulse(playerList[data.user_id], [lpX * 50, lpZ * 90]);
+      impulse(playerList[data.user_id], [lpX * 70, lpZ * 110]);
     }
     // ctx.clearRect ( 0 , 0 , canvas.width, canvas.height );
     // ctx.strokeStyle = 'rgba(255, 0, 0, 0.6)';
@@ -215,7 +219,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     for(var i=0; i<bodyPartShapes.length; i++){
         var s = bodyPartShapes[i];
         s.collisionGroup = BODYPARTS;
-        s.collisionMask =  GROUND|OTHER;
+        s.collisionMask =  GROUND;
     }
 
 
@@ -476,7 +480,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     // Create ground
     var planeShape = new p2.Plane();
     var plane = new p2.Body({
-        position:[0,-3.2],
+        position:[0,-3.7],
     });
     plane.addShape(planeShape);
     planeShape.collisionGroup = GROUND;
@@ -511,7 +515,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     // Create ceiling
     var planeShape = new p2.Plane();
     var plane = new p2.Body({
-        position:[0,3],
+        position:[0,4.5],
         angle: Math.PI,
     });
     plane.addShape(planeShape);
