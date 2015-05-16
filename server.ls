@@ -64,7 +64,7 @@ if development
 else
   port = process.env.PORT
 
-
+SERVER_URL = nconf.get('SERVER_URL')
 app
   ..set 'view engine', 'ejs'
   ..use serveStatic 'public'
@@ -77,6 +77,9 @@ app
     saveUninitialized: true
     secret: 'SOME SECRET'
     store: new MongoStore mongooseConnection: mongoose.connection
+
+  ..use '*', (req, res)->res.render('index', SERVER_URL)
+
 
   # server = ..listen port, !->
   #   server.address()
