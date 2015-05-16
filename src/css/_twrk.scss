@@ -317,6 +317,7 @@ p {
     @include bp-small {
         text-align: center;
         left: 2%;
+        a { display:none; }
     }
 
     p {
