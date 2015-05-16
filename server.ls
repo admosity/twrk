@@ -100,6 +100,9 @@ server.listen port
 # allClients = []
 activePlayers = []
 idx = 0
+theInterval = setInterval !->
+  # io.emit 'scores'
+, 2000
 io.on 'connection', (socket) ->
   console.log 'connection'
   socket.emit 'users', {users: activePlayers.map (p) -> p.request.session}
