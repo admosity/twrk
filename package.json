@@ -1,5 +1,5 @@
 {
-  "name": "disrupt",
+  "name": "twrk",
   "version": "0.0.0",
   "description": "",
   "main": "server.js",
@@ -8,7 +8,7 @@
     "start": "node server.js"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "LiveScript": "^1.3.1",
