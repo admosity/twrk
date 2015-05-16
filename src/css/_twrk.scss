@@ -71,6 +71,13 @@ p { font-family:$base-font;
     &:hover { color:$light-b; border-color:#fff; background:#fff; }
   }
 }
+
+.join-twerk-modal {
+  &.modal {   background: rgba(33, 76, 95, 0.84); }
+  .modal-content { background:transparent; box-shadow:none; border:none; }
+}
+
+
 .footer {
   background:$secondary-color;
   text-align: right;
