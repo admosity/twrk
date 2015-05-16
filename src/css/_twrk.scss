@@ -75,6 +75,9 @@ p { font-family:$base-font;
     font-size:25px;
     &:last-child { margin-top:10px; }
   }
+  &.btn-resize { padding:3px 20px; font-size:18px; background:transparent; border-color:$light-b; color:$light-b;
+    &:hover { color:$light-b; border-color:#fff; background:#fff; }
+  }
   &.btn-twerk { background:transparent; border-color:$light-b; color:$light-b;
     &:hover { color:$light-b; border-color:#fff; background:#fff; }
   }

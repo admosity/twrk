@@ -6,6 +6,10 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
   console.log("WATCH DAT TWERK");
 
+  $( ".open-leaders" ).click(function() {
+    $( ".twerkTeam" ).toggleClass( "closed" );
+  });
+
 
   $scope.joinTwerk = function (size, msg) {
     var modalInstance = $modal.open({
