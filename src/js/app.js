@@ -8,7 +8,7 @@ require('./states');
 require('./live');
 
 
-var socket = io.connect('http://localhost:3000/');
+var socket = io.connect(window.SERVER_URL);
 socket.on('connect', function (data) {
   console.log("CONNECT RESPONSE");
   socket.emit('update', { my: 'data' });
