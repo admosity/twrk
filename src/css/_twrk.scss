@@ -1,10 +1,10 @@
 body {
+  font-family: $base-font;
+  &.landing {
     background: url(/images/bg.jpg);
     background-size:cover;
-    font-family: $base-font;
-    /* @include $bp-small {
-      background: $primary-color;
-    } */
+    background-attachment:fixed; 
+  }
 }
 
 h1 { font-weight: 200;
@@ -15,9 +15,21 @@ h1, h2, h3, p { color:#fff; }
 p { font-family:$base-font;
   &.intro { font-size:20px; line-height:34px; }
 }
-.left { text-align:left; }
 
-.header { background:$secondary-color; float:left; width: 100%; }
+.left {
+  text-align:left;
+}
+
+.top {
+  padding-top:90px;
+}
+
+.header { background:$secondary-color;
+  float:left;
+  width: 100%;
+  padding:0 20px;
+  position: fixed;
+}
 
 .logo { font-family:$base-font;
   color:$light-b;
@@ -25,10 +37,6 @@ p { font-family:$base-font;
   text-align:left;
   margin: 0;
   padding: 0;
-}
-
-.header {
-    background: $secondary-color;
 }
 
 .col {
