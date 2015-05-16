@@ -12,7 +12,6 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
   });
 
 
-
   $( ".open-leaders" ).click(function() {
     $( ".twerkTeam" ).toggleClass( "closed" );
   });
@@ -72,7 +71,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     var currScores = [];
     for(var i = 0; i < users.length; i++){
       var player = users[i];
-      
+
       var id = player.user_id;
       if(playerList[id]){
         currScores.push({
