@@ -6,6 +6,26 @@ body {
     background-attachment:fixed;
   }
   &.watch-twerk, &.twerk-do, &.twerk-calibrate { background:$dark-b;  }
+  &.watch-twerk { background:url(/images/room2.jpg);   background-size: cover;
+    background-color: $primary-color;
+    background-blend-mode: multiply;
+    -moz-transition: all .5s ease-in;
+    -o-transition: all .5s ease-in;
+    -webkit-transition: all .5s ease-in;
+    transition: all .5s ease-in;
+    &.change1 {
+      background-color: $the-yellow;
+      background-blend-mode: multiply;
+    }
+    &.change2 {
+      background-color: $the-red;
+      background-blend-mode: multiply;
+    }
+    &.change3 {
+      background-color: $the-pink;
+      background-blend-mode: multiply;
+    }
+  }
   &.twerk-calibrate  {
     .footer  { display: none;}
   }

@@ -10,6 +10,20 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     $( ".twerkTeam" ).toggleClass( "closed" );
   });
 
+  setInterval(function(){
+    // toggle the class every five second
+    $('.watch-twerk').toggleClass('change1');
+    setTimeout(function(){
+      // toggle back after 1 second
+      $('.watch-twerk').toggleClass('change2');
+    },3000);
+    setTimeout(function(){
+      // toggle back after 1 second
+      $('.watch-twerk').toggleClass('change3');
+    },3000);
+
+  },3000);
+
 
   $scope.joinTwerk = function (size, msg) {
     var modalInstance = $modal.open({
@@ -284,7 +298,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     rightElbowJoint.setLimits(-Math.PI / 8, Math.PI / 8);
     world.addConstraint(leftElbowJoint);
     world.addConstraint(rightElbowJoint);
-    
+
 
     var constraintBody = new p2.Body();
     constraintBody.position[0] = 0;
@@ -301,7 +315,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
 
     return {
-      body: bodyPartBody, 
+      body: bodyPartBody,
       shape: bodyPartShape
     };
   }
@@ -321,7 +335,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
       }
     }
   }
-  
+
   function impulse(player, force){
     player.body.pelvis.velocity[0] =  force[0];
     player.body.pelvis.velocity[1] =  force[1];
