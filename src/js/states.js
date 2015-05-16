@@ -1,8 +1,20 @@
 
 module = require('./bootstrap');
 
-module.config(['$stateProvider',
+// function pipeline (funcs) {
+//   return function() {
+//     funcs.forEach(function(f) {
+//       f();
+//     });
+//   };
+// }
+module.config(
   function($stateProvider) {
+    function stateNameInjector (name) {
+      return function() {
+        $('body').toggleClass(name);
+      }
+    }
     $stateProvider
 
       .state('landing', {
@@ -14,7 +26,9 @@ module.config(['$stateProvider',
             templateUrl: "/views/landing.html"
           },
 
-        }
+        },
+        onEnter: stateNameInjector('landing'),
+        onExit: stateNameInjector('landing'),
       })
 
       .state('watch-twerk', {
@@ -22,10 +36,14 @@ module.config(['$stateProvider',
         views: {
 
           'content': {
+            controller: "WatchCtrl",
             templateUrl: "/views/watch-twerk.html"
           },
 
-        }
+        },
+
+        onEnter: stateNameInjector('watch-twerk'),
+        onExit: stateNameInjector('watch-twerk'),
       })
 
       .state('twerk-setup', {
@@ -35,7 +53,10 @@ module.config(['$stateProvider',
             templateUrl: "/views/twerk-setup.html"
           },
 
-        }
+        },
+
+        onEnter: stateNameInjector('twerk-setup'),
+        onExit: stateNameInjector('twerk-setup'),
       })
 
       .state('twerk-calibrate', {
@@ -45,7 +66,10 @@ module.config(['$stateProvider',
             templateUrl: "/views/twerk-calibrate.html"
           },
 
-        }
+        },
+
+        onEnter: stateNameInjector('twerk-calibrate'),
+        onExit: stateNameInjector('twerk-calibrate'),
       })
 
       .state('twerk-do', {
@@ -53,7 +77,10 @@ module.config(['$stateProvider',
           content: {
             templateUrl: '/views/twerk-do.html'
           }
-        }
+        },
+
+        onEnter: stateNameInjector('twerk-do'),
+        onExit: stateNameInjector('twerk-do'),
       })
 
 
@@ -62,7 +89,10 @@ module.config(['$stateProvider',
           content: {
             templateUrl: '/views/twerk-howto.html'
           }
-        }
+        },
+
+        onEnter: stateNameInjector('twerk-howto'),
+        onExit: stateNameInjector('twerk-howto'),
       })
 
 
@@ -71,7 +101,10 @@ module.config(['$stateProvider',
           content: {
             templateUrl: '/views/twerk-config.html'
           }
-        }
+        },
+
+        onEnter: stateNameInjector('twerk-config'),
+        onExit: stateNameInjector('twerk-config'),
       })
 
 
@@ -81,4 +114,4 @@ module.config(['$stateProvider',
 
 
   }
-]);
+);

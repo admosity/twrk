@@ -28,7 +28,7 @@ var paths = {
 gulp.task('webpack:dev', function() {
   return gulp.src('src/js/app.js')
     .pipe(webpack(require('./webpack.config.js')))
-    .pipe(gulp.dest('dist/'));
+    .pipe(gulp.dest('dist/'))
 });
 
 
@@ -47,6 +47,10 @@ gulp.task('sass', function() {
     .pipe(plumber())
     .pipe(sass())
     .pipe(gulp.dest('dist/'));
+});
+
+gulp.task('bs-reload', function() {
+  reload();
 });
 
 
@@ -78,6 +82,7 @@ gulp.task('browser-sync', ['server'], function() {
   gulp.watch('src/**/*.scss', ['sass-dev']);
   // gulp.watch('dist/**/*.css', ['stream-css']);
   // gulp.watch('public/**/*.css', ['stream-css']);
+  gulp.watch('dist/**/*.js', ['bs-reload']);
 });
 
 gulp.task('database', function(cb) {
