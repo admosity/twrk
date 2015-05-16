@@ -74,18 +74,18 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
       var player = users[i];
       
       var id = player.user_id;
-      console.log(player.score, player.user_id, playerList[id].avatar, playerList[id].username);
-      currScores.push({
-        score: parseInt(player.score * 100),
-        user_id: player.user_id,
-        avatar: playerList[id].avatar,
-        username: playerList[id].username
-      });
+      if(playerList[id]){
+        currScores.push({
+          score: parseInt(player.score * 100),
+          user_id: player.user_id,
+          avatar: playerList[id].avatar,
+          username: playerList[id].username
+        });
+      }
     }
     $scope.$apply(function() {
       $scope.scores = currScores;
     });
-
 
   });
 

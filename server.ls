@@ -102,6 +102,8 @@ activePlayers = []
 idx = 0
 theInterval = setInterval !->
   io.emit 'scores', {users: activePlayers.map (p) -> {user_id: p.request.session.user_id, score: p.request.session.score}}
+  activePlayers.forEach (e) ->
+    e.request.session.score *= 0.8
 , 2000
 io.on 'connection', (socket) ->
   socket.emit 'users', {users: activePlayers.map (p) -> p.request.session}
