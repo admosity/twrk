@@ -105,12 +105,14 @@ io.on 'connection', (socket) ->
 
   socket.on 'join', (data) ->
     socket.request.session{avatar, username} = data
+    {avatar, username} = data
     socket.request.session.user_id = idx
     socket.request.session.save!
     activePlayers.push socket
     idx++
     console.log socket.request.session
-    io.emit 'connect', {avatar: avatar, username: username, id:idx}
+    io.emit 'connect', {avatar, username, id:idx}
+    socket.emit 'users', {users: activePlayers.map (p) -> p.request.session}
     
 
   socket.on 'update', (data)-> 
@@ -123,6 +125,12 @@ io.on 'connection', (socket) ->
     io.emit 'reply', data
   socket.on 'disconnect', ->
     console.log 'user disconnected'
+
+
+
     io.emit 'user disconnect'
+    if socket.request.session.user_id != null
+      removeIdx = activePlayers.indexOf(socket)
+      activePlayers.slice removeIdx, 1
   
   
