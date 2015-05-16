@@ -63,6 +63,16 @@ else
   port = process.env.PORT
 
 SERVER_URL = nconf.get('SERVER_URL')
+
+sessionMiddleware = session do
+    resave: true
+    saveUninitialized: true
+    secret: 'SOME SECRET'
+    store: new MongoStore mongooseConnection: mongoose.connection
+io.use (socket, next) ->
+  sessionMiddleware(socket.request, socket.request.res, next)
+
+
 app
   ..set 'view engine', 'ejs'
   ..use serveStatic 'public'
@@ -70,11 +80,7 @@ app
   ..use cookieParser!
   ..use bodyParser.urlencoded extended: true
   ..use bodyParser.json!
-  ..use session do
-    resave: true
-    saveUninitialized: true
-    secret: 'SOME SECRET'
-    store: new MongoStore mongooseConnection: mongoose.connection
+  ..use sessionMiddleware
 
   ..use '/user', require './routes/user'
   ..use '*', (req, res)->res.render('index', SERVER_URL:SERVER_URL)
@@ -91,10 +97,32 @@ app
 
 server.listen port
 
-
+# allClients = []
+activePlayers = []
+idx = 0
 io.on 'connection', (socket) ->
   console.log 'connection'
-  socket.emit 'connect'
+
+  socket.on 'join', (data) ->
+    socket.request.session{avatar, username} = data
+    socket.request.session.user_id = idx
+    socket.request.session.save!
+    activePlayers.push socket
+    idx++
+    console.log socket.request.session
+    io.emit 'connect', {avatar: avatar, username: username, id:idx}
+    
+
   socket.on 'update', (data)-> 
-    console.log 'update here', data
+    # console.log socket.request.session
+    # socket.request.session.data = data
+    # socket.request.session.save!
+    console.log 'update here'
+    data.id = socket.request.session.user_id
+    console.log data
     io.emit 'reply', data
+  socket.on 'disconnect', ->
+    console.log 'user disconnected'
+    io.emit 'user disconnect'
+  
+  
