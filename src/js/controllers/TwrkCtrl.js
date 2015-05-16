@@ -183,7 +183,7 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
         m[0] /= magnitude;
         m[1] /= magnitude;
         m[2] /= magnitude;
-        if(!window.isIphone){
+        if(window.isIphone){
           m[2] *= -1; //Reverse gyro for android
         }
         dataContainerAcceleration.innerHTML = m[0] + "<br/>" + m[1] + "<br/>" + m[2];

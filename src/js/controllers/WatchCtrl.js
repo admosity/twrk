@@ -116,7 +116,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
       lpY = (vector[1] * (1-lp)) + (lpY * lp);
       lpZ = (vector[2] * (1-lp)) + (lpZ * lp);
       lpM = vector[6];
-      impulse(playerList[data.user_id], [lpX * 40, lpZ * 40]);
+      impulse(playerList[data.user_id], [lpX * 60, lpZ * 60]);
     }
     // ctx.clearRect ( 0 , 0 , canvas.width, canvas.height );
     // ctx.strokeStyle = 'rgba(255, 0, 0, 0.6)';
@@ -204,11 +204,11 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
     // Lower legs
     var lowerLeftLeg = bodyPartBody.lowerLeftLeg = new p2.Body({
-        mass: 2,
+        mass: 6,
         position: [-shouldersDistance/2,lowerLegLength / 2],
     });
     var lowerRightLeg = bodyPartBody.lowerRightLeg = new p2.Body({
-        mass: 2,
+        mass: 6,
         position: [shouldersDistance/2,lowerLegLength / 2],
     });
     lowerLeftLeg.addShape(lowerLegShape);
@@ -218,11 +218,11 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
     // Upper legs
     var upperLeftLeg = bodyPartBody.upperLeftLeg = new p2.Body({
-        mass: 1,
+        mass: 4,
         position: [-shouldersDistance/2,lowerLeftLeg.position[1]+lowerLegLength/2+upperLegLength / 2],
     });
     var upperRightLeg = bodyPartBody.upperRightLeg = new p2.Body({
-        mass: 1,
+        mass: 4,
         position: [shouldersDistance/2,lowerRightLeg.position[1]+lowerLegLength/2+upperLegLength / 2],
     });
     upperLeftLeg.addShape(upperLegShape);
@@ -232,7 +232,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
     // Pelvis
     var pelvis = bodyPartBody.pelvis = new p2.Body({
-        mass: 1,
+        mass: 2,
         position: [0, upperLeftLeg.position[1]+upperLegLength/2+pelvisLength/2],
     });
     pelvis.addShape(pelvisShape);
@@ -326,7 +326,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
         localPivotA: [0,pelvisLength/2],
         localPivotB: [0,-upperBodyLength/2],
     });
-    spineJoint.setLimits(-Math.PI / 8, Math.PI / 8);
+    spineJoint.setLimits(-Math.PI / 3, Math.PI / 3);
     world.addConstraint(spineJoint);
 
     // Shoulders
