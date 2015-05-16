@@ -619,6 +619,8 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     ctx.fillText(player.username, bodies.pelvis.position[0] * 90 + w/2 - ctx.measureText(player.username).width/2, -bodies.pelvis.position[1] * 90 + h/2 + 130);
     ctx.restore();
     ctx.save();
+    ctx.translate(w/2, h/2);  // Translate to the center
+    ctx.scale(90, -90);       // Zoom in and flip y axis
     // var headShape =      new p2.Circle(headRadius),
     //     upperArmShape =  new p2.Rectangle(upperArmLength,upperArmSize),
     //     lowerArmShape =  new p2.Rectangle(lowerArmLength,lowerArmSize),
