@@ -61,11 +61,11 @@ module.directive('twrkView', function() {
 
 
         // Lower legs
-        var lowerLeftLeg = new p2.Body({
+        var lowerLeftLeg = bodyPartBody.lowerLeftLeg = new p2.Body({
             mass: 1,
             position: [-shouldersDistance/2,lowerLegLength / 2],
         });
-        var lowerRightLeg = new p2.Body({
+        var lowerRightLeg = bodyPartBody.lowerRightLeg = new p2.Body({
             mass: 1,
             position: [shouldersDistance/2,lowerLegLength / 2],
         });
@@ -75,11 +75,11 @@ module.directive('twrkView', function() {
         world.addBody(lowerRightLeg);
 
         // Upper legs
-        var upperLeftLeg = new p2.Body({
+        var upperLeftLeg = bodyPartBody.upperLeftLeg = new p2.Body({
             mass: 1,
             position: [-shouldersDistance/2,lowerLeftLeg.position[1]+lowerLegLength/2+upperLegLength / 2],
         });
-        var upperRightLeg = new p2.Body({
+        var upperRightLeg = bodyPartBody.upperRightLeg = new p2.Body({
             mass: 1,
             position: [shouldersDistance/2,lowerRightLeg.position[1]+lowerLegLength/2+upperLegLength / 2],
         });
@@ -89,7 +89,7 @@ module.directive('twrkView', function() {
         world.addBody(upperRightLeg);
 
         // Pelvis
-        var pelvis = new p2.Body({
+        var pelvis = bodyPartBody.pelvis = new p2.Body({
             mass: 1,
             position: [0, upperLeftLeg.position[1]+upperLegLength/2+pelvisLength/2],
         });
@@ -97,7 +97,7 @@ module.directive('twrkView', function() {
         world.addBody(pelvis);
 
         // Upper body
-        var upperBody = new p2.Body({
+        var upperBody = bodyPartBody.upperBody = new p2.Body({
             mass: 1,
             position: [0,pelvis.position[1]+pelvisLength/2+upperBodyLength/2],
         });
@@ -105,7 +105,7 @@ module.directive('twrkView', function() {
         world.addBody(upperBody);
 
         // Head
-        var head = new p2.Body({
+        var head = bodyPartBody.head = new p2.Body({
             mass: 1,
             position: [0,upperBody.position[1]+upperBodyLength/2+headRadius+neckLength],
         });
@@ -113,11 +113,11 @@ module.directive('twrkView', function() {
         world.addBody(head);
 
         // Upper arms
-        var upperLeftArm = new p2.Body({
+        var upperLeftArm = bodyPartBody.upperLeftArm = new p2.Body({
             mass: 1,
             position: [-shouldersDistance/2-upperArmLength/2, upperBody.position[1]+upperBodyLength/2],
         });
-        var upperRightArm = new p2.Body({
+        var upperRightArm = bodyPartBody.upperRightArm = new p2.Body({
             mass: 1,
             position: [shouldersDistance/2+upperArmLength/2, upperBody.position[1]+upperBodyLength/2],
         });
@@ -127,12 +127,12 @@ module.directive('twrkView', function() {
         world.addBody(upperRightArm);
 
         // lower arms
-        var lowerLeftArm = new p2.Body({
+        var lowerLeftArm = bodyPartBody.lowerLeftArm = new p2.Body({
             mass: 1,
             position: [ upperLeftArm.position[0] - lowerArmLength/2 - upperArmLength/2,
                         upperLeftArm.position[1]],
         });
-        var lowerRightArm = new p2.Body({
+        var lowerRightArm = bodyPartBody.lowerRightArm = new p2.Body({
             mass: 1,
             position: [ upperRightArm.position[0] + lowerArmLength/2 + upperArmLength/2,
                         upperRightArm.position[1]],
@@ -144,7 +144,7 @@ module.directive('twrkView', function() {
 
 
         // Neck joint
-        var neckJoint = new p2.RevoluteConstraint(head, upperBody, {
+        var neckJoint = bodyPartBody.neckJoint = new p2.RevoluteConstraint(head, upperBody, {
             localPivotA: [0,-headRadius-neckLength/2],
             localPivotB: [0,upperBodyLength/2],
         });
@@ -152,11 +152,11 @@ module.directive('twrkView', function() {
         world.addConstraint(neckJoint);
 
         // Knee joints
-        var leftKneeJoint = new p2.RevoluteConstraint(lowerLeftLeg, upperLeftLeg, {
+        var leftKneeJoint = bodyPartBody.leftKneeJoint = new p2.RevoluteConstraint(lowerLeftLeg, upperLeftLeg, {
             localPivotA: [0, lowerLegLength/2],
             localPivotB: [0,-upperLegLength/2],
         });
-        var rightKneeJoint= new p2.RevoluteConstraint(lowerRightLeg, upperRightLeg, {
+        var rightKneeJoint= bodyPartBody.rightKneeJoint = new p2.RevoluteConstraint(lowerRightLeg, upperRightLeg, {
             localPivotA: [0, lowerLegLength/2],
             localPivotB:[0,-upperLegLength/2],
         });
@@ -166,11 +166,11 @@ module.directive('twrkView', function() {
         world.addConstraint(rightKneeJoint);
 
         // Hip joints
-        var leftHipJoint = new p2.RevoluteConstraint(upperLeftLeg, pelvis, {
+        var leftHipJoint = bodyPartBody.leftHipJoint = new p2.RevoluteConstraint(upperLeftLeg, pelvis, {
             localPivotA: [0, upperLegLength/2],
             localPivotB: [-shouldersDistance/2,-pelvisLength/2],
         });
-        var rightHipJoint = new p2.RevoluteConstraint(upperRightLeg, pelvis, {
+        var rightHipJoint = bodyPartBody.rightHipJoint = new p2.RevoluteConstraint(upperRightLeg, pelvis, {
             localPivotA: [0, upperLegLength/2],
             localPivotB: [shouldersDistance/2,-pelvisLength/2],
         });
@@ -180,7 +180,7 @@ module.directive('twrkView', function() {
         world.addConstraint(rightHipJoint);
 
         // Spine
-        var spineJoint = new p2.RevoluteConstraint(pelvis, upperBody, {
+        var spineJoint = bodyPartBody.spineJoint = new p2.RevoluteConstraint(pelvis, upperBody, {
             localPivotA: [0,pelvisLength/2],
             localPivotB: [0,-upperBodyLength/2],
         });
@@ -188,11 +188,11 @@ module.directive('twrkView', function() {
         world.addConstraint(spineJoint);
 
         // Shoulders
-        var leftShoulder = new p2.RevoluteConstraint(upperBody, upperLeftArm, {
+        var leftShoulder = bodyPartBody.leftShoulder = new p2.RevoluteConstraint(upperBody, upperLeftArm, {
             localPivotA:[-shouldersDistance/2, upperBodyLength/2],
             localPivotB:[upperArmLength/2,0],
         });
-        var rightShoulder= new p2.RevoluteConstraint(upperBody, upperRightArm, {
+        var rightShoulder= bodyPartBody.rightShoulder = new p2.RevoluteConstraint(upperBody, upperRightArm, {
             localPivotA:[shouldersDistance/2,  upperBodyLength/2],
             localPivotB:[-upperArmLength/2,0],
         });
@@ -202,18 +202,18 @@ module.directive('twrkView', function() {
         world.addConstraint(rightShoulder);
 
         // Elbow joint
-        var leftElbowJoint = new p2.RevoluteConstraint(lowerLeftArm, upperLeftArm, {
+        var leftElbowJoint = bodyPartBody.leftElbowJoint = new p2.RevoluteConstraint(lowerLeftArm, upperLeftArm, {
             localPivotA: [lowerArmLength/2, 0],
             localPivotB: [-upperArmLength/2,0],
         });
-        var rightElbowJoint= new p2.RevoluteConstraint(lowerRightArm, upperRightArm, {
+        var rightElbowJoint= bodyPartBody.rightElbowJoint = new p2.RevoluteConstraint(lowerRightArm, upperRightArm, {
             localPivotA:[-lowerArmLength/2,0],
             localPivotB:[upperArmLength/2,0],
         });
         leftElbowJoint.setLimits(-Math.PI / 8, Math.PI / 8);
         rightElbowJoint.setLimits(-Math.PI / 8, Math.PI / 8);
         world.addConstraint(leftElbowJoint);
-        world.addConstraint(rightElbowJoint);
+        world.addConstraint(rightElbowJoint)
 
         // Create ground
         var planeShape = new p2.Plane();
