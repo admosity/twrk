@@ -511,7 +511,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     // Create ceiling
     var planeShape = new p2.Plane();
     var plane = new p2.Body({
-        position:[0,3],
+        position:[0,4.5],
         angle: Math.PI,
     });
     plane.addShape(planeShape);
