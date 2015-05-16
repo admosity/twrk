@@ -19,21 +19,6 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     });
   }
 
-
-  // var canvas = document.getElementById('myCanvas');
-  // var context = canvas.getContext('2d');
-
-  function drawLine(x, y, z, m){
-    var cX = x;// / 2 + y / 2;
-    var cY = z;
-    var mag = m * 10;
-
-    ctx.beginPath();
-    ctx.moveTo(400, 300);
-    ctx.lineTo(400 + cX * mag, 300 + cY * mag);
-    ctx.stroke();
-  }
-
   var lp = 0.2;
   var lpX = 0;
   var lpY = 0;
@@ -71,9 +56,10 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
     ctx.beginPath();
     ctx.lineWidth = 15;
-    ctx.moveTo(400, 300);
-    ctx.lineTo(400 + cX * mag, 300 + cY * mag);
+    ctx.moveTo(400,400);
+    ctx.lineTo(400 + cX * mag, 400 + cY * mag);
     ctx.stroke();
+    ctx.lineWidth = 0.1;
   }
   var lp = 0.2;
   var lpX = 0;
@@ -476,7 +462,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     // goes from top to bottom, while physics does the opposite.
     ctx.save();
     ctx.translate(w/2, h/2);  // Translate to the center
-    ctx.scale(50, -50);       // Zoom in and flip y axis
+    // ctx.scale(50, -50);       // Zoom in and flip y axis
     for(var i = 0; i < 1; i++)
       drawBody(players[i]);
     // Draw all bodies
@@ -493,7 +479,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     // Move physics bodies forward in time
     world.step(1/60);
     // Render scene
-    render();
+    //render();
   }
 
   init();
