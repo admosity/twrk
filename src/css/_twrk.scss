@@ -1,28 +1,47 @@
 body {
-  background:$primary-color;
-  font-family:$base-font;
+    background: $primary-color;
+    font-family: $base-font;
 }
 
 .header { background:$secondary-color; }
+
 .logo { font-family:$base-font;
   color:$tertiary-color;
   font-size: 60px;
+  text-align:center;
 }
 
-.col { background:#999;
-  text-align: center;
-  border: 1px solid #fff;
-  color:#fff;
-  padding:30px 0;
+.header {
+    background: $secondary-color;
+}
+
+
+.col {
+    background: #999;
+    text-align: center;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 30px 0;
 }
 
 .col input {
-  @include placeholder {
-    color: red;
-  }
+    @include placeholder {
+        color: red;
+    }
 }
 
 .col a {
   @include transition-all('2s');
   &:hover { opacity:0.8; }
+}
+
+.btn {
+  font-size:40px;
+  padding:5px 40px;
+  &.btn-twerk { background:transparent; border-color:$secondary-color; color:$secondary-color;
+    &:hover { color:#fff; border-color:#fff; }
+  }
+  &.btn-watch { background:transparent; border-color:$secondary-color; color:$secondary-color;
+    &:hover { color:#fff; border-color:#fff; }
+  }
 }
