@@ -17,7 +17,7 @@ p { font-family:$base-font;
 }
 .left { text-align:left; }
 
-.header { background:$secondary-color; float:left; width: 100%; }
+.header { background:$secondary-color; float:left; width: 100%; padding:0 20px; }
 
 .logo { font-family:$base-font;
   color:$light-b;
