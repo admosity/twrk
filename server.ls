@@ -105,6 +105,7 @@ io.on 'connection', (socket) ->
 
   socket.on 'join', (data) ->
     socket.request.session{avatar, username} = data
+    {avatar, username} = data
     socket.request.session.user_id = idx
     socket.request.session.save!
     activePlayers.push socket
