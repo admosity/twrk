@@ -300,13 +300,66 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     world.addConstraint(leftElbowJoint);
     world.addConstraint(rightElbowJoint);
     
+
+    // Create a body for the cursor
+    var constraintBody = new p2.Body();
+    constraintBody.position[0] = 0.5;
+    constraintBody.position[1] = 0.5;
+    world.addBody(constraintBody);
+    var springConstraint = new p2.RevoluteConstraint(constraintBody, pelvis, {
+      worldPivot: [0.5,0.5],
+      collideConnected:false
+    });
+    world.addConstraint(springConstraint);
+
     return {
       body: bodyPartBody, 
       shape: bodyPartShape
     };
   }
-  
 
+  function removeBody(obj) {
+    var body = obj.body;
+    for(var k in body) {
+      if(body.hasOwnProperty(k)) {
+        world.removeBody(body[k]);
+      }
+    }
+
+    var shapes = obj.shape;
+    for(var k in shapes) {
+      if(shapes.hasOwnProperty(k)) {
+        world.removeShape(shapes[k]);
+      }
+    }
+  }
+  
+  function impulse(player, force){
+
+  //   // Convert the canvas coordinate to physics coordinates
+  //   var position = getPhysicsCoord(event);
+
+  //   // Check if the cursor is inside the box
+  //   var hitBodies = world.hitTest(position, [boxBody]);
+
+  //   if(hitBodies.length){
+
+  //     // Move the mouse body to the cursor position
+  //     mouseBody.position[0] = position[0];
+  //     mouseBody.position[1] = position[1];
+
+  //     // Create a RevoluteConstraint.
+  //     // This constraint lets the bodies rotate around a common point
+  //     mouseConstraint = new p2.RevoluteConstraint(mouseBody, boxBody, {
+  //       worldPivot: position,
+  //       collideConnected:false
+  //     });
+  //     world.addConstraint(mouseConstraint);
+  //   }
+  //   world.removeConstraint(mouseConstraint);
+  //   mouseConstraint = null;
+  // });
+  }
   function init(){
     // Init canvas
     canvas = document.getElementById("twrk");
