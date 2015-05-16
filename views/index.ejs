@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
 <script>
-window.SERVER_URL = location.protocol + "//" + location.host;
+  window.SERVER_URL = location.protocol + "//" + location.host;
+  if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
+    window.isIphone = true;
+  }
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
