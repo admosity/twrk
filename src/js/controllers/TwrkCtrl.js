@@ -17,7 +17,6 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
       },
       controller: function($scope, $modalInstance, $timeout, topScope) {
         $scope.chooseMyAvatar = function(avatar) {
-          console.log('CHOSEN AVATAR', avatar);
           topScope.avatar = avatar;
           $modalInstance.close();
         };
