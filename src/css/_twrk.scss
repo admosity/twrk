@@ -32,6 +32,13 @@ p { font-family:$base-font;
   }
 }
 
+.half-top {
+  padding-top:45px;
+  @include bp-small {
+    padding-top:90px;
+  }
+}
+
 .header {
   float:left;
   width: 100%;
@@ -96,7 +103,7 @@ p { font-family:$base-font;
 }
 
 .join-twerk-modal {
-  &.modal {   background: rgba(33, 76, 95, 0.84); }
+  &.modal {   background: rgba(33, 95, 88, 0.84); }
   .modal-content { background:transparent; box-shadow:none; border:none; }
 }
 
