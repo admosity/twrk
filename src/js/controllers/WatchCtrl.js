@@ -116,7 +116,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
       lpY = (vector[1] * (1-lp)) + (lpY * lp);
       lpZ = (vector[2] * (1-lp)) + (lpZ * lp);
       lpM = vector[6];
-      impulse(playerList[data.user_id], [lpX * 60, lpZ * 60]);
+      impulse(playerList[data.user_id], [lpX * 120, lpZ * 90]);
     }
     // ctx.clearRect ( 0 , 0 , canvas.width, canvas.height );
     // ctx.strokeStyle = 'rgba(255, 0, 0, 0.6)';
@@ -218,11 +218,11 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
     // Upper legs
     var upperLeftLeg = bodyPartBody.upperLeftLeg = new p2.Body({
-        mass: 4,
+        mass: 3,
         position: [-shouldersDistance/2,lowerLeftLeg.position[1]+lowerLegLength/2+upperLegLength / 2],
     });
     var upperRightLeg = bodyPartBody.upperRightLeg = new p2.Body({
-        mass: 4,
+        mass: 3,
         position: [shouldersDistance/2,lowerRightLeg.position[1]+lowerLegLength/2+upperLegLength / 2],
     });
     upperLeftLeg.addShape(upperLegShape);
@@ -232,7 +232,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
     // Pelvis
     var pelvis = bodyPartBody.pelvis = new p2.Body({
-        mass: 2,
+        mass: 1,
         position: [0, upperLeftLeg.position[1]+upperLegLength/2+pelvisLength/2],
     });
     pelvis.addShape(pelvisShape);
@@ -467,7 +467,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     world.addBody(plane);
 
     // Add a plane
-    // Create ground
+    // Create wall
     var planeShape = new p2.Plane();
     var plane = new p2.Body({
         angle: Math.PI/2,
@@ -479,11 +479,23 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     world.addBody(plane);
 
     // Add a plane
-    // Create ground
+    // Create wall
     var planeShape = new p2.Plane();
     var plane = new p2.Body({
         angle: -Math.PI/2,
         position:[-6,0],
+    });
+    plane.addShape(planeShape);
+    planeShape.collisionGroup = GROUND;
+    planeShape.collisionMask =  BODYPARTS|OTHER;
+    world.addBody(plane);
+
+    // Add a plane
+    // Create ceiling
+    var planeShape = new p2.Plane();
+    var plane = new p2.Body({
+        position:[0,3],
+        angle: Math.PI,
     });
     plane.addShape(planeShape);
     planeShape.collisionGroup = GROUND;
