@@ -108,7 +108,6 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 //socket.emit('join', { username: "USERNAME", avatar: 5 });
 
   socket.on('reply', function (data) {
-    console.log("UPDATE RESPONSE", data);
     if(playerList[data.user_id]){
       //console.log(data);
       var vector = data.data.split(',');
@@ -116,7 +115,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
       lpY = (vector[1] * (1-lp)) + (lpY * lp);
       lpZ = (vector[2] * (1-lp)) + (lpZ * lp);
       lpM = vector[6];
-      impulse(playerList[data.user_id], [lpX * 120, lpZ * 90]);
+      impulse(playerList[data.user_id], [lpX * 50, lpZ * 90]);
     }
     // ctx.clearRect ( 0 , 0 , canvas.width, canvas.height );
     // ctx.strokeStyle = 'rgba(255, 0, 0, 0.6)';
