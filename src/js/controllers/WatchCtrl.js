@@ -5,11 +5,30 @@ var module = require('./module');
 module.controller('WatchCtrl', function($scope, $http, $modal) {
 
   console.log("WATCH DAT TWERK");
+  $('.scroll-link2').hide();
 
   $('.scroll-link').click(function(){
     $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+
+    $(this).hide();
+    $('.scroll-link2').show();
     return false;
   });
+
+  $('.scroll-link2').click(function(){
+
+    $('body,html').animate({
+      scrollTop: 0
+    }, 800);
+
+
+    $(this).hide();
+    $('.scroll-link').show();
+
+    return false;
+
+  });
+
 
 
   $( ".open-leaders" ).click(function() {
@@ -591,12 +610,12 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
     drawAvatar(shapes.head, bodies.head, player.avatar);
 
-    // ctx.translate(1,1);  
+    // ctx.translate(1,1);
     ctx.restore();
     ctx.scale(1, 1);
     ctx.font = "30px serif";
     ctx.fillStyle = "#FFFFFF";
-    
+
     ctx.fillText(player.username, bodies.pelvis.position[0] * 90 + w/2 - ctx.measureText(player.username).width/2, -bodies.pelvis.position[1] * 90 + h/2 + 130);
     ctx.restore();
     ctx.save();
