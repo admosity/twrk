@@ -147,6 +147,7 @@ p {
     padding: 5px 40px;
     border-radius: 2px;
     &.avi { margin-top:0; }
+    &.btn-xl { padding:10px 60px; font-size: 26px; }
     @include bp-small {
         display: block;
         margin-top: 80px;
@@ -256,7 +257,7 @@ p {
 
 .join-twerk-modal, .avatar-modal {
     &.modal {
-        background: rgba(33, 95, 88, 0.84);
+        background: rgba(67, 108, 54, 0.84);
     }
     .modal-content {
         background: transparent;
