@@ -202,17 +202,31 @@ p {
     }
 }
 
+.user-photo {
+  width: 100px;
+  margin: 0 auto;
+  display: block;
+}
+
 .enter-username {
   background: transparent;
   border: none;
   box-shadow: none;
   font-size: 30px;
   height: 60px;
-  border-bottom: 4px solid #00bcd6;
+  border-bottom: 1px solid #00bcd6;
   margin: 30px auto;
   border-radius: 0;
+  -moz-transition: all .2s ease-in;
+  -o-transition: all .2s ease-in;
+  -webkit-transition: all .2s ease-in;
+  transition: all .2s ease-in;
+  outline:none;
+  color:$primary-color;
+  &:hover { border-bottom: 3px solid #00bcd6; }
+  &:focus { border-bottom: 6px solid #00bcd6; margin-top:34px;}
   @include placeholder {
-    color:$primary-color;
+    color:$secondary-color;
   }
 }
 
@@ -271,6 +285,6 @@ p {
         color: #fff;
     }
     img {
-        width: 150px;
+        width: 100px;
     }
 }
