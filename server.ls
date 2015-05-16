@@ -42,6 +42,7 @@ else
       parse: (str) -> CSON.parse(str) 
       stringify: CSON.stringify
 # connect to mongodb
+require './models/index'
 mongoose.connect nconf.get('MONGO_URI') || nconf.get('MONGOLAB_URI')
 console.log nconf.get!
 app = express!
@@ -75,8 +76,12 @@ app
     secret: 'SOME SECRET'
     store: new MongoStore mongooseConnection: mongoose.connection
 
+  ..use '/user', require './routes/user'
   ..use '*', (req, res)->res.render('index', SERVER_URL:SERVER_URL)
 
+  # ..use passport.initialize!
+  # ..use passport.session!
+# require './config/passport'
 
   # server = ..listen port, !->
   #   server.address()
