@@ -9,7 +9,11 @@ require('./live');
 
 
 var socket = io.connect(window.SERVER_URL);
-socket.on('news', function (data) {
-  console.log(data);
-  socket.emit('my other event', { my: 'data' });
+socket.on('connect', function (data) {
+  console.log("CONNECT RESPONSE");
+  socket.emit('update', { my: 'data' });
+});
+
+socket.on('reply', function (data) {
+  console.log("UPDATE RESPONSE", data);
 });

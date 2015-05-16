@@ -91,6 +91,8 @@ server.listen port
 
 
 io.on 'connection', (socket) ->
-  socket.emit 'news', hello: 'world'
-  socket.on 'my other event', (data)-> 
-    console.log data
+  console.log 'connection'
+  socket.emit 'connect'
+  socket.on 'update', (data)-> 
+    console.log 'update here'
+    socket.emit 'reply', 'test'
