@@ -18,6 +18,7 @@ module.config(['$stateProvider',
       })
 
       .state('watch-twerk', {
+        url: '/watch',
         views: {
 
           'content': {
