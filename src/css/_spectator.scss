@@ -10,14 +10,16 @@
   display: block;
   text-align: left;
   background-color: rgba(255, 255, 255, 0.25);
-  width: 100%;
   padding: 5px;
   position:fixed;
   right:0;
   top:80px;
-  width:25%;
+  width:300px;
   height:100%;
   overflow-y:auto;
+  transition-property: all;
+	transition-duration: .5s;
+  &.closed { right:-220px;  }
   .twerk-leaders {
     li {
       padding: 0;
@@ -61,7 +63,7 @@ hr {
 .smallavatar {
   width: 50px;
   display: inline-block;
-  margin-left: 20px;
+  margin-left: 13px;
 }
 .mediumavatar {
   width: 100px;
