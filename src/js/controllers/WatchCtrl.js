@@ -42,8 +42,10 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
   console.log(window.SERVER_URL);
 
   var socket = io.connect(window.SERVER_URL);
-  socket.on('connect', function (data) {
+  socket.on('joined', function (data) {
     console.log("CONNECT RESPONSE", data);
+
+    playerList[data.id] = makeBody();
   });
 //socket.emit('join', { username: "USERNAME", avatar: 5 });
 
@@ -82,9 +84,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     ctx.lineWidth = 0.1;
   }
 
-
-
-  var players = [];
+  var playerMap = {};
 
   var shouldersDistance = 0.5,
       upperArmLength = 0.4,
@@ -396,9 +396,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     // boxBody = new p2.Body({ mass:1, position:[0,3],angularVelocity:1 });
     // boxBody.addShape(boxShape);
     // world.addBody(boxBody);
-    console.log(players);
-    for(var i = 0; i < 1; i++)
-      players.push(makeBody());
+
     // Add a plane
     // Create ground
     var planeShape = new p2.Plane();

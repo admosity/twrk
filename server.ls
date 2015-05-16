@@ -105,12 +105,13 @@ io.on 'connection', (socket) ->
 
   socket.on 'join', (data) ->
     socket.request.session{avatar, username} = data
+    {avatar, username} = data
     socket.request.session.user_id = idx
     socket.request.session.save!
     activePlayers.push socket
     idx++
-    console.log socket.request.session
-    io.emit 'connect', {avatar: avatar, username: username, id:idx}
+    console.log("BROADCAST CONNECT RESPONSE TO EVERYONE");
+    socket.broadcast.emit 'joined', {avatar, username, id:idx}
     
 
   socket.on 'update', (data)-> 
