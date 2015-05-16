@@ -12,11 +12,11 @@ $(function(){
   // socket.on('reply', function (data) {
   //   console.log("UPDATE RESPONSE", data);
   // });
-
+  
   if(window.DeviceOrientationEvent && window.DeviceMotionEvent) {
     var connected = false;
     //Socket stuff
-    //var socket = io.connect(window.SERVER_URL);
+    var socket = io.connect(window.SERVER_URL);
     socket.on('connect', function (data) {
       console.log("CONNECTED");
       connected = true;

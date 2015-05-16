@@ -92,4 +92,4 @@ io.on 'connection', (socket) ->
   socket.emit 'connect'
   socket.on 'update', (data)-> 
     console.log 'update here', data
-    socket.emit 'reply', 'test'
+    io.emit 'reply', data
