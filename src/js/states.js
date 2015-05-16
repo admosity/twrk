@@ -47,6 +47,7 @@ module.config(
       })
 
       .state('twerk-setup', {
+        url: '/twrk/setup'
         views: {
 
           'content': {
@@ -60,6 +61,7 @@ module.config(
       })
 
       .state('twerk-calibrate', {
+        url: '/twrk/calibrate',
         views: {
 
           'content': {
@@ -73,6 +75,7 @@ module.config(
       })
 
       .state('twerk-do', {
+        url: '/twrking',
         views: {
           content: {
             templateUrl: '/views/twerk-do.html'
@@ -85,6 +88,7 @@ module.config(
 
 
       .state('twerk-howto', {
+        url: '/twrk/howto'
         views: {
           content: {
             templateUrl: '/views/twerk-howto.html'
@@ -97,6 +101,7 @@ module.config(
 
 
       .state('twerk-config', {
+        url: '/twrk/config',
         views: {
           content: {
             templateUrl: '/views/twerk-config.html'
