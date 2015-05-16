@@ -45,7 +45,14 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
   socket.on('joined', function (data) {
     console.log("CONNECT RESPONSE", data);
 
+    if(playerList[data.id]) removeBody(playerList[data.id]);
     playerList[data.id] = makeBody();
+  });
+
+  socket.on('user disconnect', function (data) {
+    console.log("CONNECT RESPONSE", data.id);
+
+    removeBody(playerList[data.id]);
   });
 //socket.emit('join', { username: "USERNAME", avatar: 5 });
 
@@ -58,7 +65,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     lpY = (vector[1] * (1-lp)) + (lpY * lp);
     lpZ = (vector[2] * (1-lp)) + (lpZ * lp);
     lpM = vector[6];
-    impulse(players[0], [lpX * 50, lpZ * 50]);
+    impulse(playerList[data.id], [lpX * 50, lpZ * 50]);
 
     // ctx.clearRect ( 0 , 0 , canvas.width, canvas.height );
     // ctx.strokeStyle = 'rgba(255, 0, 0, 0.6)';
@@ -413,14 +420,14 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     canvas.addEventListener('mousedown', function(event){
       //impulse(players[0]);
       // makeBody();
-      if(addremovec%2 == 0){
-        console.log("REMOVE BODY");
-        removeBody(players[0]);
-        players[0] = null;
-      }else{
-        players[0] = makeBody();
-      }
-      addremovec++;
+      // if(addremovec%2 == 0){
+      //   console.log("REMOVE BODY");
+      //   removeBody(players[0]);
+      //   players[0] = null;
+      // }else{
+      //   players[0] = makeBody();
+      // }
+      // addremovec++;
     });
   }
 
@@ -499,9 +506,9 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     ctx.save();
     ctx.translate(w/2, h/2);  // Translate to the center
     ctx.scale(50, -50);       // Zoom in and flip y axis
-    for(var i = 0; i < players.length; i++){
-      if(players[i])
-        drawBody(players[i]);
+    for(var player in playerList){
+      if(players)
+        drawBody(players);
     }
     // Draw all bodies
     // drawbox();
