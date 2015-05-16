@@ -306,10 +306,18 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     };
   }
 
-  function removeBody(body) {
+  function removeBody(ob) {
+    var body = obj.body;
     for(var k in body) {
       if(body.hasOwnProperty(k)) {
         world.removeBody(body[k]);
+      }
+    }
+
+    var shapes = obj.shape;
+    for(var k in shapes) {
+      if(shapes.hasOwnProperty(k)) {
+        world.removeShape(shapes[k]);
       }
     }
   }
