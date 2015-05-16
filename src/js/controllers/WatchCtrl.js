@@ -54,7 +54,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
   socket.on('user disconnect', function (data) {
     console.log("CONNECT RESPONSE", data);
-    removeBody(playerList[data.id]);
+    if(playerList[data.id]) removeBody(playerList[data.id]);
   });
 //socket.emit('join', { username: "USERNAME", avatar: 5 });
 
