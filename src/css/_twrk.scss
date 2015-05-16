@@ -1,12 +1,14 @@
 body {
-    background: $primary-color;
+    /* background: $primary-color; */
+    background: url(/images/bg.png);
+    background-size:cover;
     font-family: $base-font;
 }
 
 .header { background:$secondary-color; }
 
 .logo { font-family:$base-font;
-  color:$tertiary-color;
+  color:$light-b;
   font-size: 60px;
   text-align:center;
 }
@@ -14,7 +16,6 @@ body {
 .header {
     background: $secondary-color;
 }
-
 
 .col {
     background: #999;
@@ -38,10 +39,10 @@ body {
 .btn {
   font-size:40px;
   padding:5px 40px;
-  &.btn-twerk { background:transparent; border-color:$secondary-color; color:$secondary-color;
+  &.btn-twerk { background:transparent; border-color:$light-b; color:$light-b;
     &:hover { color:#fff; border-color:#fff; }
   }
-  &.btn-watch { background:transparent; border-color:$secondary-color; color:$secondary-color;
+  &.btn-watch { background:transparent; border-color:$light-b; color:$light-b;
     &:hover { color:#fff; border-color:#fff; }
   }
 }
