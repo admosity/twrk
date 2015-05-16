@@ -306,7 +306,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     };
   }
 
-  function removeBody(ob) {
+  function removeBody(obj) {
     var body = obj.body;
     for(var k in body) {
       if(body.hasOwnProperty(k)) {
