@@ -476,7 +476,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     // Create ground
     var planeShape = new p2.Plane();
     var plane = new p2.Body({
-        position:[0,-3.2],
+        position:[0,-3.7],
     });
     plane.addShape(planeShape);
     planeShape.collisionGroup = GROUND;
