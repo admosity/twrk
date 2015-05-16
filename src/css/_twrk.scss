@@ -204,15 +204,16 @@ p {
         box-shadow: none;
         border: none;
     }
+    .modal-title {   text-align: center; }
 }
 
 .avatar-list {
     text-align: center;
     input[type="radio"] {
         visibility: hidden;
-        &:checked + label {
-            border: 1px solid red;
-        }
+    }
+    input[type="radio"]:checked + label {
+        border: 1px solid red;
     }
     img {
         height: 150px;
