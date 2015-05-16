@@ -1,7 +1,7 @@
 if(window.DeviceOrientationEvent && window.DeviceMotionEvent) {
   var connected = false;
   //Socket stuff
-  var socket = io.connect("http://localhost:3000");
+  var socket = io.connect(window.SERVER_URL);
   socket.on('connect', function (data) {
     console.log("CONNECTED");
     connected = true;
