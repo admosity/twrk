@@ -1,8 +1,20 @@
+html{
+  @include bp-small {
+    height:100%;
+    min-height:100%;
+    width:100%;
+  }
+}
 body {
     font-family: $base-font;
     overflow-x:hidden;
+    width:100%;
+    min-height:100%;
     &.landing {
-        background: url(/images/bg.jpg);
+        background: url(/images/bg.jpg) 0 0 no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
         background-size: cover;
         background-attachment: fixed;
     }
@@ -38,11 +50,6 @@ body {
         }
     }
     font-family: $base-font;
-    &.landing {
-        background: url(/images/bg.jpg);
-        background-size: cover;
-        background-attachment: fixed;
-    }
     &.twerk-calibrate {
         .footer {
             display: none;
