@@ -136,6 +136,7 @@ p {
     font-size: 22px;
     padding: 5px 40px;
     border-radius: 2px;
+    &.avi { margin-top:0; }
     @include bp-small {
         display: block;
         margin-top: 80px;
@@ -194,6 +195,20 @@ p {
             background: #fff;
         }
     }
+}
+
+.enter-username {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  font-size: 30px;
+  height: 60px;
+  border-bottom: 4px solid #00bcd6;
+  margin: 30px auto;
+  border-radius: 0;
+  @include placeholder {
+    color:$primary-color;
+  }
 }
 
 .join-twerk-modal, .avatar-modal {
