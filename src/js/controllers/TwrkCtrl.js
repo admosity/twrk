@@ -1,6 +1,15 @@
 var module = require('./module');
 
 module.controller('TwrkCtrl', function($scope, $http, $modal) {
+
+  $scope.chooseAvatar = function (size, msg) {
+    var modalInstance = $modal.open({
+      templateUrl: '/views/partials/avatar-modal.html',
+      size: size,
+      windowClass: 'avatar-modal'
+    });
+  }
+
   var dataContainerOrientation = document.getElementById('dataContainerOrientation');
   var dataContainerMotion = document.getElementById('dataContainerMotion');
   var dataContainerAcceleration = document.getElementById('dataContainerAcceleration');
@@ -44,21 +53,21 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
       return [
         [1, 0, 0],
         [0, Math.cos(theta), -Math.sin(theta)],
-        [0, Math.sin(theta), Math.cos(theta)],    
+        [0, Math.sin(theta), Math.cos(theta)],
       ];
     }
     var yRotation = function(theta){
       return [
         [Math.cos(theta), 0, Math.sin(theta)],
         [0, 1, 0],
-        [-Math.sin(theta), 0, Math.cos(theta)],   
+        [-Math.sin(theta), 0, Math.cos(theta)],
       ];
     }
     var zRotation = function(theta){
       return [
       [Math.cos(theta), -Math.sin(theta), 0],
       [Math.sin(theta), Math.cos(theta), 0],
-      [0, 0, 1],    
+      [0, 0, 1],
       ];
     }
     var rad = function(deg){
@@ -92,13 +101,13 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
         dataContainerOrientation.innerHTML = 'yaw: ' + yaw + '<br/>pitch: ' + pitch + '<br />roll: ' + roll + '<br />';
       }
     }, false);
-    
+
     highestMagnitude = 0;
     window.addEventListener('devicemotion', function(event) {
       var x = event.acceleration.x;
       var y = event.acceleration.y;
       var z = event.acceleration.z;
-      
+
       var x2 = event.accelerationIncludingGravity.x;
       var y2 = event.accelerationIncludingGravity.y;
       var z2 = event.accelerationIncludingGravity.z;
@@ -115,8 +124,8 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
       html += 'x: ' + x +'<br />y: ' + y + '<br/>z: ' + z+ '<br />Magnitude' + magnitude + '<br />Highest' + highestMagnitude + '<br />';
       html += 'Rotation rate:<br />';
       if(r!=null) html += 'alpha: ' + r.alpha +'<br />beta: ' + r.beta + '<br/>gamma: ' + r.gamma + '<br />';
-      dataContainerMotion.innerHTML = html;   
-      
+      dataContainerMotion.innerHTML = html;
+
       //Threshold check
       if(magnitude > 1){
         vX += x;
@@ -134,20 +143,20 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
         vX /= sampleCount;
         vY /= sampleCount;
         vZ /= sampleCount;
-        
+
         gX /= sampleCount;
         gY /= sampleCount;
         gZ /= sampleCount;
-        
+
         var mg = rotateYPR([gX, gY, gZ], yaw, pitch, roll);
         var thetaX = Math.atan2(mg[1], mg[2]);
         var thetaY= Math.atan2(mg[0], mg[2]);
-        
+
         var m = rotateYPR([vX, vY, vZ], yaw, pitch, roll);
-        
+
         //m = mult(m, xRotation(thetaX));
         //m = mult(m, yRotation(thetaY));
-        
+
         var magnitude = Math.sqrt(m[0]*m[0] + m[1]*m[1] + m[2]*m[2]);
         m[0] /= magnitude;
         m[1] /= magnitude;

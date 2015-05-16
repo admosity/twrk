@@ -5,55 +5,109 @@ body {
     background-size:cover;
     background-attachment:fixed;
   }
-  &.watch-twerk, &.twerk-do, &.twerk-calibrate { background:$dark-b;  }
-  &.twerk-calibrate  {
-    .footer  { display: none;}
+  &.twerk-do, &.twerk-calibrate { background:$dark-b;  }
+  &.watch-twerk { background:url(/images/room2.jpg);
+    background-size: cover;
+    background-blend-mode: multiply;
+    -moz-transition: all .5s ease-in;
+    -o-transition: all .5s ease-in;
+    -webkit-transition: all .5s ease-in;
+    transition: all .5s ease-in;
+    &.change1 {
+      background-color: $the-yellow;
+      background-blend-mode: multiply;
+    }
+    &.change2 {
+      background-color: $the-red;
+      background-blend-mode: multiply;
+    }
+    &.change3 {
+      background-color: $the-pink;
+      background-blend-mode: multiply;
+    }
   }
+  &.twerk-calibrate  {
+    .footer  { display: none; }
+  }
+    font-family: $base-font;
+    &.landing {
+        background: url(/images/bg.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    &.twerk-calibrate {
+        .footer {
+            display: none;
+        }
+    }
 }
 
-h1, h3 { font-weight: 200;
-  &.intro { font-size:60px; }
+h1, h3 {
+    font-weight: 200;
+    &.intro {
+        font-size: 60px;
+    }
 }
 
-h1, h2, h3, p { color:#fff; }
-p { font-family:$base-font;
-  &.intro { font-size:20px; line-height:34px; }
+h1, h2, h3, p {
+    color: #fff;
 }
-.bold { font-weight:800; }
+
+p {
+    font-family: $base-font;
+    &.intro {
+        font-size: 20px;
+        line-height: 34px;
+    }
+}
+
+.bold {
+    font-weight: 800;
+}
 
 .left {
-  text-align:left;
+    text-align: left;
 }
 
 .top {
-  padding-top:90px;
-  @include bp-small {
-    padding-top:150px;
-  }
+    padding-top: 90px;
+    @include bp-small {
+        padding-top: 150px;
+    }
 }
 
 .half-top {
-  padding-top:45px;
-  @include bp-small {
-    padding-top:90px;
-  }
+    padding-top: 45px;
+    @include bp-small {
+        padding-top: 90px;
+    }
+}
+
+.quarter-top {
+    padding-top: 25px;
+    @include bp-small {
+        padding-top: 50px;
+    }
 }
 
 .header {
-  float:left;
-  width: 100%;
-  padding:0 20px;
-  position: fixed;
-  top: 0;
-  &.scroll-header { background:$secondary-color; }
+    float: left;
+    width: 100%;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    &.scroll-header {
+        background: $secondary-color;
+    }
 }
 
-.logo, .logo a { font-family:$base-font;
-  color:$light-b;
-  font-size: 45px;
-  text-align:left;
-  margin: 0;
-  padding: 0;
+.logo, .logo a {
+    font-family: $base-font;
+    color: $light-b;
+    font-size: 45px;
+    text-align: left;
+    margin: 0;
+    padding: 0;
 }
 
 .col {
@@ -71,56 +125,119 @@ p { font-family:$base-font;
 }
 
 .col a {
-  @include transition-all('2s');
-  &:hover { opacity:0.8; }
+    @include transition-all("2s");
+    &:hover {
+        opacity: 0.8;
+    }
 }
 
 .btn {
-  font-size:22px;
-  padding:5px 40px;
-  border-radius: 2px;
-  @include bp-small {
-    display:block;
-    margin-top:80px;
-    padding:15px 40px;
-    font-size:25px;
-    &:last-child { margin-top:10px; }
-  }
-  &.btn-resize { padding:3px 20px; font-size:18px; background:transparent; border-color:$light-b; color:$light-b;
-    &:hover { color:$light-b; border-color:#fff; background:#fff; }
-  }
-  &.btn-twerk { background:transparent; border-color:$light-b; color:$light-b;
-    &:hover { color:$light-b; border-color:#fff; background:#fff; }
-  }
-  &.btn-watch { background:transparent; border-color:$light-b; color:$light-b;
-    &:hover { color:$light-b; border-color:#fff; background:#fff; }
-  }
-  &.btn-calibrate {
-    border-radius:100px; letter-spacing:2px; padding:40px 0; font-size:20px;  width:200px; margin:0 auto;
-    background:transparent; border-color:$light-b; color:$light-b;
-      &:hover { color:$light-b; border-color:#fff; background:#fff; }
-  }
+    font-size: 22px;
+    padding: 5px 40px;
+    border-radius: 2px;
+    @include bp-small {
+        display: block;
+        margin-top: 80px;
+        padding: 15px 40px;
+        font-size: 25px;
+        &:last-child {
+            margin-top: 10px;
+        }
+    }
+
+    &.btn-resize {
+        padding: 3px 20px;
+        font-size: 18px;
+        background: transparent;
+        border-color: $light-b;
+        color: $light-b;
+        &:hover {
+            color: $light-b;
+            border-color: #fff;
+            background: #fff;
+        }
+    }
+    &.btn-twerk {
+        background: transparent;
+        border-color: $light-b;
+        color: $light-b;
+        &:hover {
+            color: $light-b;
+            border-color: #fff;
+            background: #fff;
+        }
+    }
+    &.btn-watch {
+        background: transparent;
+        border-color: $light-b;
+        color: $light-b;
+        &:hover {
+            color: $light-b;
+            border-color: #fff;
+            background: #fff;
+        }
+    }
+    &.btn-calibrate {
+        border-radius: 100px;
+        letter-spacing: 2px;
+        padding: 40px 0;
+        font-size: 20px;
+        width: 200px;
+        margin: 0 auto;
+        background: transparent;
+        border-color: $light-b;
+        color: $light-b;
+        &:hover {
+            color: $light-b;
+            border-color: #fff;
+            background: #fff;
+        }
+    }
 }
 
-.join-twerk-modal {
-  &.modal {   background: rgba(33, 95, 88, 0.84); }
-  .modal-content { background:transparent; box-shadow:none; border:none; }
+.join-twerk-modal, .avatar-modal {
+    &.modal {
+        background: rgba(33, 95, 88, 0.84);
+    }
+    .modal-content {
+        background: transparent;
+        box-shadow: none;
+        border: none;
+    }
 }
 
+.avatar-list {
+    text-align: center;
+    input[type="radio"] {
+        visibility: hidden;
+        &:checked + label {
+            border: 1px solid red;
+        }
+    }
+    img {
+        height: 150px;
+        width: 150px;
+    }
+}
 
 .footer {
-  /* background:$secondary-color; */
-  text-align: left;
-  padding:0;
-  font-family:$base-font;
-  position:fixed;
-  width: 100%;
-  bottom:40px;
-  left:40px;
-  @include bp-small {
-    text-align: center;
-    left:2%;
-  }
-  p { color:#fff; }
-  img { width:150px; }
+    /* background:$secondary-color; */
+    text-align: left;
+    padding: 0;
+    font-family: $base-font;
+    position: fixed;
+    width: 100%;
+    bottom: 40px;
+    left: 40px;
+    @include bp-small {
+        text-align: center;
+        left: 2%;
+    }
+
+    p {
+        color: #fff;
+    }
+    img {
+        width: 150px;
+    }
 }
