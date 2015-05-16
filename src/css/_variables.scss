@@ -1,3 +1,5 @@
+@import 'colors';
+
 // grid variables
 $grid-columns: 12;
 $grid-max-width: 75em;
@@ -18,6 +20,7 @@ $secondary-color: #0097a8;
 $tertiary-color: #006877;
 
 $light-b: #18DFFB;
+$light-g: $lightgreenA200;
 $dark-b: #064F59;
 $the-red: #C02020;
 $the-yellow: #C0AC20;
