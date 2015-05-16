@@ -596,7 +596,8 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     ctx.scale(1, 1);
     ctx.font = "30px serif";
     ctx.fillStyle = "#FFFFFF";
-    ctx.fillText(player.username, bodies.pelvis.position[0] * 90 + w/2 - 20, -bodies.pelvis.position[1] * 90 + h/2 + 130);
+    
+    ctx.fillText(player.username, bodies.pelvis.position[0] * 90 + w/2 - ctx.measureText(player.username).width/2, -bodies.pelvis.position[1] * 90 + h/2 + 130);
     ctx.restore();
     ctx.save();
     // var headShape =      new p2.Circle(headRadius),
