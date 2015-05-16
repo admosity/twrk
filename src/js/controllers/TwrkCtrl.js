@@ -17,6 +17,7 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
       },
       controller: function($scope, $modalInstance, $timeout, topScope) {
         $scope.chooseMyAvatar = function(avatar) {
+          console.log('CHOSEN AVATAR', avatar);
           topScope.avatar = avatar;
           $modalInstance.close();
         };
@@ -46,7 +47,7 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
       connected = true;
       console.log('CONNECTION');
       var theWatch = $scope.$watch('avatar', function(newValue) {
-        if(newValue) {
+        if(newValue != null) {
           socket.emit('join', { username: $scope.username, avatar: $scope.avatar });
           theWatch();
         }
