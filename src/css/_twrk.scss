@@ -5,7 +5,10 @@ body {
     background-size:cover;
     background-attachment:fixed;
   }
-  &.watch-twerk { background:$dark-b;  }
+  &.watch-twerk, &.twerk-do, &.twerk-calibrate { background:$dark-b;  }
+  &.twerk-calibrate  {
+    .footer  { display: none;}
+  }
 }
 
 h1, h3 { font-weight: 200;
@@ -16,6 +19,7 @@ h1, h2, h3, p { color:#fff; }
 p { font-family:$base-font;
   &.intro { font-size:20px; line-height:34px; }
 }
+.bold { font-weight:800; }
 
 .left {
   text-align:left;
@@ -37,7 +41,7 @@ p { font-family:$base-font;
   &.scroll-header { background:$secondary-color; }
 }
 
-.logo { font-family:$base-font;
+.logo, .logo a { font-family:$base-font;
   color:$light-b;
   font-size: 45px;
   text-align:left;
@@ -83,6 +87,11 @@ p { font-family:$base-font;
   }
   &.btn-watch { background:transparent; border-color:$light-b; color:$light-b;
     &:hover { color:$light-b; border-color:#fff; background:#fff; }
+  }
+  &.btn-calibrate {
+    border-radius:100px; letter-spacing:2px; padding:40px 0; font-size:20px;  width:200px; margin:0 auto;
+    background:transparent; border-color:$light-b; color:$light-b;
+      &:hover { color:$light-b; border-color:#fff; background:#fff; }
   }
 }
 
