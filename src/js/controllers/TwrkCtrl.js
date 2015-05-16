@@ -6,7 +6,18 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
     var modalInstance = $modal.open({
       templateUrl: '/views/partials/avatar-modal.html',
       size: size,
-      windowClass: 'avatar-modal'
+      windowClass: 'avatar-modal',
+      resolve: {
+        topScope: function() {
+          return $scope;
+        }
+      },
+      controller: function($scope, $modalInstance, topScope) {
+        $scope.chooseMyAvatar = function(avatar) {
+          topScope.avatar = avatar;
+          $modalInstance.close();
+        };
+      }
     });
   }
 
