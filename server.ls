@@ -110,7 +110,7 @@ io.on 'connection', (socket) ->
     activePlayers.push socket
     idx++
     console.log socket.request.session
-    io.emit 'connect', {avatar, username, id:idx}
+    io.emit 'connect', {avatar: avatar, username: username, id:idx}
     
 
   socket.on 'update', (data)-> 
