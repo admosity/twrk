@@ -1,5 +1,4 @@
 var module = require('./module');
-
 module.controller('TwrkCtrl', function($scope, $http, $modal) {
   $scope.topDigest = function() {
     if(!$scope.$$phase) {
@@ -45,8 +44,16 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
     var socket = io.connect(window.SERVER_URL);
     socket.on('connect', function (data) {
       connected = true;
-      socket.emit('join', { username: "USERNAME", avatar: 5 });
+      console.log('CONNECTION');
+      var theWatch = $scope.$watch('avatar', function(newValue) {
+        if(newValue) {
+          socket.emit('join', { username: $scope.username, avatar: $scope.avatar });
+          theWatch();
+        }
+      });
+
     });
+
 
     function sendServer(data){
       if(connected)
