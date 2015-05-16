@@ -33,7 +33,6 @@ module.exports = angular.module('NS', [
 
   // expose ui state to entire app
   $rootScope.$state = $state;
-  alert($state.current.name);
   function stateNameInjector (name) {
     $('body').toggleClass(name);
   }
