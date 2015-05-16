@@ -39,6 +39,13 @@ p { font-family:$base-font;
   }
 }
 
+.quarter-top {
+  padding-top:25px;
+  @include bp-small {
+    padding-top:50px;
+  }
+}
+
 .header {
   float:left;
   width: 100%;
@@ -102,9 +109,17 @@ p { font-family:$base-font;
   }
 }
 
-.join-twerk-modal {
+.join-twerk-modal, .avatar-modal {
   &.modal {   background: rgba(33, 95, 88, 0.84); }
   .modal-content { background:transparent; box-shadow:none; border:none; }
+}
+
+.avatar-list {
+  text-align: center;
+  input[type="radio"] { visibility:hidden;
+    &:checked+label { border:1px solid red; }
+  }
+  img { height:150px; width:150px; }
 }
 
 
