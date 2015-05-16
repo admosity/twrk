@@ -6,6 +6,8 @@
   display: block;
 }
 
+
+
 .twerkTeam {
   display: block;
   text-align: left;
@@ -27,6 +29,8 @@
     right: -223px;
   }
 
+  .num { margin-left:25px !important; }
+
   .twerk-leaders {
     li {
       padding: 0;
@@ -39,9 +43,11 @@
       transition: all .5s ease-in;
       &:hover { background:rgba(0, 0, 0, 0.14); }
       p {
+        font-family: $base-font;
         display: inline;
+        text-transform: lowercase;
         margin: 0 10px;
-        font-weight: 800;
+        font-weight: 200;
         &:last-child { font-weight: 400;}
       }
     }
