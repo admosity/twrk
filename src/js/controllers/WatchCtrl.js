@@ -46,6 +46,9 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     console.log("ADD PLAYER ", data);
     if(playerList[data.id]) removeBody(playerList[data.id]);
     playerList[data.id] = makeBody();
+    playerList[data.id].avatar = data.avatar;
+    playerList[data.id].username = data.username;
+
   }
 
   var socket = io.connect(window.SERVER_URL);
@@ -462,6 +465,26 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     ctx.restore();
   }
 
+  function drawAvatar(shape, body, avatar){
+    ctx.beginPath();
+    var x = body.position[0],
+        y = body.position[1];
+    ctx.save();
+    ctx.translate(x, y);        // Translate to the center of the box
+    ctx.rotate(body.angle + Math.PI);  // Rotate to the box body frame
+    //ctx.rect(-shape.width/2, -shape.height/2, shape.width, shape.height);
+    var img=$("#avatar-"+avatar)[0];
+    console.log(img.width, img.height);
+    var ratio = img.width/img.height;
+    // console.log(img);
+    ctx.drawImage(img,-(ratio/2),-0.6,ratio,1);
+
+    ctx.fillStyle = "#000000";
+    ctx.fill();
+    ctx.stroke();
+    ctx.restore();
+  }
+
   function drawRect(shape, body){
     ctx.beginPath();
     var x = body.position[0],
@@ -487,7 +510,8 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     var bodies = player.body;
     var shapes = player.shape;
     // drawRect(shape, body);
-    drawCircle(shapes.head, bodies.head);
+    //drawCircle(shapes.head, bodies.head);
+    
     drawRect(shapes.upperArm, bodies.upperLeftArm);
     drawRect(shapes.lowerArm, bodies.lowerLeftArm);
     drawRect(shapes.upperLeg, bodies.upperLeftLeg);
@@ -500,6 +524,8 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     drawRect(shapes.lowerArm, bodies.lowerRightArm);
     drawRect(shapes.upperLeg, bodies.upperRightLeg);
     drawRect(shapes.lowerLeg, bodies.lowerRightLeg);
+
+    drawAvatar(shapes.head, bodies.head, player.avatar);
     // var headShape =      new p2.Circle(headRadius),
     //     upperArmShape =  new p2.Rectangle(upperArmLength,upperArmSize),
     //     lowerArmShape =  new p2.Rectangle(lowerArmLength,lowerArmSize),
