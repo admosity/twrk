@@ -4,9 +4,17 @@ body {
 }
 
 .header { background:$secondary-color; }
-.logo { font-family:$base-font; color:$tertiary-color; font-size: 60px; }
+.logo { font-family:$base-font;
+  color:$tertiary-color;
+  font-size: 60px;
+}
 
-.col { background:#999; text-align: center;   border: 1px solid #fff; color:#fff; padding:30px 0; }
+.col { background:#999;
+  text-align: center;
+  border: 1px solid #fff;
+  color:#fff;
+  padding:30px 0;
+}
 
 .col input {
   @include placeholder {
