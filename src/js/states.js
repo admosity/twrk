@@ -63,8 +63,9 @@ module.config(
       .state('twerk-calibrate', {
         url: '/twrk/calibrate',
         views: {
-
+          
           'content': {
+            controller: "CalibrateCtrl",
             templateUrl: "/views/twerk-calibrate.html"
           },
 
