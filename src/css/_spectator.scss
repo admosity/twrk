@@ -19,6 +19,7 @@
   overflow-y:auto;
   transition-property: all;
 	transition-duration: .5s;
+  @include bp-small { display:none; }
   &.closed { right:-220px;  }
   .twerk-leaders {
     li {
