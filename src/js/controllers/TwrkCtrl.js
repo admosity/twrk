@@ -1,7 +1,11 @@
 var module = require('./module');
 
 module.controller('TwrkCtrl', function($scope, $http, $modal) {
-
+  $scope.topDigest = function() {
+    if(!$scope.$$phase) {
+      $scope.$digest();
+    }
+  };
   $scope.chooseAvatar = function (size, msg) {
     var modalInstance = $modal.open({
       templateUrl: '/views/partials/avatar-modal.html',
@@ -12,14 +16,14 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
           return $scope;
         }
       },
-      controller: function($scope, $modalInstance, topScope) {
+      controller: function($scope, $modalInstance, $timeout, topScope) {
         $scope.chooseMyAvatar = function(avatar) {
           topScope.avatar = avatar;
           $modalInstance.close();
         };
       }
     });
-  }
+  };
 
   var dataContainerOrientation = document.getElementById('dataContainerOrientation');
   var dataContainerMotion = document.getElementById('dataContainerMotion');
