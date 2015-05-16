@@ -11,12 +11,9 @@ require! {
   'serve-static': serveStatic
   'basic-auth': basicAuth
   'async'
-  cfenv
   nconf
   cson: CSON
 }
-
-appEnv = cfenv.getAppEnv!
 
 h = require('http')
 
