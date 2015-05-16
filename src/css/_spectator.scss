@@ -8,12 +8,28 @@
 
 .twerkTeam {
   display: block;
-  height: 300px;
   text-align: left;
   background-color: rgba(255, 255, 255, 0.25);
   width: 100%;
   padding: 5px;
+  position:fixed;
+  right:0;
+  top:80px;
+  width:25%;
+  height:100%;
+  overflow-y:auto;
+  .twerk-leaders {
+    li {
+      padding: 0;
+      margin: 10px 0;
+      padding:10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.38);
+    p { display:inline; margin:0 10px; }
+    }
+  }
 }
+
+
 
 .twerkTeamHeader {
   margin: 0;
@@ -21,7 +37,6 @@
   font-weight: 600;
   font-size: 1.2em;
   width: 100%;
-  background-color: rgba(255, 255, 255, .30);
   padding: 10px;
 }
 
@@ -44,9 +59,12 @@ hr {
 }
 
 .smallavatar {
-  width: 16px;
+  width: 50px;
   display: inline-block;
   margin-left: 20px;
+}
+.mediumavatar {
+  width: 100px;
 }
 
 .top3 {
@@ -54,9 +72,6 @@ hr {
   padding: 5px;
 }
 
-.mediumavatar {
-  width: 100px;
-}
 
 .leaderboard {
   background-color: rgba(0, 0, 0, 0.25);
