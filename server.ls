@@ -78,7 +78,7 @@ app
     secret: 'SOME SECRET'
     store: new MongoStore mongooseConnection: mongoose.connection
 
-  ..use '*', (req, res)->res.render('index', SERVER_URL)
+  ..use '*', (req, res)->res.render('index', SERVER_URL:SERVER_URL)
 
 
   # server = ..listen port, !->
