@@ -8,7 +8,8 @@
 				"core",
 				"bower_components",
 				"lib",
-				"database"
+				"database",
+				"dist"
 			],
 			"follow_symlinks": true,
 			"path": "."
