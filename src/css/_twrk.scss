@@ -55,6 +55,8 @@ h1, h3 {
     }
 }
 
+h3 { font-size: 22px; }
+
 h1, h2, h3, p {
     color: #fff;
 }
@@ -212,8 +214,8 @@ p {
   background: transparent;
   border: none;
   box-shadow: none;
-  font-size: 30px;
-  height: 60px;
+  font-size: 26px;
+  height: 45px;
   border-bottom: 1px solid #00bcd6;
   margin: 30px auto;
   border-radius: 0;
@@ -285,6 +287,6 @@ p {
         color: #fff;
     }
     img {
-        width: 100px;
+        width: 80px;
     }
 }
