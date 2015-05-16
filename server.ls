@@ -45,7 +45,7 @@ else
       parse: (str) -> CSON.parse(str) 
       stringify: CSON.stringify
 # connect to mongodb
-mongoose.connect nconf.get('MONGO_URI')
+mongoose.connect nconf.get('MONGO_URI') || nconf.get('MONGOLAB_URI')
 console.log nconf.get!
 app = express!
 server = require('http').Server(app)
