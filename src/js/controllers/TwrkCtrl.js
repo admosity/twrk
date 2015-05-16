@@ -36,20 +36,11 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
       }
     });
   };
-
+  var interval;
+  
   var dataContainerOrientation = document.getElementById('dataContainerOrientation');
   var dataContainerMotion = document.getElementById('dataContainerMotion');
   var dataContainerAcceleration = document.getElementById('dataContainerAcceleration');
-
-  // var socket = io.connect(window.SERVER_URL);
-  // socket.on('connect', function (data) {
-  //   console.log("CONNECT RESPONSE");
-  //   socket.emit('update', { my: 'data' });
-  // });
-
-  // socket.on('reply', function (data) {
-  //   console.log("UPDATE RESPONSE", data);
-  // });
 
   if(window.DeviceOrientationEvent && window.DeviceMotionEvent) {
     var connected = false;
@@ -62,6 +53,7 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
         if(newValue != null) {
           socket.emit('join', { username: $scope.username, avatar: $scope.avatar });
           theWatch();
+          startTwrk();
         }
       });
 
@@ -213,6 +205,10 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
       gY = 0;
       gZ = 0;
     }
-    setInterval(sendData, 150);
+    
+    function startTwrk(){
+      clearInterval(interval);
+      interval = setInterval(sendData, 150);
+    }
   }
 });
