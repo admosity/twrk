@@ -29,7 +29,7 @@
     right: -223px;
   }
 
-  .num { margin-left:25px !important; }
+  .num { margin-left:20px !important; width: 5% !important;}
 
   .twerk-leaders {
     li {
@@ -41,14 +41,18 @@
       -o-transition: all .5s ease-in;
       -webkit-transition: all .5s ease-in;
       transition: all .5s ease-in;
+      text-align: center;
+      .smallavatar { text-align:left; margin-left:-8px; padding:0; }
       &:hover { background:rgba(0, 0, 0, 0.14); }
       p {
         font-family: $base-font;
-        display: inline;
+        display: inline-block;
         text-transform: lowercase;
         margin: 0 10px;
         font-weight: 200;
-        &:last-child { font-weight: 400;}
+        width:20%;
+        text-align: center;
+        &:last-child { font-weight: 400; }
       }
     }
   }
