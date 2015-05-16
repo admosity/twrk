@@ -128,7 +128,7 @@ io.on 'connection', (socket) ->
 
 
 
-    io.emit 'user disconnect'
+    io.emit 'user disconnect', {id: socket.request.session.user_id}
     if socket.request.session.user_id != null
       removeIdx = activePlayers.indexOf(socket)
       activePlayers.slice removeIdx, 1
