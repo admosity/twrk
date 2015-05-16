@@ -1,5 +1,6 @@
 body {
     font-family: $base-font;
+    overflow-x:hidden;
     &.landing {
         background: url(/images/bg.jpg);
         background-size: cover;
@@ -209,6 +210,10 @@ p {
   width: 100px;
   margin: 0 auto;
   display: block;
+}
+
+.scroll-link {
+  color:#fff;
 }
 
 .enter-username {

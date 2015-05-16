@@ -6,6 +6,13 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
   console.log("WATCH DAT TWERK");
 
+  $('.scroll-link').click(function(){
+    $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+    return false;
+  });
+
+
+
   $( ".open-leaders" ).click(function() {
     $( ".twerkTeam" ).toggleClass( "closed" );
   });
@@ -509,7 +516,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     ctx.rotate(body.angle + Math.PI);  // Rotate to the box body frame
     //ctx.rect(-shape.width/2, -shape.height/2, shape.width, shape.height);
     var img=$("#avatar-"+avatar)[0];
-    
+
     var ratio = img.width/img.height;
     // console.log(img);
     ctx.drawImage(img,-(ratio/2),-0.6,ratio,1);
@@ -547,7 +554,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     var shapes = player.shape;
     // drawRect(shape, body);
     //drawCircle(shapes.head, bodies.head);
-    
+
     drawRect(shapes.upperArm, bodies.upperLeftArm);
     drawRect(shapes.lowerArm, bodies.lowerLeftArm);
     drawRect(shapes.upperLeg, bodies.upperLeftLeg);
