@@ -102,6 +102,7 @@ activePlayers = []
 idx = 0
 io.on 'connection', (socket) ->
   console.log 'connection'
+  socket.emit 'users', {users: activePlayers.map (p) -> p.request.session}
 
   socket.on 'join', (data) ->
     socket.request.session{avatar, username} = data
@@ -112,7 +113,6 @@ io.on 'connection', (socket) ->
     console.log("BROADCAST CONNECT RESPONSE TO EVERYONE");
     socket.broadcast.emit 'joined', {avatar, username, id:idx}
     idx++
-    socket.emit 'users', {users: activePlayers.map (p) -> p.request.session}
     
 
   socket.on 'update', (data)-> 
@@ -124,13 +124,13 @@ io.on 'connection', (socket) ->
     console.log data
     io.emit 'reply', data
   socket.on 'disconnect', ->
-    console.log 'user disconnected'
+    console.log 'user disconnected', socket.request.session.user_id
 
 
 
     io.emit 'user disconnect', {id: socket.request.session.user_id}
     if socket.request.session.user_id != null
       removeIdx = activePlayers.indexOf(socket)
-      activePlayers.slice removeIdx, 1
+      activePlayers.splice removeIdx, 1
   
   

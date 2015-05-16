@@ -1,35 +1,40 @@
 body {
-  font-family: $base-font;
-  &.landing {
-    background: url(/images/bg.jpg);
-    background-size:cover;
-    background-attachment:fixed;
-  }
-  &.twerk-do, &.twerk-calibrate { background:$dark-b;  }
-  &.watch-twerk { background:url(/images/room2.jpg);
-    background-size: cover;
-    background-attachment:fixed;
-    background-blend-mode: multiply;
-    -moz-transition: all .5s ease-in;
-    -o-transition: all .5s ease-in;
-    -webkit-transition: all .5s ease-in;
-    transition: all .5s ease-in;
-    &.change1 {
-      background-color: $the-yellow;
-      background-blend-mode: multiply;
+    font-family: $base-font;
+    &.landing {
+        background: url(/images/bg.jpg);
+        background-size: cover;
+        background-attachment: fixed;
     }
-    &.change2 {
-      background-color: $the-red;
-      background-blend-mode: multiply;
+    &.twerk-do, &.twerk-calibrate {
+        background: $dark-b;
     }
-    &.change3 {
-      background-color: $the-pink;
-      background-blend-mode: multiply;
+    &.watch-twerk {
+        background: url(/images/room2.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+        background-blend-mode: multiply;
+        -moz-transition: all .5s ease-in;
+        -o-transition: all .5s ease-in;
+        -webkit-transition: all .5s ease-in;
+        transition: all .5s ease-in;
+        &.change1 {
+            background-color: $the-yellow;
+            background-blend-mode: multiply;
+        }
+        &.change2 {
+            background-color: $the-red;
+            background-blend-mode: multiply;
+        }
+        &.change3 {
+            background-color: $the-pink;
+            background-blend-mode: multiply;
+        }
     }
-  }
-  &.twerk-calibrate  {
-    .footer  { display: none; }
-  }
+    &.twerk-calibrate {
+        .footer {
+            display: none;
+        }
+    }
     font-family: $base-font;
     &.landing {
         background: url(/images/bg.jpg);
@@ -104,7 +109,7 @@ p {
 
 .logo, .logo a {
     font-family: $base-font;
-    color: $light-b;
+    color: $light-g;
     font-size: 45px;
     text-align: left;
     margin: 0;
@@ -151,30 +156,30 @@ p {
         padding: 3px 20px;
         font-size: 18px;
         background: transparent;
-        border-color: $light-b;
-        color: $light-b;
+        border-color: $light-g;
+        color: $light-g;
         &:hover {
-            color: $light-b;
+            color: $light-g;
             border-color: #fff;
             background: #fff;
         }
     }
     &.btn-twerk {
         background: transparent;
-        border-color: $light-b;
-        color: $light-b;
+        border-color: $light-g;
+        color: $light-g;
         &:hover {
-            color: $light-b;
+            color: $light-g;
             border-color: #fff;
             background: #fff;
         }
     }
     &.btn-watch {
         background: transparent;
-        border-color: $light-b;
-        color: $light-b;
+        border-color: $light-g;
+        color: $light-g;
         &:hover {
-            color: $light-b;
+            color: $light-g;
             border-color: #fff;
             background: #fff;
         }
@@ -187,10 +192,10 @@ p {
         width: 200px;
         margin: 0 auto;
         background: transparent;
-        border-color: $light-b;
-        color: $light-b;
+        border-color: $light-g;
+        color: $light-g;
         &:hover {
-            color: $light-b;
+            color: $light-g;
             border-color: #fff;
             background: #fff;
         }
@@ -225,6 +230,7 @@ p {
   }
 }
 
+
 .join-twerk-modal, .avatar-modal {
     &.modal {
         background: rgba(33, 95, 88, 0.84);
@@ -234,7 +240,9 @@ p {
         box-shadow: none;
         border: none;
     }
-    .modal-title {   text-align: center; }
+    .modal-title {
+        text-align: center;
+    }
 }
 
 .avatar-list {
@@ -246,13 +254,15 @@ p {
         border: 1px solid red;
     }
     img {
-        opacity:0.8;
+        opacity: 0.8;
         height: 150px;
         width: 150px;
         &:focus, &:active, &:hover {
-          -ms-transform: rotate(9deg); /* IE 9 */
-          -webkit-transform: rotate(9deg); /* Chrome, Safari, Opera */
-          transform: rotate(9deg);
+            -ms-transform: rotate(9deg);
+            /* IE 9 */
+            -webkit-transform: rotate(9deg);
+            /* Chrome, Safari, Opera */
+            transform: rotate(9deg);
         }
     }
 }

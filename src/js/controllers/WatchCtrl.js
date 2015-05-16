@@ -42,13 +42,25 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
   console.log(window.SERVER_URL);
 
+  function addPlayer(data){
+    console.log("ADD PLAYER ", data);
+    if(playerList[data.id]) removeBody(playerList[data.id]);
+    playerList[data.id] = makeBody();
+  }
+
   var socket = io.connect(window.SERVER_URL);
   socket.on('joined', function (data) {
     console.log("CONNECT RESPONSE", data);
     if(data){
-      if(playerList[data.id]) removeBody(playerList[data.id]);
-      playerList[data.id] = makeBody();
-      console.log("PLAYER");
+      addPlayer(data);
+    }
+  });
+
+  socket.on('users', function (data){
+    var users = data.users;
+    for(var i = 0; i < users.length; i++){
+      var player = users[i];
+      addPlayer(player);
     }
   });
 
@@ -458,6 +470,8 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     ctx.translate(x, y);        // Translate to the center of the box
     ctx.rotate(body.angle);  // Rotate to the box body frame
     ctx.rect(-shape.width/2, -shape.height/2, shape.width, shape.height);
+    ctx.fillStyle = "#000000";
+    ctx.fill();
     ctx.stroke();
     ctx.restore();
   }
