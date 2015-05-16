@@ -110,8 +110,8 @@ io.on 'connection', (socket) ->
     socket.request.session.save!
     activePlayers.push socket
     idx++
-    console.log socket.request.session
-    io.emit 'connect', {avatar, username, id:idx}
+    console.log("BROADCAST CONNECT RESPONSE TO EVERYONE");
+    socket.broadcast.emit 'joined', {avatar, username, id:idx}
     socket.emit 'users', {users: activePlayers.map (p) -> p.request.session}
     
 
