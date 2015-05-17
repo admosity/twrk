@@ -6,7 +6,7 @@
   display: block;
 }
 
-#alert { color:rgba(167, 255, 152, 0.7); letter-spacing:5px; font-family: 'Bangers', cursive; font-size:60px; margin: 100px auto 0; }
+#alert-wrapper { color:#456224; letter-spacing:5px; font-family: 'Bangers', cursive; font-size:60px; position:absolute; left:30%; width:500px; }
 
 .twerkTeam {
   display: block;
@@ -61,7 +61,7 @@
 }
 
 .twerkTeamHeader {
-  background: #81B546;
+  background: #456224;
   margin: 0;
   display: block;
   font-weight: 600;
