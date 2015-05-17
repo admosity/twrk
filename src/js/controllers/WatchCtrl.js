@@ -659,7 +659,6 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     ctx.translate(x, y);        // Translate to the center of the box
     ctx.rotate(body.angle);  // Rotate to the box body frame
     ctx.rect(-shape.width/2, -shape.height/2, shape.width, shape.height);
-    ctx.fillStyle = "#000000";
     ctx.fill();
     ctx.lineWidth = 0.05;
     ctx.stroke();
@@ -672,23 +671,34 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 // pelvis
 // upperLeg
 // lowerLeg
-
+  var blue = "#396cff";
+  var white = "#FFFFFF";
+  var skin = "#e9a84c";
+  
   function drawBody(player){
     var bodies = player.body;
     var shapes = player.shape;
     // drawRect(shape, body);
     //drawCircle(shapes.head, bodies.head);
-
+    ctx.fillStyle = white;
     drawRect(shapes.upperArm, bodies.upperLeftArm);
+    ctx.fillStyle = skin;
     drawRect(shapes.lowerArm, bodies.lowerLeftArm);
+    ctx.fillStyle = blue;
     drawRect(shapes.upperLeg, bodies.upperLeftLeg);
     drawRect(shapes.lowerLeg, bodies.lowerLeftLeg);
 
+    ctx.fillStyle = white;
     drawRect(shapes.upperBody, bodies.upperBody);
+    ctx.fillStyle = blue;
     drawRect(shapes.pelvis, bodies.pelvis);
 
+    ctx.fillStyle = white;
     drawRect(shapes.upperArm, bodies.upperRightArm);
+    ctx.fillStyle = skin;
     drawRect(shapes.lowerArm, bodies.lowerRightArm);
+
+    ctx.fillStyle = blue;
     drawRect(shapes.upperLeg, bodies.upperRightLeg);
     drawRect(shapes.lowerLeg, bodies.lowerRightLeg);
 
