@@ -146,7 +146,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
       return user + " got a MONSTER KILL!";
 
       case 14:
-      unrealSound('headshot' + (temp3): temp3+1:'')
+      unrealSound('headshot' + (temp3) ? temp3+1:'')
       return user + " got a HEADSHOT!";
 
       case 15:
