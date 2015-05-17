@@ -29,7 +29,6 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
       },
       controller: function($scope, $modalInstance, $timeout, topScope) {
         var number = window.numberAvatars;
-        alert(number);
         $scope.getNumber = function() {
           return new Array(number);
         };
