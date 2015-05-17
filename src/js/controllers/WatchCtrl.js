@@ -37,6 +37,21 @@ function lights(){
       $('.watch-twerk').removeClass('change6');
       $('.watch-twerk').addClass('change7');
     },19000);
+    setTimeout(function(){
+      // toggle back after 1 second
+      $('.watch-twerk').removeClass('change7');
+      $('.watch-twerk').addClass('change8');
+    },22000);
+    setTimeout(function(){
+      // toggle back after 1 second
+      $('.watch-twerk').removeClass('change8');
+      $('.watch-twerk').addClass('change9');
+    },25000);
+    setTimeout(function(){
+      // toggle back after 1 second
+      $('.watch-twerk').removeClass('change9');
+      $('.watch-twerk').addClass('change10');
+    },28000);
 
   }
 
