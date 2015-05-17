@@ -90,7 +90,9 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
       case 2: return user + " is twerking so fucking hard";
       case 3: return "Holy fuck! " + user + " is going HAM";
       case 4: return user + " is twerking like a motherfucker";
-      case 5: return user + " is on a killing spree";
+      case 5: 
+        unrealSound('killingspree')
+        return user + " is on a killing spree";
     }
     return "";
   }
