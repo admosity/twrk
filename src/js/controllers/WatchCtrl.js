@@ -1,4 +1,8 @@
 
+function unrealSound (name) {
+  var audio = new Audio('/audio/' + name + '.wav');
+  audio.play();
+}
 
 var module = require('./module');
 
@@ -76,16 +80,17 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
   thresholdScore = 500;
   function getScoreMessage(user){
-    var rand = parseInt(Math.random() * 5);
+    var rand = parseInt(Math.random() * 6);
     switch(rand){
       case 0: return user + " is fucking killing it";
       case 1: 
         //Play godlike sound
+        unrealSound('godlike');
         return user + " is GODLIKE";
       case 2: return user + " is twerking so fucking hard";
       case 3: return "Holy fuck! " + user + " is going HAM";
       case 4: return user + " is twerking like a motherfucker";
-      case 6: return user + " is on a killing spree";
+      case 5: return user + " is on a killing spree";
     }
     return "";
   }
