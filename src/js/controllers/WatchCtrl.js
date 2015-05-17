@@ -216,7 +216,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
           avatar: playerList[id].avatar,
           username: playerList[id].username
         });
-        if(i == 0 && parseInt(player.score * 100) >= thresholdScore){
+        if(i == 0 && parseInt(player.score * 100) >= thresholdScore && Math.random() < 0.3){
           $('#alert').text(getScoreMessage(playerList[id].username));
           $('#alert-wrapper').show();
         }
