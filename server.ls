@@ -118,6 +118,7 @@ io.on 'connection', (socket) ->
     idx++
 
   socket.on 'update avatar', (data) ->
+    
     io.emit 'avatar updated', {user_id: socket.request.session.user_id, avatar: data.avatar}
   
   
