@@ -339,10 +339,19 @@ p {
   &:before { content:'scrolls'}
 }
 
+.explain {
+  p { font-size:25px; font-family: $base-font; font-weight:200;}
+  i { font-size:80px; }
+}
+
 .footer {
     /* background:$secondary-color; */
-    h1 { display:inline; float:left; margin-right:20px; font-size:50px; }
-    a { color:#fff; }
+    h1 { display:inline; float:left; margin-left:20px; font-size:50px;
+      &:nth-child(1) { margin-left:20px; }
+    }
+    a { color:#fff;
+      &:hover { color:$secondary-color; }
+    }
     text-align: left;
     padding: 0;
     font-family: $base-font;

@@ -60,13 +60,12 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
           startTwrk();
         }
       });
-
     });
 
     socket.on('disconnect', function(){
       alert("You have been disconnected");
     });
-    
+
     function sendServer(data){
       if(connected)
         socket.emit('update', { data: data });
