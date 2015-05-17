@@ -149,6 +149,11 @@ p {
     }
 }
 
+.share-btns { clear:both; margin:20px auto; text-align:center;
+  a { display:block; width:300px; margin:0 auto;}
+}
+
+
 .btn {
     font-size: 22px;
     padding: 5px 40px;
@@ -177,7 +182,7 @@ p {
             background: rgba(255, 255, 255, 0.90);
         }
     }
-    &.btn-twerk {
+    &.btn-twerk, &.twitter-share-button {
         background: transparent;
         border-color: $light-g;
         color: $light-g;
@@ -262,6 +267,9 @@ p {
 }
 
 
+.empty-modal { text-align:center;
+  h3 { margin:50px auto; font-size:50px; }
+ }
 .join-twerk-modal, .avatar-modal, .empty-modal {
     &.modal {
         background: rgba(67, 108, 54, 0.84);
