@@ -13,7 +13,10 @@ require! {
   'async'
   nconf
   cson: CSON
+  fs
 }
+
+numberAvatars = fs.readdirSync('./public/images/avatars').length
 
 h = require('http')
 
@@ -83,7 +86,7 @@ app
   ..use sessionMiddleware
 
   ..use '/user', require './routes/user'
-  ..use '*', (req, res)->res.render('index', SERVER_URL:SERVER_URL)
+  ..use '*', (req, res)->res.render('index', SERVER_URL:SERVER_URL, AVATARS: numberAvatars)
 
   # ..use passport.initialize!
   # ..use passport.session!
@@ -118,7 +121,7 @@ io.on 'connection', (socket) ->
     idx++
 
   socket.on 'update avatar', (data) ->
-    
+
     io.emit 'avatar updated', {user_id: socket.request.session.user_id, avatar: data.avatar}
   
   

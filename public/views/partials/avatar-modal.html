@@ -1,89 +1,9 @@
 <div class="modal-body">
   <h1 class="modal-title center">choose your avatar</h1>
   <div class="avatar-list">
-    <div class="radio">
-      <label for="zero"><img src="/images/avatars/0.png" ng-click="chooseMyAvatar(0)" width="10px" height="10px" alt=""></label>
+    <div class="radio" ng-repeat="i in getNumber() track by $index">
+      <label for="zero"><img src="/images/avatars/{{$index}}.png" ng-click="chooseMyAvatar($index)" width="10px" height="10px" alt=""></label>
       <input type="radio" name="avatar" id="zero">
-    </div>
-    <div class="radio">
-      <label for="one"><img src="/images/avatars/1.png" ng-click="chooseMyAvatar(1)" width="10px" height="10px" alt=""></label>
-      <input type="radio" name="avatar" id="one">
-    </div>
-    <div class="radio">
-      <label for="two"><img src="/images/avatars/2.png" ng-click="chooseMyAvatar(2)" width="10px" height="10px" alt=""></label>
-      <input type="radio" name="avatar" id="two">
-    </div>
-    <div class="radio">
-      <label for="three"><img src="/images/avatars/3.png" ng-click="chooseMyAvatar(3)" width="10px" height="10px" alt=""></label>
-      <input type="radio" name="avatar" id="three">
-    </div>
-    <div class="radio">
-      <label for="four"><img src="/images/avatars/4.png" ng-click="chooseMyAvatar(4)" width="10px" height="10px" alt=""></label>
-      <input type="radio" name="avatar" id="four">
-    </div>
-    <div class="radio">
-      <label for="five"><img src="/images/avatars/5.png" ng-click="chooseMyAvatar(5)" width="10px" height="10px" alt=""></label>
-      <input type="radio" name="avatar" id="five">
-    </div>
-    <div class="radio">
-      <label for="six"><img src="/images/avatars/6.png" ng-click="chooseMyAvatar(6)" width="10px" height="10px" alt=""></label>
-      <input type="radio" name="avatar" id="six">
-    </div>
-    <div class="radio">
-      <label for="seven"><img src="/images/avatars/7.png" ng-click="chooseMyAvatar(7)" width="10px" height="10px" alt=""></label>
-      <input type="radio" name="avatar" id="seven">
-    </div>
-    <div class="radio">
-      <label for="eight"><img src="/images/avatars/8.png" ng-click="chooseMyAvatar(8)" width="10px" height="10px" alt=""></label>
-      <input type="radio" name="avatar" id="eight">
-    </div>
-    <div class="radio">
-      <label for="nine"><img src="/images/avatars/9.png" ng-click="chooseMyAvatar(9)" width="10px" height="10px" alt=""></label>
-      <input type="radio" name="avatar" id="nine">
-    </div>
-    <div class="radio">
-      <label for="ten"><img src="/images/avatars/10.png" ng-click="chooseMyAvatar(10)" width="10px" height="10px" alt=""></label>
-      <input type="radio" name="avatar" id="ten">
-    </div>
-    <div class="radio">
-      <label for="eleven"><img src="/images/avatars/11.png" ng-click="chooseMyAvatar(11)" width="10px" height="10px" alt=""></label>
-      <input type="radio" name="avatar" id="eleven">
-    </div>
-    <div class="radio">
-      <label for="twelve"><img src="/images/avatars/12.png" ng-click="chooseMyAvatar(12)" width="10px" height="10px" alt=""></label>
-      <input type="radio" name="avatar" id="twelve">
-    </div>
-    <div class="radio">
-      <label for="thirteen"><img src="/images/avatars/13.png" ng-click="chooseMyAvatar(13)" width="10px" height="10px" alt=""></label>
-      <input type="radio" name="avatar" id="thirteen">
-    </div>
-    <div class="radio">
-      <label for="fourteen"><img src="/images/avatars/14.png" ng-click="chooseMyAvatar(14)" width="10px" height="10px" alt=""></label>
-      <input type="radio" name="avatar" id="fourteen">
-    </div>
-    <div class="radio">
-      <label for="fifteen"><img src="/images/avatars/15.png" ng-click="chooseMyAvatar(15)" width="10px" height="10px" alt=""></label>
-      <input type="radio" name="avatar" id="fifteen">
-    </div>
-    <div class="radio">
-      <label for="sixteen"><img src="/images/avatars/16.png" ng-click="chooseMyAvatar(16)" width="10px" height="10px" alt=""></label>
-      <input type="radio" name="avatar" id="sixteen">
-    </div>
-    <div class="radio">
-      <label for="seventeen"><img src="/images/avatars/17.png" ng-click="chooseMyAvatar(17)" width="10px" height="10px" alt=""></label>
-      <input type="radio" name="avatar" id="seventeen">
-    </div>
-    <div class="radio">
-      <label for="eighteen"><img src="/images/avatars/18.png" ng-click="chooseMyAvatar(18)" width="10px" height="10px" alt=""></label>
-      <input type="radio" name="avatar" id="eighteen">
-    </div>
-    <div class="radio">
-      <label for="nineteen"><img src="/images/avatars/19.png" ng-click="chooseMyAvatar(19)" width="10px" height="10px" alt=""></label>
-      <input type="radio" name="avatar" id="nineteen">
-    </div>
-    <div class="radio">
-      <label for="twenty"><img src="/images/avatars/20.png" ng-click="chooseMyAvatar(20)" width="10px" height="10px" alt=""></label>
-      <input type="radio" name="avatar" id="twenty">
     </div>
   </div>
 </div>
