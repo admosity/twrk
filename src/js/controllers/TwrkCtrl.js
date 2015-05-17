@@ -49,10 +49,14 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
     socket.on('connect', function (data) {
       connected = true;
       console.log('CONNECTION');
+      var doneOnce = false;
       var theWatch = $scope.$watch('avatar', function(newValue) {
         if(newValue != null) {
-          socket.emit('join', { username: $scope.username, avatar: $scope.avatar });
-          theWatch();
+          !doneOnce && socket.emit('join', { username: $scope.username, avatar: $scope.avatar });
+          doneOnce && socket.emit('update avatar', {avatar: $scope.avatar});
+          doneOnce = true;
+          // theWatch();
+
           startTwrk();
         }
       });

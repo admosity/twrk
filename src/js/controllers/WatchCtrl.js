@@ -231,6 +231,14 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     }
 
   });
+
+
+  socket.on('avatar updated', function(data) {
+    var currUser = playerList[data.user_id];
+    if(data && currUser) {
+      currUser.avatar = data.avatar;
+    }
+  });
 //socket.emit('join', { username: "USERNAME", avatar: 5 });
 
   socket.on('reply', function (data) {
