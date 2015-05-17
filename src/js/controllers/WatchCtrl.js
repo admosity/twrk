@@ -121,7 +121,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     users.sort(function(a, b){
       return b.score - a.score;
     });
-    $('#alert').hide();
+    $('#alert-wrapper').hide();
     var currScores = [];
     for(var i = 0; i < users.length; i++){
       var player = users[i];
@@ -136,7 +136,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
         });
         if(i == 0 && parseInt(player.score * 100) >= thresholdScore){
           $('#alert').text(getScoreMessage(playerList[id].username));
-          $('#alert').show();
+          $('#alert-wrapper').show();
         }
       }
     }
