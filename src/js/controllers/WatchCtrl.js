@@ -75,6 +75,19 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
   console.log(window.SERVER_URL);
 
+  thresholdScore = 200;
+  function getScoreMessage(user){
+    var rand = parseInt(Math.random() * 5);
+    switch(rand){
+      case 0: return user + " is fucking killing it";
+      case 1: return user + " is GODLIKE";
+      case 2: return user + " is twerking so fucking hard";
+      case 3: return "Holy fuck! " + user + " is going HAM";
+      case 4: return "" + user + " is twerking like a motherfucker";
+    }
+    return "";
+  }
+
   function addPlayer(data){
     if(playerList[data.user_id]) removeBody(playerList[data.user_id]);
     playerList[data.user_id] = makeBody();
@@ -111,6 +124,9 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
           avatar: playerList[id].avatar,
           username: playerList[id].username
         });
+        if(i == 0 && parseInt(player.score * 100) >= thresholdScore){
+          $('#alert').text(getScoreMessage(playerList[id].username));
+        }
       }
     }
     $scope.$apply(function() {
