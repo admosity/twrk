@@ -80,19 +80,61 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
   thresholdScore = 500;
   function getScoreMessage(user){
-    var rand = parseInt(Math.random() * 6);
+    var rand = parseInt(Math.random() * 18);
     switch(rand){
       case 0: return user + " is fucking killing it";
-      case 1: 
+      case 1:
         //Play godlike sound
         unrealSound('godlike');
         return user + " is GODLIKE";
       case 2: return user + " is twerking so fucking hard";
-      case 3: return "Holy fuck! " + user + " is going HAM";
+      case 3:
+      unrealSound('holyshit')
+      return "HOLY SHIT! " + user + " is going HAM";
       case 4: return user + " is twerking like a motherfucker";
-      case 5: 
+      case 5: return user + " is tripping balls!";
+      case 6: return user + " is literally Miley!";
+      case 7: return user + "'s booty is rocking everywhere";
+      case 8:
         unrealSound('killingspree')
         return user + " is on a killing spree";
+
+      case 9:
+      unrealSound('ownage')
+      return user + " is OWNAGE!";
+
+      case 10:
+      unrealSound('firstblood')
+      return user + " has drawn FIRST BLOOD!";
+
+      case 11:
+      unrealSound('unstoppable')
+      return user + " is UNSTOPPABLE!";
+
+      case 12:
+      unrealSound('whickedsick')
+      return user + " is WICKED SICK!";
+
+      case 13:
+      unrealSound('monsterkill')
+      return user + " got a MONSTER KILL!";
+
+      case 14:
+      unrealSound('headshot')
+      return user + " got a HEADSHOT!";
+
+      case 15:
+      unrealSound('dominating')
+      return user + " is DOMINATING!";
+
+      case 16:
+      unrealSound('flawless')
+      return user + "'s twrking is FLAWLESS!";
+
+      case 17:
+      unrealSound('rampage')
+      return user + " is on a fucking RAMPAGE!";
+
     }
     return "";
   }
