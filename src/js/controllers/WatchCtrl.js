@@ -118,7 +118,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
   console.log(window.SERVER_URL);
 
-  thresholdScore = 700;
+  thresholdScore = 600;
   function getScoreMessage(user){
     var rand = parseInt(Math.random() * 18);
     switch(rand){
