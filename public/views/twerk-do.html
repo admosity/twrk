@@ -8,7 +8,7 @@
 <div class="wrapper quarter-top">
   <div class="column-12">
     <input type="text" placeholder="Twerk handle" class="form-control enter-username" ng-model="username" ng-disabled="avatar" maxlength="10">
-    <a href="" ng-hide="avatar" class="btn btn-twerk avi" ng-click="chooseAvatar();" ng-disabled="!username || avatar"><span>choose avatar</span></a>
+    <a href="" ng-hide="avatar" class="btn btn-twerk avi" ng-click="chooseAvatar();" ng-disabled="!username"><span>choose avatar</span></a>
 
     <img ng-src="/images/avatars/{{avatar}}.png" ng-if="avatar != null" class="user-photo" alt="">
     <a href="" ng-show="avatar" class="btn btn-twerk avi" ng-click="repickAvatar();"><span>choose avatar</span></a>
