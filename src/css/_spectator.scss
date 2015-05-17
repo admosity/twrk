@@ -6,7 +6,7 @@
   display: block;
 }
 
-
+#alert { color:rgba(167, 255, 152, 0.7); letter-spacing:5px; font-family: 'Bangers', cursive; font-size:60px; margin: 100px auto 0; }
 
 .twerkTeam {
   display: block;
@@ -28,6 +28,8 @@
   &.closed {
     right: -223px;
   }
+
+  .alert { color:}
 
   .num { margin-left:20px !important; width: 5% !important;}
 
