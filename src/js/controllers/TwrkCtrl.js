@@ -32,8 +32,8 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
       controller: function($scope, $modalInstance, $timeout, topScope) {
         $scope.chooseMyAvatar = function(avatar) {
           disconnectSocket && disconnectSocket();
-          reconnect && reconnect();
           topScope.avatar = avatar;
+          reconnect && reconnect();
           $modalInstance.close();
         };
       }
@@ -62,12 +62,18 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
 
     });
 
+    var discFlag = false;
+
     socket.on('disconnect', function(){
-      alert("You have been disconnected");
+      discFlag && alert("You have been disconnected");
     });
 
     disconnectSocket = function() {
+      discFlag = true;
       socket.disconnect();
+      setTimeout(function() {
+        discFlag = false;
+      }, 2000);
     };
 
     reconnect = function() {
