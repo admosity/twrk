@@ -103,7 +103,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
   console.log(window.SERVER_URL);
 
-  thresholdScore = 500;
+  thresholdScore = 700;
   function getScoreMessage(user){
     var rand = parseInt(Math.random() * 18);
     switch(rand){
@@ -525,50 +525,6 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
   function impulse(player, force){
     player.body.pelvis.velocity[0] = force[0];
     player.body.pelvis.velocity[1] = force[1];
-//     var constraintBody = new p2.Body();
-//     constraintBody.position[0] = 0;
-//     constraintBody.position[1] = 0;
-// player.body.pelvis.velocity[0] =  5;
-//     // Create a body for the cursor
-//     world.addBody(constraintBody);
-//     var springConstraint = new p2.Spring(constraintBody, player.body.pelvis, {});
-//     world.addSpring(springConstraint);
-
-//     console.log("FUCK");
-
-//     var revConstraint = new p2.RevoluteConstraint(constraintBody, player.body.pelvis, {
-//               worldPivot: [1,1],
-//               collideConnected:false
-//             });
-//     world.addConstraint(revConstraint);
-
-
-    // var springConstraint = new p2.RotationalSpring(player.body.pelvis, constraintBody, {});
-    // springConstraint.applyForce();
-
-  //   // Convert the canvas coordinate to physics coordinates
-  //   var position = getPhysicsCoord(event);
-
-  //   // Check if the cursor is inside the box
-  //   var hitBodies = world.hitTest(position, [boxBody]);
-
-  //   if(hitBodies.length){
-
-  //     // Move the mouse body to the cursor position
-  //     mouseBody.position[0] = position[0];
-  //     mouseBody.position[1] = position[1];
-
-  //     // Create a RevoluteConstraint.
-  //     // This constraint lets the bodies rotate around a common point
-  //     mouseConstraint = new p2.RevoluteConstraint(mouseBody, boxBody, {
-  //       worldPivot: position,
-  //       collideConnected:false
-  //     });
-  //     world.addConstraint(mouseConstraint);
-  //   }
-  //   world.removeConstraint(mouseConstraint);
-  //   mouseConstraint = null;
-  // });
   }
   var addremovec = 0;
   function init(){
