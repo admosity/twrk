@@ -58,7 +58,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     });
   }
 
-  $scope.emptyModal = function (size, msg) {
+  var emptyModal = function (size, msg) {
     var modalInstance = $modal.open({
       templateUrl: '/views/partials/empty-modal.html',
       size: size,
@@ -142,6 +142,9 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     for(var i = 0; i < users.length; i++){
       var player = users[i];
       addPlayer(player);
+    }
+    if(!users.length){
+      emptyModal();
     }
   });
 
