@@ -1,0 +1,53 @@
+#stage {
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.light {
+  display: block;
+  position: absolute;
+  background-blend-mode: color-dodge;
+  width: 50px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: .48;
+}
+
+#cyanLight { 
+  left: 100px;
+  width: 100px;
+  border-bottom: 742px solid $cyan500; // need to set properly
+  border-left: 100px solid transparent;
+  border-right: 50px solid transparent;
+}
+
+#pinkLight { 
+  background-color: $pinkA200;
+  left: 200px;
+}
+
+#purpleLight {
+  background-color: $purple500;
+  left: 300px;
+}
+
+#greenLight {
+  background-color: $lightgreen500;
+  left: 400px;
+}
+
+#yellowLight {
+  background-color: $yellow500;
+  left: 500px;
+}
+
+#redLight {
+  background-color: $red600;
+  left: 600px;
+}
+
