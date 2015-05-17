@@ -1,10 +1,13 @@
 <div class="modal-body">
   <div class="alert-modal">
     <h3>Looks like everyone is too busy doing something stupid instead of twerking.</h3>
-    <a href="https://twitter.com/share" class="btn btn-twerk btn-xl"><i class="fa fa-twitter"></i> Tweet this shit</a>
+    <a href="https://twitter.com/share" target="_blank" class="btn btn-twerk btn-xl"><i class="fa fa-twitter"></i> Tweet this shit</a>
   <div class="share-btns">
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-    <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"></div>
+    <div id="fb" class="fb-share-button" data-href="http://www.twrk.co" data-layout="button"></div>
+    <script type="text/javascript">
+      FB.XFBML.parse(document.getElementById('fb'));
+    </script>
   </div>
   </div>
 </div>
