@@ -41,17 +41,39 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
   setInterval(function(){
     // toggle the class every five second
-    $('.watch-twerk').toggleClass('change1');
+    $('.watch-twerk').addClass('change1');
     setTimeout(function(){
       // toggle back after 1 second
-      $('.watch-twerk').toggleClass('change2');
+      $('.watch-twerk').removeClass('change1');
+      $('.watch-twerk').addClass('change2');
     },3000);
     setTimeout(function(){
       // toggle back after 1 second
-      $('.watch-twerk').toggleClass('change3');
-    },3000);
+      $('.watch-twerk').removeClass('change2');
+      $('.watch-twerk').addClass('change3');
+    },6000);
+    setTimeout(function(){
+      // toggle back after 1 second
+      $('.watch-twerk').removeClass('change3');
+      $('.watch-twerk').addClass('change4');
+    },9000);
+    setTimeout(function(){
+      // toggle back after 1 second
+      $('.watch-twerk').removeClass('change4');
+      $('.watch-twerk').addClass('change5');
+    },12000);
+    setTimeout(function(){
+      // toggle back after 1 second
+      $('.watch-twerk').removeClass('change5');
+      $('.watch-twerk').addClass('change6');
+    },16000);
+    setTimeout(function(){
+      // toggle back after 1 second
+      $('.watch-twerk').removeClass('change6');
+      $('.watch-twerk').addClass('change7');
+    },19000);
 
-  },3000);
+  },19000);
 
   $scope.joinTwerk = function (size, msg) {
     var modalInstance = $modal.open({
