@@ -106,6 +106,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
   thresholdScore = 700;
   function getScoreMessage(user){
     var rand = parseInt(Math.random() * 18);
+    var temp3 = rand % 3;
     switch(rand){
       case 0: return user + " is fucking killing it";
       case 1:
@@ -145,7 +146,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
       return user + " got a MONSTER KILL!";
 
       case 14:
-      unrealSound('headshot')
+      unrealSound('headshot' + (temp3) ? temp3+1:'')
       return user + " got a HEADSHOT!";
 
       case 15:

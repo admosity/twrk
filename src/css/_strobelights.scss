@@ -1,6 +1,5 @@
 #stage {
-  display: flex;
-  /*align-items: center;*/
+  display: block;
   justify-content: space-between;
   height: 100%;
   width: 100%;
@@ -12,53 +11,74 @@
 
 .light {
   display: inline-block;
+  position: absolute;
   background-blend-mode: color-dodge;
   width: 50px;
   height: 100%;
-  top: 0;
+  top: -50px;
   left: 0;
-  opacity: .48;
+  opacity: .18;
+  transform-origin: 0px 25px;
+}
+
+@-webkit-keyframes strobing {
+  0% {
+    transform: rotateZ(15deg);
+  }
+
+  50% {
+    transform: rotateZ(-15deg);
+  }
+
+  100% {
+    transform: rotateZ(15deg);
+  }
 }
 
 #cyanLight {
   left: 0px;
-  width: 100px;
-  border-bottom: 742px solid $cyan500; // need to set properly
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
+  border-bottom: 1000px solid $cyan500; // need to set properly
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  -webkit-animation: strobing 1.5s 0s alternate infinite;
 }
 
 #pinkLight {
   left: 125px;
-  border-bottom: 742px solid $pinkA200; // need to set properly
+  border-bottom: 1000px solid $pinkA200; // need to set properly
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
+  -webkit-animation: strobing 1.5s 0.5s alternate infinite;
 }
 
 #purpleLight {
-  border-bottom: 742px solid $purple500; // need to set properly
-  border-left: 10px solid transparent;
+  border-bottom: 1000px solid $purple500; // need to set properly
+  border-left: 50px solid transparent;
   border-right: 50px solid transparent;
   left: 250px;
+  -webkit-animation: strobing 1.5s  0.75s infinite;
 }
 
 #yellowLight {
-  border-bottom: 742px solid $yellow500; // need to set properly
+  border-bottom: 1000px solid $yellow500; // need to set properly
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
   left: 375px;
+  -webkit-animation: strobing 1.5s 0.25s infinite;
 }
 
 #greenLight {
-  border-bottom: 742px solid $lightgreen500; // need to set properly
+  border-bottom: 1000px solid $lightgreen500; // need to set properly
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
   left: 500px;
+  -webkit-animation: strobing 1.5s 0.66s infinite;
 }
 
 #redLight {
-  border-bottom: 742px solid $red600; // need to set properly
+  border-bottom: 1000px solid $red600; // need to set properly
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
   left: 625px;
+  -webkit-animation: strobing 1.5s 1.25s infinite;
 }
