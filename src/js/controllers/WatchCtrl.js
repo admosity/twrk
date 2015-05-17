@@ -1,4 +1,8 @@
 
+function unrealSound (name) {
+  var audio = new Audio('/audio/' + name + '.wav');
+  audio.play();
+}
 
 var module = require('./module');
 
@@ -76,16 +80,19 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
   thresholdScore = 500;
   function getScoreMessage(user){
-    var rand = parseInt(Math.random() * 5);
+    var rand = parseInt(Math.random() * 6);
     switch(rand){
       case 0: return user + " is fucking killing it";
       case 1: 
         //Play godlike sound
+        unrealSound('godlike');
         return user + " is GODLIKE";
       case 2: return user + " is twerking so fucking hard";
       case 3: return "Holy fuck! " + user + " is going HAM";
       case 4: return user + " is twerking like a motherfucker";
-      case 6: return user + " is on a killing spree";
+      case 5: 
+        unrealSound('killingspree')
+        return user + " is on a killing spree";
     }
     return "";
   }
@@ -114,7 +121,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     users.sort(function(a, b){
       return b.score - a.score;
     });
-    $('#alert').hide();
+    $('#alert-wrapper').hide();
     var currScores = [];
     for(var i = 0; i < users.length; i++){
       var player = users[i];
@@ -129,7 +136,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
         });
         if(i == 0 && parseInt(player.score * 100) >= thresholdScore){
           $('#alert').text(getScoreMessage(playerList[id].username));
-          $('#alert').show();
+          $('#alert-wrapper').show();
         }
       }
     }
