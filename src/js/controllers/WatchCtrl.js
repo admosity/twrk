@@ -37,6 +37,21 @@ function lights(){
       $('.watch-twerk').removeClass('change6');
       $('.watch-twerk').addClass('change7');
     },19000);
+    setTimeout(function(){
+      // toggle back after 1 second
+      $('.watch-twerk').removeClass('change7');
+      $('.watch-twerk').addClass('change8');
+    },22000);
+    setTimeout(function(){
+      // toggle back after 1 second
+      $('.watch-twerk').removeClass('change8');
+      $('.watch-twerk').addClass('change9');
+    },25000);
+    setTimeout(function(){
+      // toggle back after 1 second
+      $('.watch-twerk').removeClass('change9');
+      $('.watch-twerk').addClass('change10');
+    },28000);
 
   }
 
@@ -106,7 +121,6 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
   thresholdScore = 700;
   function getScoreMessage(user){
     var rand = parseInt(Math.random() * 18);
-    var temp3 = rand % 3;
     switch(rand){
       case 0: return user + " is fucking killing it";
       case 1:
@@ -146,7 +160,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
       return user + " got a MONSTER KILL!";
 
       case 14:
-      unrealSound('headshot' + (temp3) ? temp3+1:'')
+      unrealSound('headshot')
       return user + " got a HEADSHOT!";
 
       case 15:
@@ -202,7 +216,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
           avatar: playerList[id].avatar,
           username: playerList[id].username
         });
-        if(i == 0 && parseInt(player.score * 100) >= thresholdScore){
+        if(i == 0 && parseInt(player.score * 100) >= thresholdScore && Math.random() < 0.3){
           $('#alert').text(getScoreMessage(playerList[id].username));
           $('#alert-wrapper').show();
         }

@@ -59,6 +59,20 @@ body {
           background-color: $orange700;
           background-blend-mode: multiply;
         }
+        &.change8 {
+          background-color: $pinkA400;
+          background-blend-mode: multiply;
+          opacity: 0.2;
+        }
+        &.change9 {
+          background-color: $greenA700;
+          background-blend-mode: multiply;
+        }
+        &.change10 {
+          background-color: $greenA200;
+          background-blend-mode: multiply;
+        }
+
     }
     &.twerk-calibrate {
         .footer {

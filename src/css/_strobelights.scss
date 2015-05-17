@@ -40,7 +40,7 @@
   border-bottom: 1400px solid $cyan500; // need to set properly
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
-  -webkit-animation: strobing 1.5s 0s alternate infinite;
+  -webkit-animation: strobing 3s 0s alternate infinite;
 }
 
 #pinkLight {
@@ -48,7 +48,7 @@
   border-bottom: 1400px solid $pinkA200; // need to set properly
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
-  -webkit-animation: strobing 1.5s 0.5s alternate infinite;
+  -webkit-animation: strobing 3s 0.5s alternate infinite;
 }
 
 #purpleLight {
@@ -56,7 +56,7 @@
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
   left: 250px;
-  -webkit-animation: strobing 1.5s  0.75s infinite;
+  -webkit-animation: strobing 3s 0.75s infinite;
 }
 
 #yellowLight {
@@ -64,7 +64,7 @@
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
   left: 375px;
-  -webkit-animation: strobing 1.5s 0.25s infinite;
+  -webkit-animation: strobing 3s 0.25s infinite;
 }
 
 #greenLight {
@@ -72,7 +72,7 @@
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
   left: 500px;
-  -webkit-animation: strobing 1.5s 0.66s infinite;
+  -webkit-animation: strobing 3s 0.66s infinite;
 }
 
 #redLight {
@@ -80,7 +80,7 @@
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
   left: 625px;
-  -webkit-animation: strobing 1.5s 1.25s infinite;
+  -webkit-animation: strobing 3s 1.25s infinite;
 }
 
 #cyanLight2 {
@@ -88,7 +88,7 @@
   border-bottom: 1400px solid $cyan500; // need to set properly
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
-  -webkit-animation: strobing 1.5s 0s alternate infinite;
+  -webkit-animation: strobing 3s 0s alternate infinite;
 }
 
 #pinkLight2 {
@@ -96,7 +96,7 @@
   border-bottom: 1400px solid $pinkA200; // need to set properly
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
-  -webkit-animation: strobing 1.5s 0.5s alternate infinite;
+  -webkit-animation: strobing 3s 0.5s alternate infinite;
 }
 
 #purpleLight2 {
@@ -104,13 +104,13 @@
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
   left: 1000px;
-  -webkit-animation: strobing 1.5s  0s infinite;
+  -webkit-animation: strobing 3s 0s infinite;
 }
 
-#yellowLight {
+#yellowLight2 {
   border-bottom: 1400px solid $yellow500; // need to set properly
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
   left: 1125px;
-  -webkit-animation: strobing 1.5s 0.5s infinite;
+  -webkit-animation: strobing 3s 0.5s infinite;
 }
