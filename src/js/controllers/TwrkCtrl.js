@@ -45,7 +45,7 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
   var dataContainerOrientation = document.getElementById('dataContainerOrientation');
   var dataContainerMotion = document.getElementById('dataContainerMotion');
   var dataContainerAcceleration = document.getElementById('dataContainerAcceleration');
-
+  var d0 = 0, d1 = 0;
   if(window.DeviceOrientationEvent && window.DeviceMotionEvent) {
     var connected = false;
     //Socket stuff
@@ -56,7 +56,7 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
       var doneOnce = false;
       var theWatch = $scope.$watch('avatar', function(newValue) {
         if(newValue != null) {
-          !doneOnce && socket.emit('join', { username: $scope.username, avatar: $scope.avatar });
+          !doneOnce && d0 && d1 && socket.emit('join', { username: $scope.username, avatar: $scope.avatar });
           doneOnce && socket.emit('update avatar', {avatar: $scope.avatar});
           doneOnce = true;
           // theWatch();
@@ -130,6 +130,7 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
     var sampleCount = 0;
 
     window.addEventListener('deviceorientation', function(event) {
+      d0 = 1;
       yaw = event.alpha;
       pitch = event.beta;
       roll = event.gamma;
@@ -141,6 +142,7 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
 
     highestMagnitude = 0;
     window.addEventListener('devicemotion', function(event) {
+      d1 = 1;
       var x = event.acceleration.x;
       var y = event.acceleration.y;
       var z = event.acceleration.z;
