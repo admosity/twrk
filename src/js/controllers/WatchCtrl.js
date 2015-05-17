@@ -116,11 +116,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
           avatar: playerList[id].avatar,
           username: playerList[id].username
         });
-      }
-
-      if(i == 0 && currScores >= thresholdScore){
-        var id = player.user_id;
-        if(playerList[id]){
+        if(i == 0 && parseInt(player.score * 100) >= thresholdScore){
           $('#alert').text(getScoreMessage(playerList[id].username));
         }
       }
