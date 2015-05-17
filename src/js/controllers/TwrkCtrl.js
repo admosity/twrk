@@ -57,7 +57,7 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
       var theWatch = $scope.$watch('avatar', function(newValue) {
         if(newValue != null) {
           !doneOnce && d0 && d1 && socket.emit('join', { username: $scope.username, avatar: $scope.avatar });
-          doneOnce && socket.emit('update avatar', {avatar: $scope.avatar});
+          doneOnce && d0 && d1 && socket.emit('update avatar', {avatar: $scope.avatar});
           doneOnce = true;
           // theWatch();
 
