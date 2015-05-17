@@ -1,13 +1,13 @@
 
 module = require('./bootstrap');
 
-// function pipeline (funcs) {
-//   return function() {
-//     funcs.forEach(function(f) {
-//       f();
-//     });
-//   };
-// }
+function pipeline (funcs) {
+  return function() {
+    funcs.forEach(function(f) {
+      f();
+    });
+  };
+}
 module.config(
   function($stateProvider) {
     function stateNameInjector (name) {
