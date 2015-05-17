@@ -4,7 +4,6 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
     var scroll = $(window).scrollTop();
 
     if (scroll >= 50) {
-      console.log("helllooo");
       $(".header").addClass("scroll-header");
     }
     else {
@@ -29,6 +28,12 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
         }
       },
       controller: function($scope, $modalInstance, $timeout, topScope) {
+        var number = $('img[id^=avatar-]').length;
+        alert(number);
+        $scope.getNumber = function() {
+          return new Array(number);
+        };
+
         $scope.chooseMyAvatar = function(avatar) {
           topScope.avatar = avatar;
           $modalInstance.close();
