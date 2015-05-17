@@ -10,7 +10,9 @@
     <input type="text" placeholder="Twerk handle" class="form-control enter-username" ng-model="username" ng-disabled="avatar" maxlength="10">
     <a href="" ng-hide="avatar" class="btn btn-twerk avi" ng-click="chooseAvatar();" ng-disabled="!username || avatar"><span>choose avatar</span></a>
 
-    <img ng-click="repickAvatar();" ng-src="/images/avatars/{{avatar}}.png" ng-if="avatar != null" class="user-photo" alt="">
+    <img ng-src="/images/avatars/{{avatar}}.png" ng-if="avatar != null" class="user-photo" alt="">
+    <a href="" ng-show="avatar" class="btn btn-twerk avi" ng-click="repickAvatar();"><span>choose avatar</span></a>
+
     <h3>Drop me in your back pocket and <span class="bold">GET DOWN</span> with yo twerky self. Watch the party from a computer at twrk.co</h3>
     <img class="img-responsive" src="/images/pocket.gif" alt="" style="margin:0 auto; ">
   </div>
