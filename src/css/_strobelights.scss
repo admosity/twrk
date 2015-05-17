@@ -1,5 +1,7 @@
 #stage {
-  display: block;
+  display: flex-box;
+  /*align-items: center;*/
+  justify-content: space-between;
   height: 100%;
   width: 100%;
   position: fixed;
@@ -8,8 +10,7 @@
 }
 
 .light {
-  display: block;
-  position: absolute;
+  display: inline-block;
   background-blend-mode: color-dodge;
   width: 50px;
   height: 100%;
@@ -19,35 +20,45 @@
 }
 
 #cyanLight { 
-  left: 100px;
+  left: 0px;
   width: 100px;
   border-bottom: 742px solid $cyan500; // need to set properly
-  border-left: 100px solid transparent;
+  border-left: 50px solid transparent;
   border-right: 50px solid transparent;
 }
 
 #pinkLight { 
-  background-color: $pinkA200;
-  left: 200px;
+  left: 125px;
+  border-bottom: 742px solid $pinkA200; // need to set properly
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
 }
 
 #purpleLight {
-  background-color: $purple500;
-  left: 300px;
-}
-
-#greenLight {
-  background-color: $lightgreen500;
-  left: 400px;
+  border-bottom: 742px solid $purple500; // need to set properly
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  left: 250px;
 }
 
 #yellowLight {
-  background-color: $yellow500;
+  border-bottom: 742px solid $yellow500; // need to set properly
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  left: 375px;
+}
+
+#greenLight {
+  border-bottom: 742px solid $lightgreen500; // need to set properly
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
   left: 500px;
 }
 
 #redLight {
-  background-color: $red600;
-  left: 600px;
+  border-bottom: 742px solid $red600; // need to set properly
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  left: 625px;
 }
 
