@@ -712,10 +712,6 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     drawRect(shapes.upperLeg, bodies.upperLeftLeg);
     drawRect(shapes.lowerLeg, bodies.lowerLeftLeg);
 
-    ctx.fillStyle = white;
-    drawRect(shapes.upperBody, bodies.upperBody);
-    ctx.fillStyle = blue;
-    drawRect(shapes.pelvis, bodies.pelvis);
 
     ctx.fillStyle = white;
     drawRect(shapes.upperArm, bodies.upperRightArm);
@@ -726,6 +722,12 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     drawRect(shapes.upperLeg, bodies.upperRightLeg);
     drawRect(shapes.lowerLeg, bodies.lowerRightLeg);
 
+    ctx.fillStyle = blue;
+    drawRect(shapes.pelvis, bodies.pelvis);
+
+    ctx.fillStyle = white;
+    drawRect(shapes.upperBody, bodies.upperBody);
+    
     drawAvatar(shapes.head, bodies.head, player.avatar);
 
     // ctx.translate(1,1);
