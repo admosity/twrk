@@ -1,5 +1,5 @@
 #stage {
-  display: flex-box;
+  display: flex;
   /*align-items: center;*/
   justify-content: space-between;
   height: 100%;
@@ -7,6 +7,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  z-index: -1;
 }
 
 .light {
@@ -19,7 +20,7 @@
   opacity: .48;
 }
 
-#cyanLight { 
+#cyanLight {
   left: 0px;
   width: 100px;
   border-bottom: 742px solid $cyan500; // need to set properly
@@ -27,7 +28,7 @@
   border-right: 50px solid transparent;
 }
 
-#pinkLight { 
+#pinkLight {
   left: 125px;
   border-bottom: 742px solid $pinkA200; // need to set properly
   border-left: 50px solid transparent;
@@ -36,7 +37,7 @@
 
 #purpleLight {
   border-bottom: 742px solid $purple500; // need to set properly
-  border-left: 50px solid transparent;
+  border-left: 10px solid transparent;
   border-right: 50px solid transparent;
   left: 250px;
 }
@@ -61,4 +62,3 @@
   border-right: 50px solid transparent;
   left: 625px;
 }
-
