@@ -1,4 +1,5 @@
 var module = require('./module');
+var disconnectSocket, reconnect;
 module.controller('TwrkCtrl', function($scope, $http, $modal) {
   $(window).scroll(function() {
     var scroll = $(window).scrollTop();
@@ -30,6 +31,8 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
       },
       controller: function($scope, $modalInstance, $timeout, topScope) {
         $scope.chooseMyAvatar = function(avatar) {
+          disconnectSocket && disconnectSocket();
+          reconnect && reconnect();
           topScope.avatar = avatar;
           $modalInstance.close();
         };
@@ -62,6 +65,33 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
     socket.on('disconnect', function(){
       alert("You have been disconnected");
     });
+
+    disconnectSocket = function() {
+      socket.disconnect();
+    };
+
+    reconnect = function() {
+      socket = io.connect(window.SERVER_URL);
+      socket.on('connect', function (data) {
+        connected = true;
+        console.log('CONNECTION');
+        var theWatch = $scope.$watch('avatar', function(newValue) {
+          if(newValue != null) {
+            socket.emit('join', { username: $scope.username, avatar: $scope.avatar });
+            theWatch();
+            startTwrk();
+          }
+        });
+
+      });
+
+
+      socket.on('disconnect', function(){
+        alert("You have been disconnected");
+      });
+    };
+
+
     
     function sendServer(data){
       if(connected)
