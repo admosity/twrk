@@ -37,22 +37,22 @@
 
 #cyanLight {
   left: 0px;
-  border-bottom: 1000px solid $cyan500; // need to set properly
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
+  border-bottom: 1400px solid $cyan500; // need to set properly
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
   -webkit-animation: strobing 1.5s 0s alternate infinite;
 }
 
 #pinkLight {
   left: 125px;
-  border-bottom: 1000px solid $pinkA200; // need to set properly
+  border-bottom: 1400px solid $pinkA200; // need to set properly
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
   -webkit-animation: strobing 1.5s 0.5s alternate infinite;
 }
 
 #purpleLight {
-  border-bottom: 1000px solid $purple500; // need to set properly
+  border-bottom: 1400px solid $purple500; // need to set properly
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
   left: 250px;
@@ -60,7 +60,7 @@
 }
 
 #yellowLight {
-  border-bottom: 1000px solid $yellow500; // need to set properly
+  border-bottom: 1400px solid $yellow500; // need to set properly
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
   left: 375px;
@@ -68,7 +68,7 @@
 }
 
 #greenLight {
-  border-bottom: 1000px solid $lightgreen500; // need to set properly
+  border-bottom: 1400px solid $lightgreen500; // need to set properly
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
   left: 500px;
@@ -76,9 +76,41 @@
 }
 
 #redLight {
-  border-bottom: 1000px solid $red600; // need to set properly
+  border-bottom: 1400px solid $red600; // need to set properly
   border-left: 50px solid transparent;
   border-right: 50px solid transparent;
   left: 625px;
   -webkit-animation: strobing 1.5s 1.25s infinite;
+}
+
+#cyanLight2 {
+  left: 750px;
+  border-bottom: 1400px solid $cyan500; // need to set properly
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  -webkit-animation: strobing 1.5s 0s alternate infinite;
+}
+
+#pinkLight2 {
+  left: 875px;
+  border-bottom: 1400px solid $pinkA200; // need to set properly
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  -webkit-animation: strobing 1.5s 0.5s alternate infinite;
+}
+
+#purpleLight2 {
+  border-bottom: 1400px solid $purple500; // need to set properly
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  left: 1000px;
+  -webkit-animation: strobing 1.5s  0s infinite;
+}
+
+#yellowLight {
+  border-bottom: 1400px solid $yellow500; // need to set properly
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  left: 1125px;
+  -webkit-animation: strobing 1.5s 0.5s infinite;
 }
