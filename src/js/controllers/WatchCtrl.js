@@ -49,7 +49,6 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
   },3000);
 
-
   $scope.joinTwerk = function (size, msg) {
     var modalInstance = $modal.open({
       templateUrl: '/views/partials/join-twerk-modal.html',
@@ -75,15 +74,18 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
   console.log(window.SERVER_URL);
 
-  thresholdScore = 200;
+  thresholdScore = 500;
   function getScoreMessage(user){
     var rand = parseInt(Math.random() * 5);
     switch(rand){
       case 0: return user + " is fucking killing it";
-      case 1: return user + " is GODLIKE";
+      case 1: 
+        //Play godlike sound
+        return user + " is GODLIKE";
       case 2: return user + " is twerking so fucking hard";
       case 3: return "Holy fuck! " + user + " is going HAM";
-      case 4: return "" + user + " is twerking like a motherfucker";
+      case 4: return user + " is twerking like a motherfucker";
+      case 6: return user + " is on a killing spree";
     }
     return "";
   }
