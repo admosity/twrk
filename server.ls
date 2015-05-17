@@ -117,6 +117,11 @@ io.on 'connection', (socket) ->
     socket.broadcast.emit 'joined', {avatar, username, user_id:idx}
     idx++
 
+  socket.on 'update avatar', (data) ->
+    io.emit 'avatar updated', {user_id: socket.request.session.user_id, avatar: data.avatar}
+  
+  
+
   socket.on 'update', (data)-> 
     vt = data.data.split(",");
     socket.request.session.score = (parseFloat vt[6]) * 0.2 + socket.request.session.score * 0.8
