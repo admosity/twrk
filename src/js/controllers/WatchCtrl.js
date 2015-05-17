@@ -69,7 +69,7 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
 
   thresholdScore = 200;
   function getScoreMessage(user){
-    var rand = Math.random() * 5;
+    var rand = parseInt(Math.random() * 5);
     switch(rand){
       case 0: return user + " is fucking killing it";
       case 1: return user + " is GODLIKE";
