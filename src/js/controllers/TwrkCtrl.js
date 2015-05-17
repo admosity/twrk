@@ -62,17 +62,17 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
 
     });
 
-    var discFlag = false;
+    var discFlag = true;
 
     socket.on('disconnect', function(){
       discFlag && alert("You have been disconnected");
     });
 
     disconnectSocket = function() {
-      discFlag = true;
+      discFlag = false;
       socket.disconnect();
       setTimeout(function() {
-        discFlag = false;
+        discFlag = true;
       }, 2000);
     };
 
@@ -93,7 +93,7 @@ module.controller('TwrkCtrl', function($scope, $http, $modal) {
 
 
       socket.on('disconnect', function(){
-        alert("You have been disconnected");
+        discFlag && alert("You have been disconnected");
       });
     };
 
