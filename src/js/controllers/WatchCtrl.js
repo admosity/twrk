@@ -58,6 +58,14 @@ module.controller('WatchCtrl', function($scope, $http, $modal) {
     });
   }
 
+  $scope.emptyModal = function (size, msg) {
+    var modalInstance = $modal.open({
+      templateUrl: '/views/partials/empty-modal.html',
+      size: size,
+      windowClass: 'empty-modal'
+    });
+  }
+
   var lp = 0.2;
   var lpX = 0;
   var lpY = 0;
